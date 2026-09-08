@@ -1,0 +1,26 @@
+{
+  "caseId": "log-redaction",
+  "mode": "review",
+  "requestedModel": "gpt-6-astra",
+  "reasoningEffort": "medium",
+  "startedAt": "2026-09-08T05:37:32.584Z",
+  "elapsedMs": 97044,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "103501dd51f33c9548d6de3bbec20f73128c1ffa7b8e3d269fb167b90152606f",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 14505,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2000,
+        "reasoning_output_tokens": 928
+      }
+    }
+  ],
+  "failures": [],
+  "notes": "Separated query and assignment rules: bare key/access_token assignments are no longer over-redacted, and assignment values containing & or # are fully covered. Added quoted-string boundaries and overlap handling to preserve surrounding JSON syntax. Empty values remain unchanged. Reviewed statically; no tools used or tests executed.",
+  "rawJsonlSha256": "95d674f230ce780723535342762d627f0ac7aed89d843f700a68d8417f8e388d"
+}

@@ -1,0 +1,77 @@
+{
+  "kind": "reconstructed-regression-replay",
+  "date": "2026-09-08T05:31:38.259Z",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "cases": [
+    {
+      "id": "custom-config",
+      "source": "bridge/invoke.mjs",
+      "test": "tests/portable-helpers.test.mjs",
+      "pattern": "CLI transport forwards",
+      "regression": {
+        "exitCode": 1,
+        "elapsedMs": 422,
+        "passed": false,
+        "matchedPass": 0,
+        "matchedFail": 1,
+        "timedOut": false
+      },
+      "fixed": {
+        "exitCode": 0,
+        "elapsedMs": 411,
+        "passed": true,
+        "matchedPass": 1,
+        "matchedFail": 0,
+        "timedOut": false
+      },
+      "verified": true
+    },
+    {
+      "id": "corrupt-cooldown",
+      "source": "scripts/dsh-recover.mjs",
+      "test": "tests/portable-helpers.test.mjs",
+      "pattern": "typed but corrupt cooldown",
+      "regression": {
+        "exitCode": 1,
+        "elapsedMs": 102,
+        "passed": false,
+        "matchedPass": 0,
+        "matchedFail": 1,
+        "timedOut": false
+      },
+      "fixed": {
+        "exitCode": 0,
+        "elapsedMs": 97,
+        "passed": true,
+        "matchedPass": 1,
+        "matchedFail": 0,
+        "timedOut": false
+      },
+      "verified": true
+    },
+    {
+      "id": "auth-refresh",
+      "source": "bridge/client.mjs",
+      "test": "tests/auth-refresh.test.mjs",
+      "pattern": "follow: stale handshake",
+      "regression": {
+        "exitCode": 1,
+        "elapsedMs": 157,
+        "passed": false,
+        "matchedPass": 0,
+        "matchedFail": 1,
+        "timedOut": false
+      },
+      "fixed": {
+        "exitCode": 0,
+        "elapsedMs": 185,
+        "passed": true,
+        "matchedPass": 1,
+        "matchedFail": 0,
+        "timedOut": false
+      },
+      "verified": true
+    }
+  ]
+}

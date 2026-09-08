@@ -1,0 +1,63 @@
+{
+  "updatedAt": "2026-09-08",
+  "token": {
+    "status": "两例未观察到节省",
+    "baselineAstraTokens": 30743,
+    "workflowAstraTokens": 33650,
+    "astraReductionPct": -9.46,
+    "caseCount": 2,
+    "notes": "本轮工作流 Astra 用量增加 9.46%。两条路径均通过最终验收。这两例审查路径用量更高，读入整份源码可能是原因之一，因此 skill 强化小任务直做、按需审查和精简轮询；尚未取得优化后完整项目的配对收益。"
+  },
+  "delivery": {
+    "regressionsFixed": 3,
+    "regressionsTotal": 3,
+    "notes": "三项明确的恢复/配置故障均可复现并由测试捕获。另一个真实案例中，DSH 自测漏掉的 key=hello 误脱敏，被 Astra 审查修复，独立验收从 11/12 提升到 12/12；Astra 直接生成也通过 12/12。"
+  },
+  "cases": [
+    {
+      "id": "log-redaction",
+      "title": "运行日志脱敏工具",
+      "kind": "实测 · 配对子会话",
+      "status": "最终双方通过",
+      "summary": "Astra 直接生成 12/12；DSH 自测后独立验收 11/12，经 Astra 审查后 12/12。Astra 用量变化：-7.42%（下降比例，负值表示增加）。DSH 单列 276,172 tokens，未合并为费用。A 路径 72 秒；B 模型阶段合计 396 秒，不含父级等待/协调。",
+      "baseline": 15365,
+      "workflow": 16505,
+      "evidenceUrl": "https://github.com/coppynight/codex-dsh-workflow/tree/main/examples/results/log-redaction"
+    },
+    {
+      "id": "checkpoint-store",
+      "title": "可恢复 checkpoint 文件存储",
+      "kind": "实测 · 配对子会话",
+      "status": "最终双方通过",
+      "summary": "Astra 直接生成 18/18；DSH 自测后独立验收 18/18，经 Astra 审查后 18/18。Astra 用量变化：-11.49%（下降比例，负值表示增加）。DSH 单列 358,048 tokens，未合并为费用。A 路径 50 秒；B 模型阶段合计 210 秒，不含父级等待/协调。",
+      "baseline": 15378,
+      "workflow": 17145,
+      "evidenceUrl": "https://github.com/coppynight/codex-dsh-workflow/tree/main/examples/results/checkpoint-store"
+    },
+    {
+      "id": "compact-observation",
+      "title": "少读重复历史，保留阻塞与错误",
+      "kind": "优化 · 合成回放",
+      "status": "字节量下降 85.15%",
+      "summary": "同一固定夹具的 10 次观察，原响应合计 124,600 字节；摘要轮询 + 一次完整证据合计 18,504 字节，下降 85.15%。这是序列化 JSON 的 UTF-8 字节量，不是实测模型 tokens。请求身份、审批、问题、结束原因与错误仍保留。",
+      "baseline": null,
+      "workflow": null,
+      "evidenceUrl": "https://github.com/coppynight/codex-dsh-workflow/tree/main/examples/results/poll-volume.json"
+    },
+    {
+      "id": "recovery-regressions",
+      "title": "配置、冷却与认证的三个故障回放",
+      "kind": "验证 · 故障重建",
+      "status": "3 / 3 验证",
+      "summary": "分别移除自定义配置传递、损坏状态校验、一次认证刷新：三项定向测试均失败；当前实现均通过。运行于本机离线夹具，不推断 Astra 会漏掉这些问题，也不等于真实项目交付率提升。",
+      "baseline": null,
+      "workflow": null,
+      "evidenceUrl": "https://github.com/coppynight/codex-dsh-workflow/tree/main/examples/results/reliability.json"
+    }
+  ],
+  "links": {
+    "repo": "https://github.com/coppynight/codex-dsh-workflow",
+    "examples": "https://github.com/coppynight/codex-dsh-workflow/tree/main/examples",
+    "methodology": "https://github.com/coppynight/codex-dsh-workflow/blob/main/examples/benchmarks/PROTOCOL.md"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "caseId": "log-redaction",
+  "passed": false,
+  "exitCode": 1,
+  "details": {
+    "passed": 12,
+    "total": 13,
+    "failed": [
+      {
+        "input": "{\"TOKEN\":\"secret\"}",
+        "expected": "{\"TOKEN\":\"[REDACTED]\"}",
+        "actual": "{\"TOKEN\":\"secret\"}"
+      }
+    ]
+  },
+  "solutionSha256": "96aba32362169e0135088f5dad7eb45be491c3dcb8f814883e061c0525607e2e"
+}

@@ -29,3 +29,13 @@ taskId/operationId 只用 `[A-Za-z0-9_-]`，长度 1–100。taskId 复用仅限
 ```
 
 接入层 workspace claim 是合作锁，不是 OS 沙箱。工作目录的 realpath 必须位于明确允许根下；不允许 symlink 绕过白名单，不自动扩充根。默认不会自动批准 DSH Web 里的权限或问题。
+
+## 精简观察参数（可选，向后兼容）
+
+新版 dsh_status / dsh_wait 接受 detail: "summary" 和 afterCursor（上次返回的 cursor）。首次不传 afterCursor；后续传上次 cursor。summary 只带新进展摘要，保留当前请求、结束原因、审批/问题、错误与诊断；它不证明文件正确或 workspace 已空闲。终态、阻塞或需要详细证据时再取 detail: "full"。旧版本 schema 没有这些参数就继续旧调用，不以错误重试来探测。CLI 把相同 JSON 参数保存到文件再传给 bridge/invoke.mjs。
+
+```json
+{"taskId":"existing-task-id","seconds":20,"detail":"summary","afterCursor":100}
+```
+
+这只精简发回主模型的内容，不减少 Host 内部读取的完整事件，也不承诺具体 token 节省。示例 afterCursor 必须替换为真实返回值。

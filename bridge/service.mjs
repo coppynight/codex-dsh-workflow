@@ -6,6 +6,7 @@ import { readControl, assertNoPendingWork } from './control.mjs';
 import { origin as hostOrigin, stateDir as configStateDir, configuredRoots,
   model as configuredModel, timeZone as configuredTimeZone, readInstalledDshVersion } from './runtime.mjs';
 import { MODEL_GUIDANCE, localErrorMessage } from './sanitize.mjs';
+import { observationView } from './observation.mjs';
 
 const stateRoot = configStateDir;
 const idPattern = /^[a-zA-Z0-9_-]{1,100}$/;
@@ -140,12 +141,12 @@ export async function hostStatus() {
   if (!configuredRoots.length) status.workspaceWarning = 'No workspace roots are configured; delegation is disabled until the user configuration dsh.workspaceRoots lists allowed projects.';
   return status;
 }
-export async function status(taskId, seconds = 0, requestId) {
+export async function status(taskId, seconds = 0, requestId, view = {}) {
   const record = await load(taskId);
   const data = await readEvents(record.sessionId, seconds);
-  return { taskId, sessionId: record.sessionId, cwd: record.cwd, released: !!record.released,
+  return observationView({ taskId, sessionId: record.sessionId, cwd: record.cwd, released: !!record.released,
     phase: record.phase, cursor: data.cursor, ...summarize(data.events, requestId || record.requestId),
-    observationNote: 'Only a completed turn associated with this requestId indicates model completion. Independently verify files/tests.' };
+    observationNote: 'Only a completed turn associated with this requestId indicates model completion. Independently verify files/tests.' }, view);
 }
 async function delegateUnlocked({ taskId, cwd, prompt }) {
   recordPath(taskId);

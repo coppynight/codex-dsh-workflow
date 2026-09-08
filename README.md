@@ -2,9 +2,13 @@
 
 把 Codex 主控、DSH 实现、自测与独立审查打包成一个可迁移的 Codex skill。可用 Claude Code 做审查；未确认稳定境外网络与使用资格、Claude 不可用或 DSH 尚未配置时，按明确边界降级到 Codex。
 
+**[介绍页面](https://coppynight.github.io/codex-dsh-workflow/) · [公开案例、数据与复现](https://github.com/coppynight/codex-dsh-workflow/tree/main/examples)**
+
+让 Astra 专注方案与验收，减少重复实现和历史读取，是这个 skill 的目标。本轮两项小任务实测中，Astra 用量反而增加 9.46%，因此已强化小任务直做和按需审查。真实审查修复了一处 DSH 自测遗漏；精简轮询在固定合成回放中减少 85.15% 响应字节。局部证据不等于完整项目 token 或交付率收益，全部结果与勘误均公开。
+
 ## 在另一台机器安装
 
-需要 Git、Node.js 24+ 与可用的 Codex。私有仓库需要先登录有访问权的 GitHub 账号。
+需要 Git、Node.js 24+ 与可用的 Codex。本仓库公开，可直接克隆。
 
 ```text
 git clone https://github.com/coppynight/codex-dsh-workflow.git

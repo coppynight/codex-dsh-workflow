@@ -1,0 +1,10 @@
+{
+  "kind": "synthetic-serialized-response-bytes",
+  "observations": 10,
+  "fullFetchesAfter": 1,
+  "beforeBytes": 124600,
+  "afterBytes": 18504,
+  "reductionPct": 85.15,
+  "modelTokens": null,
+  "notes": "UTF-8 JSON response bytes on this committed fixture. Not tokenizer counts, billed tokens, live latency, or a general saving guarantee. Blockers/identity remain in every summary."
+}

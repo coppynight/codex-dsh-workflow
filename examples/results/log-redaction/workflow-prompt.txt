@@ -1,0 +1,49 @@
+This is a bounded code-generation experiment. Do not call any tools, execute commands, access files, load skills, or delegate. Return JSON with solution (the complete solution.mjs source) and notes (brief review observations). A separate deterministic harness will write and test your returned source; you must not claim to have executed tests. Independently review the supplied DSH implementation against requirements and correct confirmed defects; return the complete resulting source.
+
+REQUIREMENTS:
+Implement export function redactLog(text) in solution.mjs, a pure JavaScript function. Reject non-string input with TypeError. Replace credential VALUES with [REDACTED] while preserving keys, punctuation and all unrelated text. Handle case-insensitive Bearer tokens (letters/digits/._~+/-=), JSON double-quoted keys token, api_key, apiKey, password, secret with double-quoted string values (including escaped quotes); URL query parameters token, api_key, key, access_token including percent-encoded values up to the next &/whitespace/#; and assignment forms token=..., api_key=..., password=... with non-space values. Preserve empty values unchanged. Do not redact substrings such as monkey=banana or token_count=23. Preserve newlines and Unicode. Idempotent: applying twice must give the same output. No dependencies, no network, no file writes from the function.
+
+VISIBLE TEST:
+import {redactLog} from './solution.mjs'; import assert from 'node:assert/strict'; assert.equal(redactLog('Bearer abc.def'),'Bearer [REDACTED]'); assert.equal(redactLog('hello 世界'),'hello 世界'); console.log('2 visible assertions passed');
+
+EXISTING SOLUTION:
+// redactLog: pure, dependency-free credential redaction for log text.
+//
+// Replaces credential VALUES with [REDACTED] while preserving keys,
+// punctuation, whitespace/newlines and all unrelated text. Empty values are
+// left unchanged, and the transformation is idempotent (applying it twice
+// yields the same output). No I/O of any kind is performed.
+
+const REDACTED = '[REDACTED]';
+
+// 1) Bearer tokens — the keyword is matched case-insensitively and its
+//    original spelling plus the original whitespace run are rebuilt, so
+//    only the token value itself (letters/digits/._~+/-=) is replaced.
+const BEARER_RE = /\b(bearer)(\s+)([A-Za-z0-9._~+/=-]+)/gi;
+
+// 2) JSON members whose double-quoted key is exactly token, api_key, apiKey,
+//    password or secret and whose value is a double-quoted string (escaped
+//    quotes/backslashes included). The value must be non-empty, so
+//    {"token": ""} is preserved unchanged.
+const JSON_KEY_RE =
+  /("(?:token|api_key|apiKey|password|secret)"\s*:\s*")((?:[^"\\]|\\.)+)(")/g;
+
+// 3) Query-parameter / assignment forms key=value for the exact standalone
+//    keys token, api_key, key, access_token, password. The key may not be
+//    glued to a preceding word character (protects monkey=banana and
+//    token_count=23), and the value runs up to the next & / whitespace / #
+//    (so percent-encoded content is fully covered). Empty values (key=)
+//    are left unchanged.
+const ASSIGN_RE =
+  /(?<![A-Za-z0-9_])(token|api_key|key|access_token|password)(=)([^\s&#]+)/g;
+
+export function redactLog(text) {
+  if (typeof text !== 'string') {
+    throw new TypeError('redactLog expects a string argument');
+  }
+
+  return text
+    .replace(BEARER_RE, (match, keyword, whitespace) => keyword + whitespace + REDACTED)
+    .replace(JSON_KEY_RE, (match, head, value, tail) => head + REDACTED + tail)
+    .replace(ASSIGN_RE, (match, key, equals) => key + equals + REDACTED);
+}

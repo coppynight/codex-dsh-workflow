@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>放开用 Astra —— codex-dsh-workflow</title>
+  <meta name="description" content="把难点推理与验收留在 Astra、把边界清晰的实现委托给 DSH 的工作流。公开配对案例、真实用量和恢复回归证据；把实验结果用于优化任务路由。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="app.js?v=2" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./"><span class="brand-dot" aria-hidden="true"></span><span class="brand-name">codex-dsh-workflow</span></a>
+      <nav aria-label="页面导航">
+        <ul class="nav-list">
+          <li><a href="#principle">原理</a></li>
+          <li><a href="#roles">分工</a></li>
+          <li><a href="#guardrails">护栏</a></li>
+          <li><a href="#evidence">实测</a></li>
+          <li><a href="#install">安装</a></li>
+          <li><a href="#faq">问答</a></li>
+          <li><a href="#repo-footer">仓库</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-copy">
+        <p class="hero-eyebrow">Astra × DSH · 委托实现工作流</p>
+        <h1 id="hero-title" class="hero-title">放开用 Astra。<br>让每一份 token，都靠近交付。</h1>
+        <p class="hero-qualifier">把难题交给 Astra，把可验收的实现交给 DSH。省 token 是目标，交付有证据。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#install">安装工作流</a>
+          <a class="btn btn-ghost" href="#evidence">看实测口径</a>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <figure class="diagram">
+          <figcaption class="sr-only">
+            工作流图示：任务先进入 Astra——负责难点推理、方案与验收标准；随后 Astra 把边界清晰的实现任务委托给 DSH；
+            DSH 自测并产出补丁与证据，交付回到 Astra；Astra 对照标准验收，不通过则带原因退回 DSH，通过后由环境负责人合入。
+            示意图下方的终端为示意会话，不是真实日志。
+          </figcaption>
+          <div class="d-flow" role="group" aria-label="Astra 到 DSH 再到 Astra 验收，三条流程节点的示意">
+            <div class="d-node">
+              <span class="d-node-tag tag-astra">Astra</span>
+              <h3 class="d-node-title">拆解与验收标准</h3>
+              <ul class="d-node-list">
+                <li>难点推理、方案取舍</li>
+                <li>写下可验收的标准</li>
+                <li>执行最终验收</li>
+              </ul>
+              <span class="d-node-step">1</span>
+            </div>
+            <span class="d-conn" aria-hidden="true"><span class="d-conn-line"></span><span class="d-conn-arrow"></span></span>
+            <div class="d-node d-node-dsh">
+              <span class="d-node-tag tag-dsh">DSH</span>
+              <h3 class="d-node-title">受边界约束的实现</h3>
+              <ul class="d-node-list">
+                <li>只接边界清晰的任务</li>
+                <li>自测、产出 patch 与证据</li>
+                <li>改动前留快照</li>
+              </ul>
+              <span class="d-node-step">2</span>
+            </div>
+            <span class="d-conn" aria-hidden="true"><span class="d-conn-line"></span><span class="d-conn-arrow"></span></span>
+            <div class="d-node">
+              <span class="d-node-tag tag-astra">Astra</span>
+              <h3 class="d-node-title">对照标准验收</h3>
+              <ul class="d-node-list">
+                <li>通过：交环境负责人合入</li>
+                <li>不过：带原因退回 DSH</li>
+              </ul>
+              <span class="d-node-step">3</span>
+            </div>
+          </div>
+
+          <div class="d-extra">
+            <div class="term" role="img" aria-label="DSH 会话示意，四行：执行任务、自测通过、等待验收、Astra 验收通过。非真实日志。">
+              <div class="term-bar" aria-hidden="true"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">dsh session · 示意</span></div>
+              <div class="term-body">
+                <p class="term-line"><span class="t-cmd">$ dsh run task-042</span></p>
+                <p class="term-line"><span class="t-out">→ 读取 specs/task-042（验收标准由 Astra 撰写）</span></p>
+                <p class="term-line"><span class="t-out">→ self-test 通过 · patch-042.patch 已写入</span></p>
+                <p class="term-line"><span class="t-out">→ 等待 Astra review …</span></p>
+                <p class="term-line"><span class="t-ok">✓ Astra: review 通过 · 交环境负责人合入</span></p>
+              </div>
+            </div>
+            <div class="d-notes" aria-hidden="true">
+              <p class="d-note"><span class="d-k">①</span> 需求与难点先留在 Astra</p>
+              <p class="d-note"><span class="d-k">②</span> 边界清晰的实现 → DSH</p>
+              <p class="d-note"><span class="d-k">③</span> patch + 证据 → 回到 Astra 验收</p>
+              <p class="d-note"><span class="d-k">↺</span> 不过关 → 带原因退回 DSH，持续失败时转 Codex</p>
+            </div>
+          </div>
+          <p class="diagram-note">图示与终端均为示意，非真实日志。</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 01 PRINCIPLE ============ -->
+    <section class="sec" id="principle" aria-labelledby="principle-title">
+      <div class="wrap">
+        <p class="sec-no">01 · 原理</p>
+        <h2 id="principle-title" class="sec-title">让每个任务，停在它该在的角色上。</h2>
+        <div class="prose">
+          <p>Astra 的价值在<strong>想清楚</strong>：难点推理、方案取舍、验收标准的制定与最终签字。DSH 的价值在<strong>做干净</strong>：拿到边界明确、验收可判的实现任务，自测、留证、把结果交回，而不是把难题也揽下来。</p>
+          <p>这个工作流只有一条主线：<em>难点与验收留在 Astra，有边界的实现委托给 DSH，每一轮交付都回到 Astra 验收。</em>验收不过就定位问题、定向修复；依赖失效时保存进度，交回 Codex 继续。</p>
+        </div>
+
+        <aside class="notice notice-navy" aria-labelledby="assumption-title">
+          <h3 id="assumption-title" class="notice-title"><span aria-hidden="true">⚖</span> 把收益做成可验证的工程目标</h3>
+          <ul class="notice-list">
+            <li><strong>省量靠分工，也靠克制。</strong>小任务直接做；实现量足够大再委派；轮询只取变化，结束后集中验收。</li>
+            <li><strong>数据公开，负结果也保留。</strong>下面展示局部配对用量、验收结果与故障重建；整体端到端节省和交付率仍需更多真实项目验证。</li>
+            <li>可复现、可核对：样本、方法与原始用量摘录都保存在公开仓库。</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ 02 ROLES ============ -->
+    <section class="sec sec-tint" id="roles" aria-labelledby="roles-title">
+      <div class="wrap">
+        <p class="sec-no">02 · 分工</p>
+        <h2 id="roles-title" class="sec-title">谁在想，谁在做，谁对环境负责。</h2>
+
+        <div class="role-grid">
+          <article class="role-card role-astra">
+            <p class="role-role">思考与验收 · 主模型</p>
+            <h3 class="role-name">Astra</h3>
+            <ul class="role-list">
+              <li>理解需求，拆解难点，给出方案取舍</li>
+              <li>为每个任务写下可判定的验收标准</li>
+              <li>对照标准执行最终验收；不过关就退回</li>
+              <li>对外决策与无法委托的判断留在 Astra</li>
+            </ul>
+            <p class="role-bound">小任务直接完成；只将值得委派的实现交给 DSH，保留自己的验收职责。</p>
+          </article>
+
+          <article class="role-card role-dsh">
+            <p class="role-role">执行 · 委托实现</p>
+            <h3 class="role-name">DSH</h3>
+            <ul class="role-list">
+              <li>只接受边界清晰、验收标准明确的实现任务</li>
+              <li>先读现状、留快照，再写改动，产出 patch 与证据</li>
+              <li>在自身权限内自测并如实报告结果</li>
+              <li>验收不过时，带着失败原因迭代，持续失败时转 Codex</li>
+            </ul>
+            <p class="role-bound">不自定验收标准、不替 Astra 决策、不对外发布或承诺。</p>
+          </article>
+
+          <article class="role-card role-codex">
+            <p class="role-role">环境负责人</p>
+            <h3 class="role-name">Codex 通道</h3>
+            <ul class="role-list">
+              <li>拥有环境与集成测试：真机、真实环境、端到端</li>
+              <li>DSH 不可用（如缺少 key）时作为回退执行通道</li>
+              <li>检查改动、运行集成验收，并在授权范围内合入与发布</li>
+            </ul>
+            <p class="role-bound">集成测试以环境负责人的真实执行为准，不替代实现者的自测。</p>
+          </article>
+        </div>
+
+        <div class="boundary">
+          <div class="boundary-col">
+            <h3 class="boundary-h boundary-h-astra">留在 Astra</h3>
+            <ul>
+              <li>需求理解与难点推理</li>
+              <li>方案取舍与风险判断</li>
+              <li>验收标准与最终验收</li>
+              <li>任何对外表述与承诺</li>
+            </ul>
+          </div>
+          <div class="boundary-col">
+            <h3 class="boundary-h boundary-h-dsh">交给 DSH</h3>
+            <ul>
+              <li>规格明确下的实现与重构</li>
+              <li>有复现步骤的缺陷修复</li>
+              <li>脚本、静态页面等单一交付物</li>
+              <li>可快照、可回滚的环境内改动</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 GUARDRAILS ============ -->
+    <section class="sec" id="guardrails" aria-labelledby="guardrails-title">
+      <div class="wrap">
+        <p class="sec-no">03 · 护栏</p>
+        <h2 id="guardrails-title" class="sec-title">这些是硬约束，不是建议。</h2>
+        <p class="sec-intro">任何一条被违反，任务停下、回到负责人手里重新走。护栏本身随仓库配置一起维护。</p>
+
+        <ol class="guardrails">
+          <li class="guardrail">
+            <h3 class="guardrail-t">Claude：使用者确认当前网络环境</h3>
+            <p class="guardrail-d">稳定境外 IP、地区与账号符合要求，使用者明确确认后才调用 Claude。否、不确定或未回答就用 Codex 审查，继续工作。网络变化后重新确认。</p>
+          </li>
+          <li class="guardrail">
+            <h3 class="guardrail-t">缺少 DSH key → 回退 Codex 通道</h3>
+            <p class="guardrail-d">DSH 不可用（缺少 key 或配置不完整）时，任务自动回到 Codex 既有流程执行同一边界内的任务；绝不静默降级、绕过护栏或伪造“已执行”的结果。</p>
+          </li>
+          <li class="guardrail">
+            <h3 class="guardrail-t">单写者：不重复写入</h3>
+            <p class="guardrail-d">同一文件同一时间只有一个写者；写入前必须先读取当前现状。任务之间不并行写同一路径，避免双写互相覆盖、丢失对方成果。</p>
+          </li>
+          <li class="guardrail">
+            <h3 class="guardrail-t">快照与真实测试</h3>
+            <p class="guardrail-d">环境改动前留快照、留证据；静态自测在权限内完成。集成与端到端测试由环境负责人在真实环境执行——“看起来能跑”不构成通过。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 04 EVIDENCE ============ -->
+    <section class="sec sec-tint" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <p class="sec-no">04 · 实测</p>
+        <h2 id="evidence-title" class="sec-title">先看口径，再看数字。</h2>
+        <p class="sec-intro">同一份需求、独立验收、两条执行路径。模型用量、验收结果与故障回放分开列出；每个数字都能追溯到仓库中的记录。</p>
+
+        <p class="sr-only" id="ev-live" role="status" aria-live="polite"></p>
+        <div id="evidence-root">
+          <p class="ev-state">正在载入实测记录 …</p>
+          <noscript>
+            <p class="note-block">未启用 JavaScript：请直接阅读 <a href="https://github.com/coppynight/codex-dsh-workflow/tree/main/examples">仓库中的实测案例与复现说明</a>。</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 INSTALL ============ -->
+    <section class="sec" id="install" aria-labelledby="install-title">
+      <div class="wrap">
+        <p class="sec-no">05 · 安装</p>
+        <h2 id="install-title" class="sec-title">三步接上工作流。</h2>
+        <p class="sec-intro">需要 Codex 和 Node.js 24+。Windows、macOS、Linux 使用同一套安装脚本；DSH 与 Claude 都可按需接入。</p>
+
+        <ol class="steps">
+          <li class="step">
+            <h3 class="step-t">克隆仓库</h3>
+            <div class="code-row">
+              <pre class="code" id="cmd-clone">git clone <span id="repo-url-text">https://github.com/coppynight/codex-dsh-workflow</span> codex-dsh-workflow</pre>
+              <button type="button" class="copy-btn" data-copy-source="cmd-clone">复制</button>
+            </div>
+            <p class="step-d">公开仓库包含 skill、可移植接入层、测试和实测案例。</p>
+          </li>
+          <li class="step">
+            <h3 class="step-t">安装到 Codex 的 skills 目录</h3>
+            <div class="code-row">
+              <pre class="code" id="cmd-npm">cd codex-dsh-workflow
+node scripts/install.mjs</pre>
+              <button type="button" class="copy-btn" data-copy-source="cmd-npm">复制</button>
+            </div>
+            <p class="step-d">安装器会报告目标目录。已有安装需显式使用 <code>--update</code>，并保留备份。</p>
+          </li>
+          <li class="step">
+            <h3 class="step-t">开始使用，再按需接入 DSH</h3>
+            <p class="step-d">重载 Codex，使用 <code>$codex-dsh-workflow</code> 描述任务。接入 DSH 时，在安装目录运行 <code>npm ci</code>，然后按 <a href="https://github.com/coppynight/codex-dsh-workflow/blob/main/references/setup.md">设置指南</a>配置工作目录、运行时与 key。缺依赖时由 Codex 继续。</p>
+          </li>
+        </ol>
+        <p class="sr-only" id="copy-live" role="status" aria-live="polite"></p>
+        <noscript><p class="note-block">未启用 JavaScript：复制按钮不可用，可手动全选命令文本复制。</p></noscript>
+      </div>
+    </section>
+
+    <!-- ============ 06 FAQ ============ -->
+    <section class="sec" id="faq" aria-labelledby="faq-title">
+      <div class="wrap wrap-narrow">
+        <p class="sec-no">06 · 问答</p>
+        <h2 id="faq-title" class="sec-title">常见疑问。</h2>
+        <p class="sec-intro">答案以仓库内当前配置与数据为准；这里只描述口径与边界。</p>
+
+        <div class="faq-list">
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">Astra 的参与真的变少了吗？</h3></summary>
+            <p class="faq-a">见上方实测：只统计固定需求后的 Astra 代码生成或审查子会话。结果不包含主会话协调和 DSH 消耗；小任务可能因审查需要读入整份源码而增加 Astra 用量，所以默认直接完成小任务。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">什么算「完成」？谁来判定？</h3></summary>
+            <p class="faq-a">验收标准由 Astra 在委托时写清楚，交付回到 Astra 对照标准验收；通过后由环境负责人合入并跑集成测试。DSH 不自定标准，也不替 Astra 签字。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">token 数字应该怎么读？</h3></summary>
+            <p class="faq-a">数字是<b>按模型分开</b>的：基线与工作流两列都只统计 Astra 单侧 token（小样本配对）。它们不等于总 token、总时长或总费用——那些需要另外加总 DSH、Codex 等环节，口径边界见证据区底部的说明。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">两边同时改一个文件会怎样？</h3></summary>
+            <p class="faq-a">bridge 会拒绝被另一 DSH 任务占用的目录及其父子目录。主 Codex 也需遵守单写者规则；独立进程或手工编辑不受这把协作锁约束。接管前必须确认原任务和后台工作空闲。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">哪些任务适合交给 DSH？</h3></summary>
+            <p class="faq-a">边界清晰、验收可判、可快照回滚的实现任务：明确的实现与重构、有复现步骤的缺陷修复、单个脚本或静态页面。难点推理、方案取舍、验收与对外承诺留在 Astra。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">什么时候才能用 Claude？</h3></summary>
+            <p class="faq-a">每个新会话先请使用者确认：当前是稳定境外 IP，且所在地区与账号符合 Claude Code 使用要求。否、不确定或未回答，就用 Codex 审查；网络变化后重新确认。此条件只约束 Claude，稳定 IP 也不保证免封号。</p>
+          </details>
+          <details class="faq" name="faq">
+            <summary><h3 class="faq-q">DSH 没有 key，或者后台没启动怎么办？</h3></summary>
+            <p class="faq-a">doctor 区分本地依赖、Host 连通与模型就绪。未配置 key 时引导到本机 DSH 设置；允许自动恢复时，确认无占用后启动一次。持续失败就保存原任务标识并转 Codex，避免重复提交。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="repo-footer" aria-labelledby="footer-title">
+    <div class="wrap">
+      <h2 id="footer-title" class="sr-only">仓库与页脚</h2>
+      <div class="footer-top">
+        <p class="footer-brand">codex-dsh-workflow</p>
+        <ul class="footer-links" id="footer-links">
+          <li class="footer-link-static"><a href="./">本页首页</a></li>
+          <li class="footer-link-static"><a href="#install">安装</a></li>
+          <li class="footer-link-static"><a href="#evidence">实测口径</a></li>
+          <!-- 仓库 / 示例 / 方法学 链接由 app.js 依据 data/summary.json → links 注入 -->
+        </ul>
+      </div>
+      <p class="footer-note">一个围绕可验证交付持续改进的开源 skill。正面结果、负面结果和方法修订一并公开。</p>
+      <p class="footer-note">欢迎用可复现的案例帮助改进任务路由与恢复能力。</p>
+    </div>
+  </footer>
+</body>
+</html>

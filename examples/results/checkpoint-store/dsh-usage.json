@@ -1,0 +1,185 @@
+{
+  "caseId": "checkpoint-store",
+  "taskId": "evidence-checkpoint-store-r2",
+  "sessionId": "878df29c-c3bc-4d7b-ab05-6612ed34d24f",
+  "requestId": "54bca322-01c5-45b6-82e3-8357a9f4e454",
+  "state": "completed",
+  "turnEnd": {
+    "turn": 1,
+    "reason": {
+      "kind": "completed"
+    }
+  },
+  "createdAt": "2026-09-08T05:33:18.694Z",
+  "observedCompletedAt": "2026-09-08T05:36:58.189Z",
+  "usageSource": "DSH assistant/message.data.usage; assistant/chunk copies excluded",
+  "usageEvents": [
+    {
+      "seq": 135,
+      "usage": {
+        "inputTokens": 8434,
+        "outputTokens": 173,
+        "totalTokens": 8991,
+        "cacheReadTokens": 384,
+        "reasoningTokens": 67
+      }
+    },
+    {
+      "seq": 219,
+      "usage": {
+        "inputTokens": 96,
+        "outputTokens": 104,
+        "totalTokens": 9160,
+        "cacheReadTokens": 8960,
+        "reasoningTokens": 57
+      }
+    },
+    {
+      "seq": 9851,
+      "usage": {
+        "inputTokens": 310,
+        "outputTokens": 9660,
+        "totalTokens": 19058,
+        "cacheReadTokens": 9088,
+        "reasoningTokens": 9574
+      }
+    },
+    {
+      "seq": 11144,
+      "usage": {
+        "inputTokens": 167,
+        "outputTokens": 1320,
+        "totalTokens": 20431,
+        "cacheReadTokens": 18944,
+        "reasoningTokens": 14
+      }
+    },
+    {
+      "seq": 11192,
+      "usage": {
+        "inputTokens": 136,
+        "outputTokens": 70,
+        "totalTokens": 20558,
+        "cacheReadTokens": 20352,
+        "reasoningTokens": 24
+      }
+    },
+    {
+      "seq": 12453,
+      "usage": {
+        "inputTokens": 142,
+        "outputTokens": 1291,
+        "totalTokens": 21913,
+        "cacheReadTokens": 20480,
+        "reasoningTokens": 7
+      }
+    },
+    {
+      "seq": 15108,
+      "usage": {
+        "inputTokens": 82,
+        "outputTokens": 2682,
+        "totalTokens": 24652,
+        "cacheReadTokens": 21888,
+        "reasoningTokens": 563
+      }
+    },
+    {
+      "seq": 15403,
+      "usage": {
+        "inputTokens": 137,
+        "outputTokens": 326,
+        "totalTokens": 25039,
+        "cacheReadTokens": 24576,
+        "reasoningTokens": 255
+      }
+    },
+    {
+      "seq": 18332,
+      "usage": {
+        "inputTokens": 723,
+        "outputTokens": 2964,
+        "totalTokens": 28647,
+        "cacheReadTokens": 24960,
+        "reasoningTokens": 2342
+      }
+    },
+    {
+      "seq": 18410,
+      "usage": {
+        "inputTokens": 145,
+        "outputTokens": 118,
+        "totalTokens": 28807,
+        "cacheReadTokens": 28544,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "seq": 18449,
+      "usage": {
+        "inputTokens": 49,
+        "outputTokens": 72,
+        "totalTokens": 28921,
+        "cacheReadTokens": 28800,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "seq": 18668,
+      "usage": {
+        "inputTokens": 372,
+        "outputTokens": 247,
+        "totalTokens": 29419,
+        "cacheReadTokens": 28800,
+        "reasoningTokens": 91
+      }
+    },
+    {
+      "seq": 18777,
+      "usage": {
+        "inputTokens": 1082,
+        "outputTokens": 137,
+        "totalTokens": 30531,
+        "cacheReadTokens": 29312,
+        "reasoningTokens": 24
+      }
+    },
+    {
+      "seq": 18811,
+      "usage": {
+        "inputTokens": 109,
+        "outputTokens": 67,
+        "totalTokens": 30640,
+        "cacheReadTokens": 30464,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "seq": 19445,
+      "usage": {
+        "inputTokens": 65,
+        "outputTokens": 624,
+        "totalTokens": 31281,
+        "cacheReadTokens": 30592,
+        "reasoningTokens": 56
+      }
+    }
+  ],
+  "model": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "high"
+  },
+  "usageScope": "Implementation model messages; auxiliary session title generation not included",
+  "turnStartedAt": "2026-09-08T05:33:18.819Z",
+  "turnEndedAt": "2026-09-08T05:35:48.035Z",
+  "elapsedMs": 149216,
+  "usageTotals": {
+    "inputTokens": 12049,
+    "outputTokens": 19855,
+    "totalTokens": 358048,
+    "cacheReadTokens": 326144,
+    "reasoningTokens": 13074
+  },
+  "usageSemantics": "DSH @deepseek-ai/dsh-llm TokenUsage: inputTokens is uncached only; cacheReadTokens/cacheWriteTokens are disjoint; totalTokens includes all prompt and output. Sum assistant/message only; exclude duplicate chunks."
+}

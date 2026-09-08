@@ -1,0 +1,11 @@
+{
+  "caseId": "log-redaction",
+  "passed": true,
+  "exitCode": 0,
+  "details": {
+    "passed": 12,
+    "total": 12,
+    "failed": []
+  },
+  "solutionSha256": "96aba32362169e0135088f5dad7eb45be491c3dcb8f814883e061c0525607e2e"
+}

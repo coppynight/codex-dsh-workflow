@@ -1,0 +1,11 @@
+{
+  "caseId": "checkpoint-store",
+  "passed": true,
+  "exitCode": 0,
+  "details": {
+    "passed": 18,
+    "total": 18,
+    "failed": []
+  },
+  "solutionSha256": "e7107cbda81fe2db0f6bf831bb393493e2705f941e0b0b65dc10ae8a7b2db535"
+}

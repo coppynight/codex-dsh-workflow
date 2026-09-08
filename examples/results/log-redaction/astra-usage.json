@@ -1,0 +1,26 @@
+{
+  "caseId": "log-redaction",
+  "mode": "implement",
+  "requestedModel": "gpt-6-astra",
+  "reasoningEffort": "medium",
+  "startedAt": "2026-09-08T05:29:07.555Z",
+  "elapsedMs": 72118,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "eefb9a5a06194812aa12d75004e9b99d021387ada7bef2ccf2d100c918636fa0",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 13968,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1397,
+        "reasoning_output_tokens": 952
+      }
+    }
+  ],
+  "failures": [],
+  "notes": "No tools used or tests executed. Assignment values follow the specified non-space rule; query values stop at &, whitespace, or #. Empty values and JSON quotation marks are preserved.",
+  "rawJsonlSha256": "7a2f15fdc82f934ecbda17613bd30f1fa74df200fbea6c974e0b51609c2e1a81"
+}

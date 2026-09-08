@@ -1,0 +1,9 @@
+This is a bounded code-generation experiment. Do not call any tools, execute commands, access files, load skills, or delegate. Return JSON with solution (the complete solution.mjs source) and notes (brief review observations). A separate deterministic harness will write and test your returned source; you must not claim to have executed tests. Implement the requested solution.
+
+REQUIREMENTS:
+Implement export function redactLog(text) in solution.mjs, a pure JavaScript function. Reject non-string input with TypeError. Replace credential VALUES with [REDACTED] while preserving keys, punctuation and all unrelated text. Handle case-insensitive Bearer tokens (letters/digits/._~+/-=), JSON double-quoted keys token, api_key, apiKey, password, secret with double-quoted string values (including escaped quotes); URL query parameters token, api_key, key, access_token including percent-encoded values up to the next &/whitespace/#; and assignment forms token=..., api_key=..., password=... with non-space values. Preserve empty values unchanged. Do not redact substrings such as monkey=banana or token_count=23. Preserve newlines and Unicode. Idempotent: applying twice must give the same output. No dependencies, no network, no file writes from the function.
+
+VISIBLE TEST:
+import {redactLog} from './solution.mjs'; import assert from 'node:assert/strict'; assert.equal(redactLog('Bearer abc.def'),'Bearer [REDACTED]'); assert.equal(redactLog('hello 世界'),'hello 世界'); console.log('2 visible assertions passed');
+
+EXISTING SOLUTION:

@@ -1,0 +1,26 @@
+{
+  "caseId": "checkpoint-store",
+  "mode": "implement",
+  "requestedModel": "gpt-6-astra",
+  "reasoningEffort": "medium",
+  "startedAt": "2026-09-08T05:39:46.372Z",
+  "elapsedMs": 49665,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "0243c99cf7e97be88ea168bbaeef9c3312e4ab88acac2a76cac3150629454d55",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 14114,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1264,
+        "reasoning_output_tokens": 262
+      }
+    }
+  ],
+  "failures": [],
+  "notes": "Validates before filesystem I/O, omits extra properties, and atomically replaces checkpoints using an exclusively created temporary file. Loads preserve corrupt bytes and reject invalid UTF-8, JSON, or schema. Temporary cleanup is attempted on failure. Tests were not executed.",
+  "rawJsonlSha256": "539819edc13e775101ecebeccacfd75a9d033fed00bc0b7801a056ca1b7705a7"
+}

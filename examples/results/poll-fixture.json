@@ -1,0 +1,169 @@
+{
+  "taskId": "example-build",
+  "sessionId": "example-session",
+  "requestId": "example-request",
+  "cwd": "/example/work",
+  "released": false,
+  "phase": "submitted",
+  "cursor": 100,
+  "state": "running",
+  "turn": 1,
+  "messages": [
+    {
+      "seq": 10,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. Implementation progress 0. "
+        }
+      ]
+    },
+    {
+      "seq": 11,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. Implementation progress 1. "
+        }
+      ]
+    },
+    {
+      "seq": 12,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. Implementation progress 2. "
+        }
+      ]
+    },
+    {
+      "seq": 13,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. Implementation progress 3. "
+        }
+      ]
+    },
+    {
+      "seq": 14,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. Implementation progress 4. "
+        }
+      ]
+    },
+    {
+      "seq": 15,
+      "content": [
+        {
+          "type": "text",
+          "text": "Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. Implementation progress 5. "
+        }
+      ]
+    }
+  ],
+  "toolEvents": [
+    {
+      "type": "tool/call",
+      "seq": 30,
+      "data": {
+        "name": "read",
+        "callId": "example-0",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/result",
+      "seq": 31,
+      "data": {
+        "name": "read",
+        "callId": "example-1",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/call",
+      "seq": 32,
+      "data": {
+        "name": "read",
+        "callId": "example-2",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/result",
+      "seq": 33,
+      "data": {
+        "name": "read",
+        "callId": "example-3",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/call",
+      "seq": 34,
+      "data": {
+        "name": "read",
+        "callId": "example-4",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/result",
+      "seq": 35,
+      "data": {
+        "name": "read",
+        "callId": "example-5",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/call",
+      "seq": 36,
+      "data": {
+        "name": "read",
+        "callId": "example-6",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    },
+    {
+      "type": "tool/result",
+      "seq": 37,
+      "data": {
+        "name": "read",
+        "callId": "example-7",
+        "argumentsPreview": "{\"path\":\"solution.mjs\"}",
+        "textPreview": "verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; verified code context; ",
+        "isError": false
+      }
+    }
+  ],
+  "toolEventsOmitted": 20,
+  "pendingApprovals": [],
+  "pendingQuestions": [],
+  "pendingApprovalCount": 0,
+  "pendingQuestionCount": 0,
+  "waitingFor": [],
+  "questionCoverage": "Unsettled question calls; inspect Web for UI-only questions.",
+  "recentEventTypes": [
+    "step/start",
+    "assistant/chunk"
+  ],
+  "observationNote": "Inspect real files and tests."
+}

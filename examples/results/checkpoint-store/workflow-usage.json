@@ -1,0 +1,26 @@
+{
+  "caseId": "checkpoint-store",
+  "mode": "review",
+  "requestedModel": "gpt-6-astra",
+  "reasoningEffort": "medium",
+  "startedAt": "2026-09-08T05:37:42.931Z",
+  "elapsedMs": 61205,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "f9ba8545571d7e84c02969400fd6732d1e0137ede6a96e453b7ab04f6362e6ff",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 15479,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1666,
+        "reasoning_output_tokens": 516
+      }
+    }
+  ],
+  "failures": [],
+  "notes": "Corrected trailing-newline ID acceptance, null-byte path validation, repeated property reads, and cleanup that could delete an unowned temporary file after exclusive-open failure. Load also rejects invalid UTF-8 without modifying bytes. No tools used or tests executed.",
+  "rawJsonlSha256": "9aca1741fecd5a9d1a73e4240a877f0d426f7c773e97a1bf5d8152dbecde2b10"
+}

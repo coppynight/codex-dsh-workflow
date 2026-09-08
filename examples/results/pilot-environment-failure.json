@@ -1,0 +1,26 @@
+{
+  "caseId": "log-redaction",
+  "mode": "implement",
+  "requestedModel": "gpt-6-astra",
+  "reasoningEffort": "medium",
+  "startedAt": "2026-09-08T05:24:31.544Z",
+  "elapsedMs": 30948,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "cf281e68ab5e00f82839d9e23aa5a411bfe65737ea0528c6aff572dde104177b",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 75132,
+        "cached_input_tokens": 50816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 249,
+        "reasoning_output_tokens": 28
+      }
+    }
+  ],
+  "failures": [],
+  "answer": "I’ll inspect the workspace, implement `redactLog` in `solution.mjs`, and run `node visible-test.mjs`.\nBlocked by the environment’s read-only policy; no files changed.\n\nAttempted `node visible-test.mjs`, but execution was rejected as “blocked by policy.” Tests did not run, and the implementation remains incomplete.",
+  "classification": "Policy-rejected tool execution; no implementation. Excluded from matched r2 denominator."
+}

@@ -1,0 +1,115 @@
+{
+  "caseId": "log-redaction",
+  "taskId": "evidence-log-redaction-r2",
+  "sessionId": "dc877f4b-2b67-4ea1-843c-4545b4f62ed5",
+  "requestId": "3740ff15-5ed4-43e3-96c4-a880724a5325",
+  "state": "completed",
+  "turnEnd": {
+    "turn": 1,
+    "reason": {
+      "kind": "completed"
+    }
+  },
+  "createdAt": "2026-09-08T05:31:11.945Z",
+  "observedCompletedAt": "2026-09-08T05:36:58.031Z",
+  "usageSource": "DSH assistant/message.data.usage; assistant/chunk copies excluded",
+  "usageEvents": [
+    {
+      "seq": 328,
+      "usage": {
+        "inputTokens": 8377,
+        "outputTokens": 366,
+        "totalTokens": 9127,
+        "cacheReadTokens": 384,
+        "reasoningTokens": 258
+      }
+    },
+    {
+      "seq": 455,
+      "usage": {
+        "inputTokens": 104,
+        "outputTokens": 164,
+        "totalTokens": 9356,
+        "cacheReadTokens": 9088,
+        "reasoningTokens": 85
+      }
+    },
+    {
+      "seq": 32404,
+      "usage": {
+        "inputTokens": 203,
+        "outputTokens": 31974,
+        "totalTokens": 41521,
+        "cacheReadTokens": 9344,
+        "reasoningTokens": 31365
+      }
+    },
+    {
+      "seq": 32508,
+      "usage": {
+        "inputTokens": 32105,
+        "outputTokens": 140,
+        "totalTokens": 41717,
+        "cacheReadTokens": 9472,
+        "reasoningTokens": 17
+      }
+    },
+    {
+      "seq": 33286,
+      "usage": {
+        "inputTokens": 134,
+        "outputTokens": 817,
+        "totalTokens": 42551,
+        "cacheReadTokens": 41600,
+        "reasoningTokens": 72
+      }
+    },
+    {
+      "seq": 33615,
+      "usage": {
+        "inputTokens": 69,
+        "outputTokens": 365,
+        "totalTokens": 42930,
+        "cacheReadTokens": 42496,
+        "reasoningTokens": 177
+      }
+    },
+    {
+      "seq": 34752,
+      "usage": {
+        "inputTokens": 66,
+        "outputTokens": 1173,
+        "totalTokens": 44119,
+        "cacheReadTokens": 42880,
+        "reasoningTokens": 365
+      }
+    },
+    {
+      "seq": 35474,
+      "usage": {
+        "inputTokens": 107,
+        "outputTokens": 712,
+        "totalTokens": 44851,
+        "cacheReadTokens": 44032,
+        "reasoningTokens": 219
+      }
+    }
+  ],
+  "model": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "high"
+  },
+  "usageScope": "Implementation model messages; auxiliary session title generation not included",
+  "turnStartedAt": "2026-09-08T05:31:12.056Z",
+  "turnEndedAt": "2026-09-08T05:36:10.815Z",
+  "elapsedMs": 298759,
+  "usageTotals": {
+    "inputTokens": 41165,
+    "outputTokens": 35711,
+    "totalTokens": 276172,
+    "cacheReadTokens": 199296,
+    "reasoningTokens": 32558
+  },
+  "usageSemantics": "DSH @deepseek-ai/dsh-llm TokenUsage: inputTokens is uncached only; cacheReadTokens/cacheWriteTokens are disjoint; totalTokens includes all prompt and output. Sum assistant/message only; exclude duplicate chunks."
+}
