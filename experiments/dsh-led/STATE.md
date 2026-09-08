@@ -205,3 +205,17 @@ clock time. Authoritative run times are the ISO timestamps in freeze/record JSON
 - All 18 idle owned experimental Host trees were verified against live native
   session/control state and PID overlay identity, then stopped. Original Host
   remains reachable. No fourth-task DSH/Pro Host was ever started.
+
+### Delivery checkpoint 2026-09-08T18:21:19Z
+
+- Published implementation and evidence commit 061d64ae80c440a50c9fd1d4344e38d5a48e2587.
+  GitHub Actions run 34262373720 passed Ubuntu, Windows, macOS and Pages deployment.
+- Public index, JS, CSS, dataset and legacy page each returned HTTP 200 and matched
+  local SHA-256 exactly. Site: https://coppynight.github.io/codex-dsh-workflow/ .
+- Overnight heartbeat dsh is PAUSED. No experimental model task remains running.
+  Paid expansion remains stopped on the preserved unknown native retry cost.
+- Main deliverables: prototype/README.md, examples/dsh-led-v5/README.md,
+  examples/dsh-led-v5/DECISION.md, strict offline replay and updated public page.
+  The 90/10 target is not proven; final CLI composition and expert added value
+  remain explicitly unvalidated, as documented. This checkpoint completes the
+  overnight exploration/publication, not the proposed next research campaign.
