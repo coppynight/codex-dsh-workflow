@@ -1,0 +1,63 @@
+{
+  "id": "pilot-compatible-01/budget-reservations/dsh-advisor",
+  "runId": "pilot-compatible-01",
+  "caseId": "budget-reservations",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": false,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 80683,
+  "totalMeasuredElapsedMs": 80793,
+  "setupElapsedMs": 1569,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.021019023999999997,
+    "tokens": {
+      "input": 11611,
+      "cache": 134656,
+      "output": 10625,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.021019023999999997,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "budget.mjs": "e01dd325ef7b973acdb4c1564a0e00e716876a1f89bd9d81104d95f7d21ad7d6",
+    "edge.test.mjs": "26faf0e9f06fc7fd7c73c69a5a2d4c423746d0871231a27870249033e8601295",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+  },
+  "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+  "promptSha256": "f0a51e8c362a36c3c264836c7c632e51937dd484634ff87327ada58a71da4224",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 1,
+    "stdout": "✔ unknown outcome remains reserved after restart (0.6446ms)\n✔ overshoot is recorded, other holds still apply (0.5578ms)\n✔ terminal idempotency and no resurrection (0.1839ms)\n✔ reject numeric hazards atomically (0.2639ms)\n✖ safe integer spending and available zero (0.4083ms)\n✖ special ids and immutable snapshot (0.1055ms)\nℹ tests 6\nℹ suites 0\nℹ pass 4\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.337\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:6:1\n✖ safe integer spending and available zero (0.4083ms)\n  AssertionError [ERR_ASSERTION]: Missing expected exception.\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/acceptance.mjs:6:210)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: undefined,\n    operator: 'throws',\n    diff: 'simple'\n  }\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.1055ms)\n  Error: reservation id \"constructor\" was used with a different amount\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/dsh-advisor/work/budget.mjs:58:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/acceptance.mjs:7:154)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

@@ -1,0 +1,54 @@
+{
+  "id": "pilot-01/usage-ledger/astra",
+  "runId": "pilot-01",
+  "caseId": "usage-ledger",
+  "arm": "astra",
+  "effort": "medium",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "cleanupEvidence": "Normal native CLI completion recorded; explicit cleanupVerified field was introduced later",
+  "executionElapsedMs": 160275,
+  "totalMeasuredElapsedMs": 160373,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.426678,
+    "tokens": {
+      "input": 12039,
+      "cache": 111488,
+      "output": 3896,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.426678,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "ledger.test.mjs": "e0793fa0426d4221ad9a65e137325fa2390219a28033c296221bca92f34efb21",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "usage-ledger.mjs": "0d989bd77668aee9d40cbf360c091018de1be9b97cc4ce1b5ec6b02d9c2b680b",
+    "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+  },
+  "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+  "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+  "requestedModel": "gpt-6-astra",
+  "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ cumulative replay and restart (0.968ms)\n✔ rejection never modifies state (0.8735ms)\n✔ streams aggregate without mixing modes (0.1227ms)\n✔ missing rates remain unknown (0.1199ms)\n✔ invalid numbers and overflow rollback (0.3274ms)\n✔ empty and hostile identifier keys (0.1459ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 51.0477\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

@@ -1,0 +1,21 @@
+// Finalize the stopped native arm without any model call or artifact edit.
+import {readFile,writeFile,copyFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {verifyCommand} from '../../prototype/verify.mjs';
+import {codexCost} from '../../prototype/usage.mjs';
+import {nextCase} from './next-case.mjs';
+const dir=resolve('.local-runs/dsh-led/pilot-next-01/durable-jobs/astra');
+const spec=JSON.parse(await readFile(join(dir,'spec.json'),'utf8'));
+const path=join(spec.outputDir,'record.json'),record=JSON.parse(await readFile(path,'utf8'));
+if(!record.cleanupVerified||record.exitCode!==0)throw Error('Native process not proven ended');
+if(codexCost(record).complete)throw Error('This settlement is only for the observed unknown-cost stop');
+const acceptance=await verifyCommand([process.execPath,'--test',join(dir,'../acceptance.mjs')],spec.cwd,30000,{TARGET_CWD:spec.cwd});
+await copyFile(path,join(spec.outputDir,'record-before-readonly-settlement.json'),1);
+record.verifications=[acceptance];record.repairs=0;
+record.reconciliation={at:new Date().toISOString(),readOnly:true,modelRerun:false,reason:'Native CLI ended, but repeated transport timeout errors leave complete cost uncertain. No repair or further paid trial. Offline acceptance only.'};
+await writeFile(path,JSON.stringify(record,null,2));
+const hash=x=>createHash('sha256').update(x).digest('hex');
+const result={caseId:'durable-jobs',arm:'astra',elapsedMs:record.elapsedMs,executionElapsedMs:record.elapsedMs,acceptance,passed:acceptance.exitCode===0,completed:false,cost:codexCost(record),consultations:[],error:'Study stopped on unknown native retry cost; planned repair and remaining arms not submitted',visibleTestsUnchanged:hash(await readFile(join(spec.cwd,'visible.test.mjs')))==hash(nextCase.visible),protocolValid:true,autonomousSuccess:false,reconciliation:record.reconciliation};
+await writeFile(join(dir,'result.json'),JSON.stringify(result,null,2),{flag:'wx'});
+console.log(JSON.stringify({passed:result.passed,cost:result.cost,acceptance:acceptance.stdout}));

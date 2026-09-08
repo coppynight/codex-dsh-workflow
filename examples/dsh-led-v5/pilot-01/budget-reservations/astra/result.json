@@ -1,0 +1,53 @@
+{
+  "id": "pilot-01/budget-reservations/astra",
+  "runId": "pilot-01",
+  "caseId": "budget-reservations",
+  "arm": "astra",
+  "effort": "medium",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "executionElapsedMs": 123496,
+  "totalMeasuredElapsedMs": 123601,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.420338,
+    "tokens": {
+      "input": 18187,
+      "cache": 83968,
+      "output": 3090,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.420338,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "budget.mjs": "5d23f19ae58938adf9b5d289930088a384ce205bae195520790d6f8b2aa29567",
+    "budget.test.mjs": "0ae86af41ea92fabda677d6b7b97354767afbdbd6baee42bcff74eac1e1964b6",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+  },
+  "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+  "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+  "requestedModel": "gpt-6-astra",
+  "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ unknown outcome remains reserved after restart (0.6671ms)\n✔ overshoot is recorded, other holds still apply (0.97ms)\n✔ terminal idempotency and no resurrection (0.1819ms)\n✔ reject numeric hazards atomically (0.2176ms)\n✔ safe integer spending and available zero (0.1509ms)\n✔ special ids and immutable snapshot (0.0941ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.621\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

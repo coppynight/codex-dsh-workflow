@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-08T17:56:00.859Z",
+  "hypothesis": "Check whether a stronger inexpensive primary model is a better alternative to repeated Flash repair. One additional model profile on the same prospective fourth task; not a new task or evidence of expert routing.",
+  "model": "deepseek-v4-pro",
+  "reasoningEffort": "high",
+  "task": "Implement a durable paid-job receipt store in jobs.mjs using Node.js 24 ESM and only built-ins. Export async claimJob(root,id,payload), readJob(root,id), finishJob(root,id,result). Work only in this workspace. You may add focused tests but do not edit visible.test.mjs. Run node --test --test-isolation=none visible.test.mjs and any additional checks that fit the existing sandbox; do not escalate permissions. Independent acceptance will be run after native completion, with at most one repair opportunity and failure output. Do not inspect external acceptance source.\n\nid is any nonempty string, including Unicode, constructor, __proto__, or path-like text. The on-disk record path is root/<SHA256 UTF-8 id as lowercase hex>.json. A record is {version:1,id,payload,state:'pending'} or the same with state:'completed' and result. Payload and result are JSON values: null, booleans, strings, finite numbers, arrays, plain objects with JSON values. Reject undefined, nonfinite numbers, functions, cycles and nonplain objects with code INVALID_INPUT before modifying durable state. Object member order does not affect equality; array order does. Handle arbitrary own object keys without prototype inheritance bugs.\n\nclaimJob creates root if needed and atomically records pending intent before any remote call. It returns {created:true,record} only for the single creator; an identical replay returns {created:false,record}, including after completion and across independent processes. Changed payload for the same id throws JOB_CONFLICT without changing the receipt. readJob returns the record or null when absent and never creates files. finishJob requires a prior claim (otherwise JOB_UNKNOWN), stores the result durably, and returns the completed record. Exact result replay is idempotent; a different result throws JOB_CONFLICT. A pending record survives restart and MUST NOT be automatically released or treated as permission to repeat a remote call.\n\nReaders must never observe partial JSON during a successful update. Concurrent claims from separate Node processes must have exactly one creator. Normal short-lived contention from six concurrent processes on the local filesystem must wait and let all six calls succeed within five seconds; a BUSY error is allowed only after five seconds of unresolved contention. Concurrent conflicting completions must settle within that same limit with exactly one winner, all others JOB_CONFLICT, with no lost overwrite. Do not rely only on an in-memory mutex. Corrupt existing JSON is JOB_CORRUPT, never reset or silently overwritten. A caller mutating returned objects cannot affect later reads. Do not use network, start detached work, or add dependencies. You may use short-lived locks with bounded contention handling; do not reclaim an ambiguous crashed lock merely based on elapsed time. Include concise usage/recovery notes in README.md.",
+  "acceptanceSource": "pilot-next-01/durable-jobs/acceptance.mjs",
+  "maxRepairs": 1,
+  "advisor": false,
+  "pricesUsdPerM": {
+    "input": 1.32,
+    "cache": 0.044,
+    "output": 3.96
+  },
+  "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "overallStopBeforeNextCallUsd": 15,
+  "deepseekStopBeforeNextCallUsd": 2
+}

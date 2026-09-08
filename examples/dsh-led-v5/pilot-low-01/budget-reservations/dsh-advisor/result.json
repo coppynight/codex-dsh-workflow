@@ -1,0 +1,63 @@
+{
+  "id": "pilot-low-01/budget-reservations/dsh-advisor",
+  "runId": "pilot-low-01",
+  "caseId": "budget-reservations",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": false,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 110764,
+  "totalMeasuredElapsedMs": 110871,
+  "setupElapsedMs": 1559,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.024681272,
+    "tokens": {
+      "input": 11073,
+      "cache": 128128,
+      "output": 13648,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.024681272,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "budget.edge.test.mjs": "295f4348ab2b82e06dca70fe56404de0809ac75dbd4a4f5e39b755becfb6cd32",
+    "budget.mjs": "08492ceff319f482c19eb16b58bf028e1d87272deb96661669e7caa867ff57d0",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+  },
+  "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+  "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 1,
+    "stdout": "✔ unknown outcome remains reserved after restart (0.6497ms)\n✔ overshoot is recorded, other holds still apply (0.5213ms)\n✔ terminal idempotency and no resurrection (0.1874ms)\n✔ reject numeric hazards atomically (0.2365ms)\n✔ safe integer spending and available zero (0.1204ms)\n✖ special ids and immutable snapshot (0.1569ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.6781\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.1569ms)\n  Error: reservation \"constructor\" already used with a different amount\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/dsh-advisor/work/budget.mjs:77:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/acceptance.mjs:7:154)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

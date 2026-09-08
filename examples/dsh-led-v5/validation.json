@@ -1,0 +1,30 @@
+{
+  "at": "2026-09-08T18:17:41.107Z",
+  "platform": "win32",
+  "node": "v24.18.0",
+  "unit": {
+    "passed": 114,
+    "skipped": 2
+  },
+  "prototype": {
+    "passed": 8
+  },
+  "accounting": {
+    "passed": 5
+  },
+  "replay": {
+    "attempts": 22,
+    "mismatches": 0,
+    "compares": "Source/acceptance hashes, complete test execution, individual test names and outcomes"
+  },
+  "staticScan": {
+    "files": 264,
+    "findings": []
+  },
+  "limitations": [
+    "No paid integration of final task.mjs run composition",
+    "No live POSIX DSH or Claude tests",
+    "Browser UI tests not performed",
+    "Concurrent file failure is platform/scheduling dependent"
+  ]
+}

@@ -1,14 +1,28 @@
-# Codex + DSH + Claude 工作流 Skill
+# DSH × Astra：顶级智能，日常预算
 
-把 Codex 主控、DSH 实现、自测与独立审查打包成一个可迁移的 Codex skill。可用 Claude Code 做审查；未确认稳定境外网络与使用资格、Claude 不可用或 DSH 尚未配置时，按明确边界降级到 Codex。
+让 DeepSeek 主导理解、实现与自测，用独立验收发现缺口，按需使用 Astra。
+目标是接近强模型交付、约十分之一运行成本；**目标尚未证实**。形态不再限于 Skill。
+现有 Codex 主控 Skill 继续保留，新方向提供一个可审查的 DSH 主控命令行原型。
 
 **[介绍页面](https://coppynight.github.io/codex-dsh-workflow/) · [公开案例、数据与复现](https://github.com/coppynight/codex-dsh-workflow/tree/main/examples)**
 
-**当前优化计划：[同一套餐，让 Astra 更耐用](OPTIMIZATION-PLAN.md)。** 主目标收敛为每个同质量任务消耗更少套餐额度；先补齐主控计量，再减少机械调度和重复验收，争取约 2 倍耐用度。倍率是待验证目标，优化尚未实施。此前的[开放探索](examples/exploration-v4/README.md)及全部正负结果保留，后台批量交付作为候选场景。
+**当前成果：[实验与数据](examples/dsh-led-v5/README.md) · [产品判断](examples/dsh-led-v5/DECISION.md) · [运行原型](prototype/README.md)。**
 
-**让相同套餐能完成更多由 Astra 主导的合格任务，是这个 skill 的主目标。** Astra 保留规划、思考与验收；便宜模型承担实现、自测与定向修复。总 token 可以增加，套餐额度按完整主控与子模型计量；交付质量、耗时、外部费用和人工处理同时约束。
+本轮保存 22 次任务尝试，涉及 4 个任务；只有前 3 个完成三臂对照，第四个因重试费用未知而停止。
+初始高思考强度 DSH 的产物通过 3/3，费用约为 Astra 的 13–15%，耗时约 2 倍；降低思考强度
+能进入约 5–7% 费用区间，但语义错误和交付中断增多。任务中专家咨询次数为 **0**，因此不能
+把这些节约归功于顾问策略。完整费用包含返工，未知不填零，失败源码可离线重放。
 
-新三文件案例双方产物均通过 17/17 检查：Astra API 等价成本下降 **37.7%**，含 DeepSeek 的已记录模型成本下降 **18.7%**，模型阶段耗时从 129 秒增至 579 秒。双方人工请求都是 0，不能据此宣称人工干预下降。未包含主控协调费用，且 DSH 自测临时目录存在任务契约偏差；不是严格全过程或套餐倍率证明。[完整数据、方法与边界](examples/budget-v3/README.md)。历史负结果也继续公开。
+费用为官方冻结价格的 API 等价估算，不是订阅扣减或发票，也不能推导一个账号等于十个。
+研究与原型开发成本未分摊到任务费。原型已有独立 Host、原生 MCP 顾问、有界修复、账本及
+停止恢复机制；新的一体化入口、跨系统真实运行和专家升级收益仍待验证。
+
+```text
+npm ci
+node prototype/task.mjs run task.json
+```
+
+任务格式与本地配置见 [原型说明](prototype/README.md)。以下是仍可使用的旧 Skill 安装路径。
 
 ## 在另一台机器安装
 

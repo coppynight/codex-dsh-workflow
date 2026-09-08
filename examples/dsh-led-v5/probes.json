@@ -1,0 +1,72 @@
+{
+  "notTaskPerformance": true,
+  "native": {
+    "requestedModel": "gpt-6-astra",
+    "exitCode": 0,
+    "elapsedMs": 38154,
+    "cost": {
+      "complete": true,
+      "usd": 0.141758,
+      "tokens": {
+        "input": 6372,
+        "cache": 66688,
+        "output": 227,
+        "write": 0
+      },
+      "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+    },
+    "toolEvents": 3
+  },
+  "mcp": {
+    "question": "A paid API request timed out after submission. Should a budget reservation be released immediately? Explain in at most 80 words.",
+    "context": "Submission response was lost. Execution status is unknown. This is a reasoning-only adapter probe; do not use tools.",
+    "cost": {
+      "complete": true,
+      "usd": 0.069834,
+      "tokens": {
+        "input": 5314,
+        "cache": 12544,
+        "output": 83,
+        "write": 0
+      },
+      "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+    },
+    "elapsedMs": 20030,
+    "toolEvents": 0,
+    "first": {
+      "status": "completed",
+      "advice": "No. A timeout with a lost submission response does not prove the paid request failed or incurred no charge. Keep the reservation pending until reconciliation establishes the outcome. The decisive check is provider-side request status or billing evidence, ideally linked to a request or idempotency key. Release only confirmed unused funds; convert confirmed charges to actual spend. Avoid an unprotected retry that could create a duplicate charge.",
+      "cost": {
+        "complete": true,
+        "usd": 0.069834,
+        "tokens": {
+          "input": 5314,
+          "cache": 12544,
+          "output": 83,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      }
+    },
+    "replay": {
+      "status": "completed",
+      "cached": true,
+      "advice": "No. A timeout with a lost submission response does not prove the paid request failed or incurred no charge. Keep the reservation pending until reconciliation establishes the outcome. The decisive check is provider-side request status or billing evidence, ideally linked to a request or idempotency key. Release only confirmed unused funds; convert confirmed charges to actual spend. Avoid an unprotected retry that could create a duplicate charge.",
+      "cost": {
+        "complete": true,
+        "usd": 0.069834,
+        "tokens": {
+          "input": 5314,
+          "cache": 12544,
+          "output": 83,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      }
+    },
+    "nextId": {
+      "status": "consultation-limit",
+      "message": "Continue independently or report blocked."
+    }
+  }
+}

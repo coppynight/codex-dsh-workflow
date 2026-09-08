@@ -1,0 +1,73 @@
+{
+  "id": "pilot-feedback-01/incremental-observation/dsh-advisor",
+  "runId": "pilot-feedback-01",
+  "caseId": "incremental-observation",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "executionElapsedMs": 201194,
+  "totalMeasuredElapsedMs": 201195,
+  "setupElapsedMs": 1562,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.045407296,
+    "tokens": {
+      "input": 12187,
+      "cache": 250624,
+      "output": 27679,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.045407296,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "observation.mjs": "4fb19193bbce48319533d560a879b220c865819d30d7b547613b30250cc69615",
+    "observation.test.mjs": "419dd6f1f127fcf3e9a739fb14f542972fd0a669bf8ce91c1ee78810a2275cb9",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+  },
+  "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+  "promptSha256": "f624ed4682c49a524ca4f04c4b5eb6b291a64ab8bda9ce76561aaa72489e8a21",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [
+    {
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "✔ old failure remains flagged without repeated details (0.5716ms)\n✔ mixed old and new (0.6695ms)\n✔ omitted history and pending interactions survive (0.1468ms)\n✔ invalid cursors rejected (0.3555ms)\n✔ zero valid and message clipping unchanged (0.128ms)\n✔ no mutation (0.1519ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2724\n",
+      "stderr": ""
+    }
+  ],
+  "descendants": 0,
+  "acceptance": {
+    "status": "passed",
+    "exitCode": 0,
+    "timedOut": false,
+    "cleanupVerified": true,
+    "stdout": "✔ old failure remains flagged without repeated details (0.5716ms)\n✔ mixed old and new (0.6695ms)\n✔ omitted history and pending interactions survive (0.1468ms)\n✔ invalid cursors rejected (0.3555ms)\n✔ zero valid and message clipping unchanged (0.128ms)\n✔ no mutation (0.1519ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2724\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

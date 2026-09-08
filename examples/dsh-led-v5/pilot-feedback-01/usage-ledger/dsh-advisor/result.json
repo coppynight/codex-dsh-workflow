@@ -1,0 +1,84 @@
+{
+  "id": "pilot-feedback-01/usage-ledger/dsh-advisor",
+  "runId": "pilot-feedback-01",
+  "caseId": "usage-ledger",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "executionElapsedMs": 251548,
+  "totalMeasuredElapsedMs": 251551,
+  "setupElapsedMs": 1563,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.076784728,
+    "tokens": {
+      "input": 50721,
+      "cache": 897152,
+      "output": 31748,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.076784728,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "extra.test.mjs": "d381a67da94bff0807a0fe5facc11b0469cb3a40a117ae050a9de56425107e99",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "usage-ledger.mjs": "9643a5d08ed9d2a14601a0eb89714cb8e9c1d583c1b4d14ebb11004ee8458820",
+    "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+  },
+  "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+  "promptSha256": "df8688a6127bfca4a1590900ef211b9a9ded179b61168b8bb9e77bafede74266",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "seq": 20226,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 1,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [
+    {
+      "status": "failed",
+      "exitCode": 1,
+      "stdout": "✔ cumulative replay and restart (1.0154ms)\n✔ rejection never modifies state (0.7464ms)\n✔ streams aggregate without mixing modes (0.1304ms)\n✔ missing rates remain unknown (0.1341ms)\n✔ invalid numbers and overflow rollback (0.298ms)\n✖ empty and hostile identifier keys (0.8475ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.4369\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ empty and hostile identifier keys (0.8475ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n  + [Function: toString] {\n  +   cacheRead: NaN,\n  +   output: NaN,\n  +   uncachedInput: NaN\n  - {\n  -   cacheRead: 50,\n  -   output: 10,\n  -   uncachedInput: 50\n    }\n  \n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/usage-ledger/acceptance.mjs:7:377)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    expected: { uncachedInput: 50, cacheRead: 50, output: 10 },\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n",
+      "stderr": ""
+    },
+    {
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "✔ cumulative replay and restart (1.0127ms)\n✔ rejection never modifies state (0.7386ms)\n✔ streams aggregate without mixing modes (0.1327ms)\n✔ missing rates remain unknown (0.1428ms)\n✔ invalid numbers and overflow rollback (0.3043ms)\n✔ empty and hostile identifier keys (0.1641ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.393\n",
+      "stderr": ""
+    }
+  ],
+  "descendants": 0,
+  "acceptance": {
+    "status": "passed",
+    "exitCode": 0,
+    "timedOut": false,
+    "cleanupVerified": true,
+    "stdout": "✔ cumulative replay and restart (1.0127ms)\n✔ rejection never modifies state (0.7386ms)\n✔ streams aggregate without mixing modes (0.1327ms)\n✔ missing rates remain unknown (0.1428ms)\n✔ invalid numbers and overflow rollback (0.3043ms)\n✔ empty and hostile identifier keys (0.1641ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.393\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

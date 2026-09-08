@@ -1,0 +1,63 @@
+{
+  "id": "pilot-01/budget-reservations/dsh-alone",
+  "runId": "pilot-01",
+  "caseId": "budget-reservations",
+  "arm": "dsh-alone",
+  "effort": "high",
+  "passed": true,
+  "completed": false,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 291167,
+  "totalMeasuredElapsedMs": 291275,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.058546184,
+    "tokens": {
+      "input": 12414,
+      "cache": 430336,
+      "output": 35651,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.058546184,
+  "consultations": [],
+  "approvalOrQuestionStop": true,
+  "error": "Executor needs user input; no automatic answer is authorized",
+  "sourceHashes": {
+    "budget.mjs": "81c1a881aacc229010a54c1a98b0c4381c559eed1fb6153ac0a23303ea9fed40",
+    "extra.test.mjs": "cf162a289b4564e48b2b174b2b0af122e75745863e75d2f0b5571d4bfb53cd41",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+  },
+  "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+  "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "high"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ unknown outcome remains reserved after restart (0.6434ms)\n✔ overshoot is recorded, other holds still apply (0.9713ms)\n✔ terminal idempotency and no resurrection (0.1738ms)\n✔ reject numeric hazards atomically (0.2049ms)\n✔ safe integer spending and available zero (0.1397ms)\n✔ special ids and immutable snapshot (0.0947ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.7057\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

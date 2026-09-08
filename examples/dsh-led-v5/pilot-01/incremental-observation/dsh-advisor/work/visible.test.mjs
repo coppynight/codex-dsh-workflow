@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {observationView} from './observation.mjs';
+test('new error is visible',()=>{const r=observationView({cursor:4,state:'running',toolEvents:[{seq:4,data:{isError:true}}]}, {detail:'summary',afterCursor:3});assert.equal(r.recentToolFailures.length,1);assert.equal(r.failureSeen,true);});
+test('full remains identical',()=>{const a={cursor:4,state:'running'};assert.equal(observationView(a),a);});

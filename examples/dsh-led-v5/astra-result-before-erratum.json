@@ -1,0 +1,26 @@
+{
+  "caseId": "incremental-observation",
+  "arm": "astra",
+  "elapsedMs": 111069,
+  "executionElapsedMs": 110963,
+  "acceptance": {
+    "exitCode": 1,
+    "stdout": "✔ old failure remains flagged without repeated details (0.5435ms)\n✔ mixed old and new (0.4383ms)\n✖ omitted history and pending interactions survive (0.5695ms)\n✔ invalid cursors rejected (0.3407ms)\n✔ zero valid and message clipping unchanged (0.1326ms)\n✔ no mutation (0.1507ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.4262\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ omitted history and pending interactions survive (0.5695ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  + actual - expected\n  \n  + undefined\n  - false\n  \n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-01/incremental-observation/acceptance.mjs:4:306)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: false,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+    "stderr": ""
+  },
+  "passed": false,
+  "completed": true,
+  "cost": {
+    "complete": true,
+    "usd": 0.358182,
+    "tokens": {
+      "input": 15952,
+      "cache": 83712,
+      "output": 2299,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "consultations": [],
+  "error": null
+}

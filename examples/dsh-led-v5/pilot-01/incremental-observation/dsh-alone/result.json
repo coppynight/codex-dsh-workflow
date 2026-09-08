@@ -1,0 +1,63 @@
+{
+  "id": "pilot-01/incremental-observation/dsh-alone",
+  "runId": "pilot-01",
+  "caseId": "incremental-observation",
+  "arm": "dsh-alone",
+  "effort": "high",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "executionElapsedMs": 191497,
+  "totalMeasuredElapsedMs": 191606,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.04680276,
+    "tokens": {
+      "input": 13027,
+      "cache": 300800,
+      "output": 27924,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.04680276,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "observation.mjs": "aa040c49f2f97ec8d797cd362a2e48425d92a9af600986a68b195e8930f625d4",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "summary.test.mjs": "0ab3b5fcea88add1e0a0f647e6e577d6eb0f09fb39a64df8169142a6fc5137cc",
+    "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+  },
+  "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+  "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "high"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ old failure remains flagged without repeated details (0.6764ms)\n✔ mixed old and new (0.5495ms)\n✔ omitted history and pending interactions survive (0.158ms)\n✔ invalid cursors rejected (0.4172ms)\n✔ zero valid and message clipping unchanged (0.1486ms)\n✔ no mutation (0.1525ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2275\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

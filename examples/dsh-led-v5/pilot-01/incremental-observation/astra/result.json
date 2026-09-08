@@ -1,0 +1,54 @@
+{
+  "id": "pilot-01/incremental-observation/astra",
+  "runId": "pilot-01",
+  "caseId": "incremental-observation",
+  "arm": "astra",
+  "effort": "medium",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "cleanupEvidence": "Normal native CLI completion recorded; explicit cleanupVerified field was introduced later",
+  "executionElapsedMs": 110963,
+  "totalMeasuredElapsedMs": 111069,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.358182,
+    "tokens": {
+      "input": 15952,
+      "cache": 83712,
+      "output": 2299,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.358182,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "observation.mjs": "d0c8c97ba6416aa5e86c25ba70559d7651347e0380d49fba3bf2bfffe4aa4951",
+    "observation.test.mjs": "687083959923b9f2676e1ffefc54f698d70c719cb48576c2033cabdf9b174926",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+  },
+  "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+  "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+  "requestedModel": "gpt-6-astra",
+  "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ old failure remains flagged without repeated details (0.4988ms)\n✔ mixed old and new (0.4048ms)\n✔ omitted history and pending interactions survive (0.1295ms)\n✔ invalid cursors rejected (0.3219ms)\n✔ zero valid and message clipping unchanged (0.1212ms)\n✔ no mutation (0.139ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 49.0138\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

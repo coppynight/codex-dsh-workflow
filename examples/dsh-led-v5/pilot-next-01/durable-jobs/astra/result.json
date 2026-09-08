@@ -1,0 +1,66 @@
+{
+  "id": "pilot-next-01/durable-jobs/astra",
+  "runId": "pilot-next-01",
+  "caseId": "durable-jobs",
+  "arm": "astra",
+  "effort": "medium",
+  "passed": false,
+  "completed": false,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 347457,
+  "totalMeasuredElapsedMs": 347457,
+  "setupElapsedMs": null,
+  "executorCost": {
+    "complete": false,
+    "usd": null,
+    "tokens": {
+      "input": 29140,
+      "cache": 73600,
+      "output": 5199,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim",
+    "knownPartialUsd": 0.62495,
+    "reason": "Codex attempt or event stream incomplete"
+  },
+  "totalApiEquivalentUsd": null,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": "Study stopped on unknown native retry cost; planned repair and remaining arms not submitted",
+  "sourceHashes": {
+    "jobs.mjs": "ad3f4e2f5e4107ba9ba15bd3972be4e79a21d1aa9e262c8b857f337035b0c7b5",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "README.md": "025302b6fd3709586d2d9ea089f32c81606069024f5ca4613c8605a50a27d4bb",
+    "receipt.test.mjs": "6b4ccb970f2547136dda5055a7162987ebc7279683afcbee4d8fb622ba0fad70",
+    "visible.test.mjs": "dc1190e626a0a978c1c858387f79bf6202a2ebe6dacc3a4c8879e6ea165b2b5e"
+  },
+  "acceptanceSha256": "7ba6a429cf70f7b7d058f9738f5067752bb09f39ca6bb9f0d2199e4a0d5ff5fa",
+  "promptSha256": "0abde5d2a4696dcfed7f72ddb8f3cce4e2ea8763ce693854b42ec897a576187e",
+  "requestedModel": "gpt-6-astra",
+  "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+  "accountingCoverage": false,
+  "repairs": 0,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [
+    {
+      "status": "failed",
+      "exitCode": 1,
+      "stdout": "✔ durable intent, canonical replay and returned copies (63.3063ms)\n✔ special identifiers and object keys stay safe (14.1467ms)\n✔ invalid inputs do not leave receipts (1.9027ms)\n✔ conflicts and completion preserve the committed value (11.0481ms)\n✔ six processes claim exactly once (93.5598ms)\n✔ conflicting completions have one durable winner (62.2846ms)\n✔ corruption remains visible and never gets replaced (6.2314ms)\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\nℹ tests 8\nℹ suites 0\nℹ pass 7\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 370.2917\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:12:1\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\n  TypeError: Cannot read properties of undefined (reading 'blob')\n      at file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:12:452\n      at async fixture (file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:3:103)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+      "stderr": ""
+    }
+  ],
+  "descendants": 0,
+  "acceptance": {
+    "status": "failed",
+    "exitCode": 1,
+    "timedOut": false,
+    "cleanupVerified": true,
+    "stdout": "✔ durable intent, canonical replay and returned copies (63.3063ms)\n✔ special identifiers and object keys stay safe (14.1467ms)\n✔ invalid inputs do not leave receipts (1.9027ms)\n✔ conflicts and completion preserve the committed value (11.0481ms)\n✔ six processes claim exactly once (93.5598ms)\n✔ conflicting completions have one durable winner (62.2846ms)\n✔ corruption remains visible and never gets replaced (6.2314ms)\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\nℹ tests 8\nℹ suites 0\nℹ pass 7\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 370.2917\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:12:1\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\n  TypeError: Cannot read properties of undefined (reading 'blob')\n      at file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:12:452\n      at async fixture (file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:3:103)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

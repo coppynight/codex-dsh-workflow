@@ -1,0 +1,1576 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-08T18:17:40.450Z",
+  "uniqueTasks": 4,
+  "attempts": 22,
+  "rates": {
+    "astra": {
+      "input": 10,
+      "cache": 1,
+      "output": 50,
+      "write": 12.5
+    },
+    "deepseek": {
+      "input": 0.44,
+      "cache": 0.014,
+      "output": 1.32,
+      "write": 0.44
+    },
+    "deepseek-pro": {
+      "input": 1.32,
+      "cache": 0.044,
+      "output": 3.96,
+      "write": 1.32
+    }
+  },
+  "studyStop": "Fourth native task ended after transport retries. Complete retry cost remains unknown. Read-only acceptance failed; no planned repair, remaining DSH arms or prepared Pro trial submitted. No matched fourth-task comparison exists.",
+  "costBasis": "Frozen standard Astra API-equivalent and peak DeepSeek rates. Actual subscription quota and invoice cost not measured. R&D/root coordination not allocated.",
+  "interpretation": "Small component pilots and known-case configuration ablations. No universal 90% capability, 10x account or expert causal-benefit claim.",
+  "taskCodeInterventions": 0,
+  "harnessDevelopmentInterventions": "Occurred during study, not quantitatively measured. Autonomous-success label describes a task run, not a proven zero-maintenance product.",
+  "groups": [
+    {
+      "runId": "pilot-01",
+      "arm": "astra",
+      "attempts": 3,
+      "artifactPasses": 3,
+      "autonomousSuccesses": 3,
+      "consultations": 0,
+      "firstAcceptancePasses": 3,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 1.205198,
+      "costRatio": 1,
+      "executionTimeRatio": 1,
+      "costPerAutonomousSuccess": 0.4017326666666667,
+      "executionSeconds": 394.734
+    },
+    {
+      "runId": "pilot-01",
+      "arm": "dsh-alone",
+      "attempts": 3,
+      "artifactPasses": 3,
+      "autonomousSuccesses": 2,
+      "consultations": 0,
+      "firstAcceptancePasses": 3,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 0.177224528,
+      "costRatio": 0.14705013450072105,
+      "executionTimeRatio": 2.03664746386174,
+      "costPerAutonomousSuccess": 0.088612264,
+      "executionSeconds": 803.934
+    },
+    {
+      "runId": "pilot-01",
+      "arm": "dsh-advisor",
+      "attempts": 3,
+      "artifactPasses": 3,
+      "autonomousSuccesses": 3,
+      "consultations": 0,
+      "firstAcceptancePasses": 3,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 0.159817136,
+      "costRatio": 0.13260653934042374,
+      "executionTimeRatio": 1.9359290053555052,
+      "costPerAutonomousSuccess": 0.05327237866666667,
+      "executionSeconds": 764.177
+    },
+    {
+      "runId": "pilot-low-01",
+      "arm": "dsh-alone",
+      "attempts": 3,
+      "artifactPasses": 1,
+      "autonomousSuccesses": 0,
+      "consultations": 0,
+      "firstAcceptancePasses": 1,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 0.064375792,
+      "costRatio": 0.05341511685216869,
+      "executionTimeRatio": 0.662628504258564,
+      "costPerAutonomousSuccess": null,
+      "executionSeconds": 261.562
+    },
+    {
+      "runId": "pilot-low-01",
+      "arm": "dsh-advisor",
+      "attempts": 3,
+      "artifactPasses": 2,
+      "autonomousSuccesses": 1,
+      "consultations": 0,
+      "firstAcceptancePasses": 2,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 0.075998784,
+      "costRatio": 0.06305916870091055,
+      "executionTimeRatio": 0.7912138300729099,
+      "costPerAutonomousSuccess": 0.075998784,
+      "executionSeconds": 312.319
+    },
+    {
+      "runId": "pilot-compatible-01",
+      "arm": "dsh-advisor",
+      "attempts": 3,
+      "artifactPasses": 2,
+      "autonomousSuccesses": 1,
+      "consultations": 0,
+      "firstAcceptancePasses": 2,
+      "repairs": 0,
+      "totalApiEquivalentUsd": 0.08379344799999999,
+      "costRatio": 0.06952670681497977,
+      "executionTimeRatio": 0.867548779684547,
+      "costPerAutonomousSuccess": 0.08379344799999999,
+      "executionSeconds": 342.451
+    },
+    {
+      "runId": "pilot-feedback-01",
+      "arm": "dsh-advisor",
+      "attempts": 3,
+      "artifactPasses": 2,
+      "autonomousSuccesses": 2,
+      "consultations": 0,
+      "firstAcceptancePasses": 1,
+      "repairs": 2,
+      "totalApiEquivalentUsd": 0.210413304,
+      "costRatio": 0.17458816227706983,
+      "executionTimeRatio": 2.013325429276424,
+      "costPerAutonomousSuccess": 0.105206652,
+      "executionSeconds": 794.728
+    },
+    {
+      "runId": "pilot-next-01",
+      "arm": "astra",
+      "attempts": 1,
+      "artifactPasses": 0,
+      "autonomousSuccesses": 0,
+      "consultations": 0,
+      "firstAcceptancePasses": 0,
+      "repairs": 0,
+      "totalApiEquivalentUsd": null,
+      "costRatio": null,
+      "executionTimeRatio": 1,
+      "costPerAutonomousSuccess": null,
+      "executionSeconds": 347.457
+    }
+  ],
+  "runs": [
+    {
+      "id": "pilot-01/incremental-observation/astra",
+      "runId": "pilot-01",
+      "caseId": "incremental-observation",
+      "arm": "astra",
+      "effort": "medium",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "cleanupEvidence": "Normal native CLI completion recorded; explicit cleanupVerified field was introduced later",
+      "executionElapsedMs": 110963,
+      "totalMeasuredElapsedMs": 111069,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.358182,
+        "tokens": {
+          "input": 15952,
+          "cache": 83712,
+          "output": 2299,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.358182,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "observation.mjs": "d0c8c97ba6416aa5e86c25ba70559d7651347e0380d49fba3bf2bfffe4aa4951",
+        "observation.test.mjs": "687083959923b9f2676e1ffefc54f698d70c719cb48576c2033cabdf9b174926",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+      "requestedModel": "gpt-6-astra",
+      "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.4988ms)\n✔ mixed old and new (0.4048ms)\n✔ omitted history and pending interactions survive (0.1295ms)\n✔ invalid cursors rejected (0.3219ms)\n✔ zero valid and message clipping unchanged (0.1212ms)\n✔ no mutation (0.139ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 49.0138\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/incremental-observation/dsh-alone",
+      "runId": "pilot-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-alone",
+      "effort": "high",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 191497,
+      "totalMeasuredElapsedMs": 191606,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.04680276,
+        "tokens": {
+          "input": 13027,
+          "cache": 300800,
+          "output": 27924,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.04680276,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "observation.mjs": "aa040c49f2f97ec8d797cd362a2e48425d92a9af600986a68b195e8930f625d4",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "summary.test.mjs": "0ab3b5fcea88add1e0a0f647e6e577d6eb0f09fb39a64df8169142a6fc5137cc",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.6764ms)\n✔ mixed old and new (0.5495ms)\n✔ omitted history and pending interactions survive (0.158ms)\n✔ invalid cursors rejected (0.4172ms)\n✔ zero valid and message clipping unchanged (0.1486ms)\n✔ no mutation (0.1525ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2275\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/incremental-observation/dsh-advisor",
+      "runId": "pilot-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-advisor",
+      "effort": "high",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 211538,
+      "totalMeasuredElapsedMs": 211645,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.04741859999999999,
+        "tokens": {
+          "input": 12700,
+          "cache": 229760,
+          "output": 29253,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.04741859999999999,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "observation.mjs": "464d482620087472b329f544c16860d230d97e540dcb08b787ab3d80189ede1e",
+        "observation.summary.test.mjs": "72c97f6292116d5f662de4a481fe8cd7d3610a9e38af0c4aed45ed70a8869b60",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.5689ms)\n✔ mixed old and new (0.468ms)\n✔ omitted history and pending interactions survive (0.1435ms)\n✔ invalid cursors rejected (0.3774ms)\n✔ zero valid and message clipping unchanged (0.1339ms)\n✔ no mutation (0.1525ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.8371\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/usage-ledger/astra",
+      "runId": "pilot-01",
+      "caseId": "usage-ledger",
+      "arm": "astra",
+      "effort": "medium",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "cleanupEvidence": "Normal native CLI completion recorded; explicit cleanupVerified field was introduced later",
+      "executionElapsedMs": 160275,
+      "totalMeasuredElapsedMs": 160373,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.426678,
+        "tokens": {
+          "input": 12039,
+          "cache": 111488,
+          "output": 3896,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.426678,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "ledger.test.mjs": "e0793fa0426d4221ad9a65e137325fa2390219a28033c296221bca92f34efb21",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "0d989bd77668aee9d40cbf360c091018de1be9b97cc4ce1b5ec6b02d9c2b680b",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+      "requestedModel": "gpt-6-astra",
+      "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ cumulative replay and restart (0.968ms)\n✔ rejection never modifies state (0.8735ms)\n✔ streams aggregate without mixing modes (0.1227ms)\n✔ missing rates remain unknown (0.1199ms)\n✔ invalid numbers and overflow rollback (0.3274ms)\n✔ empty and hostile identifier keys (0.1459ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 51.0477\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/usage-ledger/dsh-alone",
+      "runId": "pilot-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-alone",
+      "effort": "high",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 321270,
+      "totalMeasuredElapsedMs": 321382,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.071875584,
+        "tokens": {
+          "input": 12308,
+          "cache": 516736,
+          "output": 44868,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.071875584,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.extra.test.mjs": "f113a43ddba8e2d4b0a27f622469176c8f1e19d056909f483e85e58edc196f29",
+        "usage-ledger.mjs": "51cd7a24034a8642829f2965aae45df720482526e3102cafcdca237a27088b69",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ cumulative replay and restart (1.0435ms)\n✔ rejection never modifies state (0.7464ms)\n✔ streams aggregate without mixing modes (0.1676ms)\n✔ missing rates remain unknown (0.1711ms)\n✔ invalid numbers and overflow rollback (0.3317ms)\n✔ empty and hostile identifier keys (0.1716ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 57.928\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/usage-ledger/dsh-advisor",
+      "runId": "pilot-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-advisor",
+      "effort": "high",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 361673,
+      "totalMeasuredElapsedMs": 361777,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.067037208,
+        "tokens": {
+          "input": 17298,
+          "cache": 732672,
+          "output": 37249,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.067037208,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "c33962a0e98086c28400bb6e65fafde1b1fd74915bb4eb7b440189b2fc907a29",
+        "usage-ledger.test.mjs": "1882545b1f0968b2bd3c75574c037869070c09482ce5932fca7cde595aa3d6fc",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ cumulative replay and restart (1.011ms)\n✔ rejection never modifies state (0.7315ms)\n✔ streams aggregate without mixing modes (0.1386ms)\n✔ missing rates remain unknown (0.1468ms)\n✔ invalid numbers and overflow rollback (0.2961ms)\n✔ empty and hostile identifier keys (0.1525ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 54.7894\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/budget-reservations/astra",
+      "runId": "pilot-01",
+      "caseId": "budget-reservations",
+      "arm": "astra",
+      "effort": "medium",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 123496,
+      "totalMeasuredElapsedMs": 123601,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.420338,
+        "tokens": {
+          "input": 18187,
+          "cache": 83968,
+          "output": 3090,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.420338,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "budget.mjs": "5d23f19ae58938adf9b5d289930088a384ce205bae195520790d6f8b2aa29567",
+        "budget.test.mjs": "0ae86af41ea92fabda677d6b7b97354767afbdbd6baee42bcff74eac1e1964b6",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+      "requestedModel": "gpt-6-astra",
+      "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6671ms)\n✔ overshoot is recorded, other holds still apply (0.97ms)\n✔ terminal idempotency and no resurrection (0.1819ms)\n✔ reject numeric hazards atomically (0.2176ms)\n✔ safe integer spending and available zero (0.1509ms)\n✔ special ids and immutable snapshot (0.0941ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.621\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/budget-reservations/dsh-alone",
+      "runId": "pilot-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-alone",
+      "effort": "high",
+      "passed": true,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 291167,
+      "totalMeasuredElapsedMs": 291275,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.058546184,
+        "tokens": {
+          "input": 12414,
+          "cache": 430336,
+          "output": 35651,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.058546184,
+      "consultations": [],
+      "approvalOrQuestionStop": true,
+      "error": "Executor needs user input; no automatic answer is authorized",
+      "sourceHashes": {
+        "budget.mjs": "81c1a881aacc229010a54c1a98b0c4381c559eed1fb6153ac0a23303ea9fed40",
+        "extra.test.mjs": "cf162a289b4564e48b2b174b2b0af122e75745863e75d2f0b5571d4bfb53cd41",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6434ms)\n✔ overshoot is recorded, other holds still apply (0.9713ms)\n✔ terminal idempotency and no resurrection (0.1738ms)\n✔ reject numeric hazards atomically (0.2049ms)\n✔ safe integer spending and available zero (0.1397ms)\n✔ special ids and immutable snapshot (0.0947ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.7057\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-01/budget-reservations/dsh-advisor",
+      "runId": "pilot-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-advisor",
+      "effort": "high",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 190966,
+      "totalMeasuredElapsedMs": 191072,
+      "setupElapsedMs": 1554,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.045361328000000006,
+        "tokens": {
+          "input": 14994,
+          "cache": 358912,
+          "output": 25560,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.045361328000000006,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "budget.mjs": "e20762e8c4987685ed793e950e600880c78a283d0970efc057fc006c737f61ea",
+        "extra.test.mjs": "6483bd9907cfe85e39052f06c86033f6535bb91f4d8538bf2ba15b5b48a09bbb",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "high"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6351ms)\n✔ overshoot is recorded, other holds still apply (0.9465ms)\n✔ terminal idempotency and no resurrection (0.1844ms)\n✔ reject numeric hazards atomically (0.2413ms)\n✔ safe integer spending and available zero (0.1387ms)\n✔ special ids and immutable snapshot (0.0917ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.6231\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/incremental-observation/dsh-alone",
+      "runId": "pilot-low-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-alone",
+      "effort": "low",
+      "passed": true,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 90549,
+      "totalMeasuredElapsedMs": 90655,
+      "setupElapsedMs": 1560,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.023287231999999998,
+        "tokens": {
+          "input": 11115,
+          "cache": 101248,
+          "output": 12863,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.023287231999999998,
+      "consultations": [],
+      "approvalOrQuestionStop": true,
+      "error": "Executor needs user input; no automatic answer is authorized",
+      "sourceHashes": {
+        "observation.edge.test.mjs": "d0d4d6bbb40a981b62b0676161368c7202d948f3e81121cef1f368221532cc33",
+        "observation.mjs": "55a70c69c98228edc625df9612a44856e69a58ad4429ed5a16263af6ec3f678d",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.5518ms)\n✔ mixed old and new (0.4747ms)\n✔ omitted history and pending interactions survive (0.136ms)\n✔ invalid cursors rejected (0.3481ms)\n✔ zero valid and message clipping unchanged (0.1274ms)\n✔ no mutation (0.1475ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.3925\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/incremental-observation/dsh-advisor",
+      "runId": "pilot-low-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 60698,
+      "totalMeasuredElapsedMs": 60804,
+      "setupElapsedMs": 1565,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.017633944,
+        "tokens": {
+          "input": 10883,
+          "cache": 70656,
+          "output": 8982,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.017633944,
+      "consultations": [],
+      "approvalOrQuestionStop": true,
+      "error": "Executor needs user input; no automatic answer is authorized",
+      "sourceHashes": {
+        "observation.mjs": "ff16cd5ed62b804b00193c0d194fdef1ba5af3fef63a3ca689971603d2b58c1a",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "summary.test.mjs": "8ea978a41411f22e56365ac9aaeac8f13c1f7e6dec7f4070090d67a05b32ea0d",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "6b877e11a3383a6b41608b9d5535bd43ae32261ed868c0f3656da5b9fbe40a5a",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.6667ms)\n✔ mixed old and new (0.473ms)\n✔ omitted history and pending interactions survive (0.1392ms)\n✔ invalid cursors rejected (0.3561ms)\n✔ zero valid and message clipping unchanged (0.1313ms)\n✔ no mutation (0.1509ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.4926\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/usage-ledger/dsh-alone",
+      "runId": "pilot-low-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-alone",
+      "effort": "low",
+      "passed": false,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 100527,
+      "totalMeasuredElapsedMs": 100628,
+      "setupElapsedMs": 1555,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.023023992,
+        "tokens": {
+          "input": 10170,
+          "cache": 81408,
+          "output": 13189,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.023023992,
+      "consultations": [],
+      "approvalOrQuestionStop": true,
+      "error": "Executor needs user input; no automatic answer is authorized",
+      "sourceHashes": {
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "c4a1334d89e3f294f978f5f3bd0508461b338eed4a163fef9a891422f4f584f5",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 1,
+        "stdout": "✔ cumulative replay and restart (0.9806ms)\n✔ rejection never modifies state (0.6879ms)\n✔ streams aggregate without mixing modes (0.1266ms)\n✔ missing rates remain unknown (0.1343ms)\n✔ invalid numbers and overflow rollback (0.2916ms)\n✖ empty and hostile identifier keys (0.168ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 52.7161\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ empty and hostile identifier keys (0.168ms)\n  Error: usage-ledger: stream \"constructor\" already uses model \"undefined\"\n      at plan (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/dsh-alone/work/usage-ledger.mjs:73:13)\n      at ingest (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/dsh-alone/work/usage-ledger.mjs:162:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/acceptance.mjs:7:152)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/usage-ledger/dsh-advisor",
+      "runId": "pilot-low-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 140857,
+      "totalMeasuredElapsedMs": 140963,
+      "setupElapsedMs": 1557,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.033683568,
+        "tokens": {
+          "input": 12143,
+          "cache": 224512,
+          "output": 19089,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.033683568,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "extra.test.mjs": "6850dee93029abe42b91a51e57702f740457f64474ee84f4f4e804a50ba8b473",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "03688503a0d05918f0f313da504738db16ea2b960dc4baee1d5eda6983ce85fb",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ cumulative replay and restart (1.0388ms)\n✔ rejection never modifies state (0.7634ms)\n✔ streams aggregate without mixing modes (0.1617ms)\n✔ missing rates remain unknown (0.1512ms)\n✔ invalid numbers and overflow rollback (0.3368ms)\n✔ empty and hostile identifier keys (0.1636ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 58.385\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/budget-reservations/dsh-alone",
+      "runId": "pilot-low-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-alone",
+      "effort": "low",
+      "passed": false,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 70486,
+      "totalMeasuredElapsedMs": 70595,
+      "setupElapsedMs": 1581,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.018064568000000003,
+        "tokens": {
+          "input": 10440,
+          "cache": 82432,
+          "output": 9331,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.018064568000000003,
+      "consultations": [],
+      "approvalOrQuestionStop": true,
+      "error": "Executor needs user input; no automatic answer is authorized",
+      "sourceHashes": {
+        "budget.mjs": "62e2b6c12723de6c892b7173a6553453e4cde9f7ce5e262cc60bea528837a2fa",
+        "budget.test.mjs": "0e266f6727da483a3bbab01dc1e2d1082cffeb5ac759ab21d7ec78cff77187b6",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 1,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6744ms)\n✔ overshoot is recorded, other holds still apply (0.5001ms)\n✔ terminal idempotency and no resurrection (0.1827ms)\n✔ reject numeric hazards atomically (0.239ms)\n✔ safe integer spending and available zero (0.1227ms)\n✖ special ids and immutable snapshot (0.1431ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.0433\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.1431ms)\n  RangeError: reservation id reused with a different amount\n      at fail (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/dsh-alone/work/budget.mjs:17:9)\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/dsh-alone/work/budget.mjs:47:7)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/acceptance.mjs:7:72)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-low-01/budget-reservations/dsh-advisor",
+      "runId": "pilot-low-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": false,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 110764,
+      "totalMeasuredElapsedMs": 110871,
+      "setupElapsedMs": 1559,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.024681272,
+        "tokens": {
+          "input": 11073,
+          "cache": 128128,
+          "output": 13648,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.024681272,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "budget.edge.test.mjs": "295f4348ab2b82e06dca70fe56404de0809ac75dbd4a4f5e39b755becfb6cd32",
+        "budget.mjs": "08492ceff319f482c19eb16b58bf028e1d87272deb96661669e7caa867ff57d0",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "c7e6efc2eee2a18f48f672b33abacca26e1136c14dd4d9b6ffb12403b9979d95",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 1,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6497ms)\n✔ overshoot is recorded, other holds still apply (0.5213ms)\n✔ terminal idempotency and no resurrection (0.1874ms)\n✔ reject numeric hazards atomically (0.2365ms)\n✔ safe integer spending and available zero (0.1204ms)\n✖ special ids and immutable snapshot (0.1569ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.6781\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.1569ms)\n  Error: reservation \"constructor\" already used with a different amount\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/dsh-advisor/work/budget.mjs:77:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-low-01/budget-reservations/acceptance.mjs:7:154)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-compatible-01/incremental-observation/dsh-advisor",
+      "runId": "pilot-compatible-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 100726,
+      "totalMeasuredElapsedMs": 100831,
+      "setupElapsedMs": 1560,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.025199832,
+        "tokens": {
+          "input": 11655,
+          "cache": 188928,
+          "output": 13202,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.025199832,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "additional.test.mjs": "52eb666e800b9b710eef874a24d2d90fe11942aa47daed6751b9fefa1d1769b2",
+        "observation.mjs": "0c4b49af576c1f2062a16bb307b922ee32f9fcc9e2389512ac77bae7c925fc2e",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "f624ed4682c49a524ca4f04c4b5eb6b291a64ab8bda9ce76561aaa72489e8a21",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ old failure remains flagged without repeated details (0.5511ms)\n✔ mixed old and new (0.4416ms)\n✔ omitted history and pending interactions survive (0.1615ms)\n✔ invalid cursors rejected (0.3456ms)\n✔ zero valid and message clipping unchanged (0.1372ms)\n✔ no mutation (0.1512ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.1339\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-compatible-01/usage-ledger/dsh-advisor",
+      "runId": "pilot-compatible-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 161042,
+      "totalMeasuredElapsedMs": 161148,
+      "setupElapsedMs": 1551,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.037574592000000004,
+        "tokens": {
+          "input": 11252,
+          "cache": 233728,
+          "output": 22236,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.037574592000000004,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": "Missing final JSON decision",
+      "sourceHashes": {
+        "extra.test.mjs": "c383ef5d07facd8867b09939cd5a617c3f0b457f6a375e6df4dce1a04504118c",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "a3c63786c2a495adef7cc32734fc9572487980efbbc60f089586a97afdd1c256",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "df8688a6127bfca4a1590900ef211b9a9ded179b61168b8bb9e77bafede74266",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 0,
+        "stdout": "✔ cumulative replay and restart (1.0243ms)\n✔ rejection never modifies state (0.8239ms)\n✔ streams aggregate without mixing modes (0.1361ms)\n✔ missing rates remain unknown (0.1069ms)\n✔ invalid numbers and overflow rollback (0.3468ms)\n✔ empty and hostile identifier keys (0.1629ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.6399\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-compatible-01/budget-reservations/dsh-advisor",
+      "runId": "pilot-compatible-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": false,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 80683,
+      "totalMeasuredElapsedMs": 80793,
+      "setupElapsedMs": 1569,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.021019023999999997,
+        "tokens": {
+          "input": 11611,
+          "cache": 134656,
+          "output": 10625,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.021019023999999997,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "budget.mjs": "e01dd325ef7b973acdb4c1564a0e00e716876a1f89bd9d81104d95f7d21ad7d6",
+        "edge.test.mjs": "26faf0e9f06fc7fd7c73c69a5a2d4c423746d0871231a27870249033e8601295",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "f0a51e8c362a36c3c264836c7c632e51937dd484634ff87327ada58a71da4224",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [],
+      "descendants": 0,
+      "acceptance": {
+        "exitCode": 1,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6446ms)\n✔ overshoot is recorded, other holds still apply (0.5578ms)\n✔ terminal idempotency and no resurrection (0.1839ms)\n✔ reject numeric hazards atomically (0.2639ms)\n✖ safe integer spending and available zero (0.4083ms)\n✖ special ids and immutable snapshot (0.1055ms)\nℹ tests 6\nℹ suites 0\nℹ pass 4\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.337\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:6:1\n✖ safe integer spending and available zero (0.4083ms)\n  AssertionError [ERR_ASSERTION]: Missing expected exception.\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/acceptance.mjs:6:210)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: undefined,\n    operator: 'throws',\n    diff: 'simple'\n  }\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.1055ms)\n  Error: reservation id \"constructor\" was used with a different amount\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/dsh-advisor/work/budget.mjs:58:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-compatible-01/budget-reservations/acceptance.mjs:7:154)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-feedback-01/incremental-observation/dsh-advisor",
+      "runId": "pilot-feedback-01",
+      "caseId": "incremental-observation",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 201194,
+      "totalMeasuredElapsedMs": 201195,
+      "setupElapsedMs": 1562,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.045407296,
+        "tokens": {
+          "input": 12187,
+          "cache": 250624,
+          "output": 27679,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.045407296,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "observation.mjs": "4fb19193bbce48319533d560a879b220c865819d30d7b547613b30250cc69615",
+        "observation.test.mjs": "419dd6f1f127fcf3e9a739fb14f542972fd0a669bf8ce91c1ee78810a2275cb9",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "04f27253eed4f8efd063d9e9886681e8ecb6ba684467854af5bcfc473d3ab4c2"
+      },
+      "acceptanceSha256": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91",
+      "promptSha256": "f624ed4682c49a524ca4f04c4b5eb6b291a64ab8bda9ce76561aaa72489e8a21",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 0,
+      "firstAcceptancePassed": true,
+      "acceptanceHistory": [
+        {
+          "status": "passed",
+          "exitCode": 0,
+          "stdout": "✔ old failure remains flagged without repeated details (0.5716ms)\n✔ mixed old and new (0.6695ms)\n✔ omitted history and pending interactions survive (0.1468ms)\n✔ invalid cursors rejected (0.3555ms)\n✔ zero valid and message clipping unchanged (0.128ms)\n✔ no mutation (0.1519ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2724\n",
+          "stderr": ""
+        }
+      ],
+      "descendants": 0,
+      "acceptance": {
+        "status": "passed",
+        "exitCode": 0,
+        "timedOut": false,
+        "cleanupVerified": true,
+        "stdout": "✔ old failure remains flagged without repeated details (0.5716ms)\n✔ mixed old and new (0.6695ms)\n✔ omitted history and pending interactions survive (0.1468ms)\n✔ invalid cursors rejected (0.3555ms)\n✔ zero valid and message clipping unchanged (0.128ms)\n✔ no mutation (0.1519ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.2724\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-feedback-01/usage-ledger/dsh-advisor",
+      "runId": "pilot-feedback-01",
+      "caseId": "usage-ledger",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": true,
+      "completed": true,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": true,
+      "executionElapsedMs": 251548,
+      "totalMeasuredElapsedMs": 251551,
+      "setupElapsedMs": 1563,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.076784728,
+        "tokens": {
+          "input": 50721,
+          "cache": 897152,
+          "output": 31748,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.076784728,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "extra.test.mjs": "d381a67da94bff0807a0fe5facc11b0469cb3a40a117ae050a9de56425107e99",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "usage-ledger.mjs": "9643a5d08ed9d2a14601a0eb89714cb8e9c1d583c1b4d14ebb11004ee8458820",
+        "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+      },
+      "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+      "promptSha256": "df8688a6127bfca4a1590900ef211b9a9ded179b61168b8bb9e77bafede74266",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        },
+        {
+          "seq": 20226,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 1,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [
+        {
+          "status": "failed",
+          "exitCode": 1,
+          "stdout": "✔ cumulative replay and restart (1.0154ms)\n✔ rejection never modifies state (0.7464ms)\n✔ streams aggregate without mixing modes (0.1304ms)\n✔ missing rates remain unknown (0.1341ms)\n✔ invalid numbers and overflow rollback (0.298ms)\n✖ empty and hostile identifier keys (0.8475ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.4369\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ empty and hostile identifier keys (0.8475ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n  + [Function: toString] {\n  +   cacheRead: NaN,\n  +   output: NaN,\n  +   uncachedInput: NaN\n  - {\n  -   cacheRead: 50,\n  -   output: 10,\n  -   uncachedInput: 50\n    }\n  \n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/usage-ledger/acceptance.mjs:7:377)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    expected: { uncachedInput: 50, cacheRead: 50, output: 10 },\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n",
+          "stderr": ""
+        },
+        {
+          "status": "passed",
+          "exitCode": 0,
+          "stdout": "✔ cumulative replay and restart (1.0127ms)\n✔ rejection never modifies state (0.7386ms)\n✔ streams aggregate without mixing modes (0.1327ms)\n✔ missing rates remain unknown (0.1428ms)\n✔ invalid numbers and overflow rollback (0.3043ms)\n✔ empty and hostile identifier keys (0.1641ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.393\n",
+          "stderr": ""
+        }
+      ],
+      "descendants": 0,
+      "acceptance": {
+        "status": "passed",
+        "exitCode": 0,
+        "timedOut": false,
+        "cleanupVerified": true,
+        "stdout": "✔ cumulative replay and restart (1.0127ms)\n✔ rejection never modifies state (0.7386ms)\n✔ streams aggregate without mixing modes (0.1327ms)\n✔ missing rates remain unknown (0.1428ms)\n✔ invalid numbers and overflow rollback (0.3043ms)\n✔ empty and hostile identifier keys (0.1641ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.393\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-feedback-01/budget-reservations/dsh-advisor",
+      "runId": "pilot-feedback-01",
+      "caseId": "budget-reservations",
+      "arm": "dsh-advisor",
+      "effort": "low",
+      "passed": false,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 341986,
+      "totalMeasuredElapsedMs": 341989,
+      "setupElapsedMs": 1551,
+      "executorCost": {
+        "complete": true,
+        "usd": 0.08822128,
+        "tokens": {
+          "input": 49080,
+          "cache": 617600,
+          "output": 43924,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+      },
+      "totalApiEquivalentUsd": 0.08822128,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": null,
+      "sourceHashes": {
+        "budget.extra.test.mjs": "8be3bdbbfe47e62e2dbc025b35a41987c2a3c0a8088019b5e8a0540fefa3d326",
+        "budget.mjs": "f67a185b65ba1667ddff0219fa8ce651b546405e13c6a055dc2948a5aabbf3c7",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+      },
+      "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+      "promptSha256": "f0a51e8c362a36c3c264836c7c632e51937dd484634ff87327ada58a71da4224",
+      "requestedModel": {
+        "provider": "deepseek-official",
+        "model": "deepseek-v4-flash",
+        "reasoningEffort": "low"
+      },
+      "modelEvidence": [
+        {
+          "seq": 11,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        },
+        {
+          "seq": 16737,
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash"
+        }
+      ],
+      "accountingCoverage": true,
+      "repairs": 1,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [
+        {
+          "status": "failed",
+          "exitCode": 1,
+          "stdout": "✔ unknown outcome remains reserved after restart (0.6384ms)\n✔ overshoot is recorded, other holds still apply (0.8906ms)\n✖ terminal idempotency and no resurrection (0.4557ms)\n✔ reject numeric hazards atomically (0.2246ms)\n✔ safe integer spending and available zero (0.1267ms)\n✖ special ids and immutable snapshot (0.0845ms)\nℹ tests 6\nℹ suites 0\nℹ pass 4\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.8774\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.4557ms)\n  AssertionError [ERR_ASSERTION]: Missing expected exception.\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:327)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: undefined,\n    operator: 'throws',\n    diff: 'simple'\n  }\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.0845ms)\n  Error: settle amount differs from already-settled id\n      at settle (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:122:11)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:7:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+          "stderr": ""
+        },
+        {
+          "status": "failed",
+          "exitCode": 1,
+          "stdout": "✔ unknown outcome remains reserved after restart (0.6512ms)\n✔ overshoot is recorded, other holds still apply (0.9083ms)\n✖ terminal idempotency and no resurrection (0.2062ms)\n✔ reject numeric hazards atomically (0.2227ms)\n✔ safe integer spending and available zero (0.1178ms)\n✔ special ids and immutable snapshot (0.1142ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 57.9877\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.2062ms)\n  Error: reservation id already settled or released; cannot reserve again\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:96:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+          "stderr": ""
+        }
+      ],
+      "descendants": 0,
+      "acceptance": {
+        "status": "failed",
+        "exitCode": 1,
+        "timedOut": false,
+        "cleanupVerified": true,
+        "stdout": "✔ unknown outcome remains reserved after restart (0.6512ms)\n✔ overshoot is recorded, other holds still apply (0.9083ms)\n✖ terminal idempotency and no resurrection (0.2062ms)\n✔ reject numeric hazards atomically (0.2227ms)\n✔ safe integer spending and available zero (0.1178ms)\n✔ special ids and immutable snapshot (0.1142ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 57.9877\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.2062ms)\n  Error: reservation id already settled or released; cannot reserve again\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:96:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    },
+    {
+      "id": "pilot-next-01/durable-jobs/astra",
+      "runId": "pilot-next-01",
+      "caseId": "durable-jobs",
+      "arm": "astra",
+      "effort": "medium",
+      "passed": false,
+      "completed": false,
+      "idleVerified": true,
+      "visibleTestsUnchanged": true,
+      "packageUnchanged": true,
+      "protocolValid": true,
+      "autonomousSuccess": false,
+      "executionElapsedMs": 347457,
+      "totalMeasuredElapsedMs": 347457,
+      "setupElapsedMs": null,
+      "executorCost": {
+        "complete": false,
+        "usd": null,
+        "tokens": {
+          "input": 29140,
+          "cache": 73600,
+          "output": 5199,
+          "write": 0
+        },
+        "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim",
+        "knownPartialUsd": 0.62495,
+        "reason": "Codex attempt or event stream incomplete"
+      },
+      "totalApiEquivalentUsd": null,
+      "consultations": [],
+      "approvalOrQuestionStop": false,
+      "error": "Study stopped on unknown native retry cost; planned repair and remaining arms not submitted",
+      "sourceHashes": {
+        "jobs.mjs": "ad3f4e2f5e4107ba9ba15bd3972be4e79a21d1aa9e262c8b857f337035b0c7b5",
+        "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+        "README.md": "025302b6fd3709586d2d9ea089f32c81606069024f5ca4613c8605a50a27d4bb",
+        "receipt.test.mjs": "6b4ccb970f2547136dda5055a7162987ebc7279683afcbee4d8fb622ba0fad70",
+        "visible.test.mjs": "dc1190e626a0a978c1c858387f79bf6202a2ebe6dacc3a4c8879e6ea165b2b5e"
+      },
+      "acceptanceSha256": "7ba6a429cf70f7b7d058f9738f5067752bb09f39ca6bb9f0d2199e4a0d5ff5fa",
+      "promptSha256": "0abde5d2a4696dcfed7f72ddb8f3cce4e2ea8763ce693854b42ec897a576187e",
+      "requestedModel": "gpt-6-astra",
+      "modelEvidence": "Requested exact CLI model; actual route not present in JSONL",
+      "accountingCoverage": false,
+      "repairs": 0,
+      "firstAcceptancePassed": false,
+      "acceptanceHistory": [
+        {
+          "status": "failed",
+          "exitCode": 1,
+          "stdout": "✔ durable intent, canonical replay and returned copies (63.3063ms)\n✔ special identifiers and object keys stay safe (14.1467ms)\n✔ invalid inputs do not leave receipts (1.9027ms)\n✔ conflicts and completion preserve the committed value (11.0481ms)\n✔ six processes claim exactly once (93.5598ms)\n✔ conflicting completions have one durable winner (62.2846ms)\n✔ corruption remains visible and never gets replaced (6.2314ms)\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\nℹ tests 8\nℹ suites 0\nℹ pass 7\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 370.2917\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:12:1\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\n  TypeError: Cannot read properties of undefined (reading 'blob')\n      at file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:12:452\n      at async fixture (file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:3:103)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+          "stderr": ""
+        }
+      ],
+      "descendants": 0,
+      "acceptance": {
+        "status": "failed",
+        "exitCode": 1,
+        "timedOut": false,
+        "cleanupVerified": true,
+        "stdout": "✔ durable intent, canonical replay and returned copies (63.3063ms)\n✔ special identifiers and object keys stay safe (14.1467ms)\n✔ invalid inputs do not leave receipts (1.9027ms)\n✔ conflicts and completion preserve the committed value (11.0481ms)\n✔ six processes claim exactly once (93.5598ms)\n✔ conflicting completions have one durable winner (62.2846ms)\n✔ corruption remains visible and never gets replaced (6.2314ms)\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\nℹ tests 8\nℹ suites 0\nℹ pass 7\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 370.2917\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:12:1\n✖ bounded reader sampling around an update sees valid snapshots (59.9462ms)\n  TypeError: Cannot read properties of undefined (reading 'blob')\n      at file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:12:452\n      at async fixture (file:///<repo>/.local-runs/dsh-led/pilot-next-01/durable-jobs/acceptance.mjs:3:103)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+        "stderr": ""
+      },
+      "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+    }
+  ],
+  "studyCost": {
+    "complete": false,
+    "observedApiEquivalentUsd": 2.813362992,
+    "deepseekPeakEquivalentUsd": 0.7716229920000001,
+    "unknownAttempts": [
+      "pilot-next-01/durable-jobs/astra/capture"
+    ],
+    "includes": "All submitted task attempts, repairs and two capability probes; excludes unallocated R&D/root work. Observed cost is not a complete final bill."
+  }
+}

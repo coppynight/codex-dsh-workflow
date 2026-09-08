@@ -1,0 +1,6 @@
+{
+  "at": "2026-09-08T16:41:29.928Z",
+  "reason": "Original requirement only mandates failureSeen=true when a supplied failure exists. It did not require explicit false when no failures are supplied. The initial hidden assertion was stricter than the task. Accept false or omitted; no model rerun or source change. Applies to all arms before either DSH run.",
+  "oldHash": "2a137e3cf447f3a5f98e8aac05561361cba2d2feb9164c9db920af17de44544e",
+  "newHash": "1f4d33ea0068b316e6477bf1d90fc30ec824f6584f39fca6bd00f7773d7a5c91"
+}

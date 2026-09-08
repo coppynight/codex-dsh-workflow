@@ -2,6 +2,7 @@ const valid = n => typeof n === 'number' && Number.isFinite(n) && n >= 0;
 export const rates = {
   astra: { input: 10, cache: 1, output: 50, write: 12.5 },
   deepseek: { input: 0.44, cache: 0.014, output: 1.32, write: 0.44 },
+  'deepseek-pro': { input: 1.32, cache: 0.044, output: 3.96, write: 1.32 },
 };
 // Frozen standard API-equivalent prices, not actual subscription deductions.
 // DSH peak prices are used for comparison; actual off-peak charges may be lower.
@@ -34,12 +35,13 @@ export function incompleteCost(cost, reason) {
 
 // Numbers alone cannot establish that all charged attempts have been observed.
 export function dshCost(record) {
-  const cost = costOf(record.usageEvents, 'deepseek');
+  const model=record.requestedModel?.model??'deepseek-v4-flash';
+  const cost = costOf(record.usageEvents, model==='deepseek-v4-pro'?'deepseek-pro':'deepseek');
   const accounts = [record.accounting, ...(record.descendants ?? []).map(c => c.accounting)];
   if (accounts.some(a => !a?.coverageComplete)) return incompleteCost(cost, 'incomplete parent or descendant attempt coverage');
   if (accounts.some(a => a.auxiliaryEvents?.length)) return incompleteCost(cost, 'auxiliary model usage has not been attributed');
   const routes = accounts.flatMap(a => a.routes ?? []);
-  if (!routes.length || routes.some(r => r.provider !== 'deepseek-official' || r.model !== 'deepseek-v4-flash')) return incompleteCost(cost, 'actual model route does not match frozen Flash pricing');
+  if (!['deepseek-v4-flash','deepseek-v4-pro'].includes(model)||!routes.length || routes.some(r => r.provider !== 'deepseek-official' || r.model !== model)) return incompleteCost(cost, 'actual model route does not match frozen pricing');
   return cost;
 }
 

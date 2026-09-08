@@ -1,0 +1,62 @@
+{
+  "id": "pilot-low-01/usage-ledger/dsh-alone",
+  "runId": "pilot-low-01",
+  "caseId": "usage-ledger",
+  "arm": "dsh-alone",
+  "effort": "low",
+  "passed": false,
+  "completed": false,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 100527,
+  "totalMeasuredElapsedMs": 100628,
+  "setupElapsedMs": 1555,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.023023992,
+    "tokens": {
+      "input": 10170,
+      "cache": 81408,
+      "output": 13189,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.023023992,
+  "consultations": [],
+  "approvalOrQuestionStop": true,
+  "error": "Executor needs user input; no automatic answer is authorized",
+  "sourceHashes": {
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "usage-ledger.mjs": "c4a1334d89e3f294f978f5f3bd0508461b338eed4a163fef9a891422f4f584f5",
+    "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+  },
+  "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+  "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 1,
+    "stdout": "✔ cumulative replay and restart (0.9806ms)\n✔ rejection never modifies state (0.6879ms)\n✔ streams aggregate without mixing modes (0.1266ms)\n✔ missing rates remain unknown (0.1343ms)\n✔ invalid numbers and overflow rollback (0.2916ms)\n✖ empty and hostile identifier keys (0.168ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 52.7161\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ empty and hostile identifier keys (0.168ms)\n  Error: usage-ledger: stream \"constructor\" already uses model \"undefined\"\n      at plan (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/dsh-alone/work/usage-ledger.mjs:73:13)\n      at ingest (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/dsh-alone/work/usage-ledger.mjs:162:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-low-01/usage-ledger/acceptance.mjs:7:152)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

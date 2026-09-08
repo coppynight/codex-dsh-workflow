@@ -1,0 +1,84 @@
+{
+  "id": "pilot-feedback-01/budget-reservations/dsh-advisor",
+  "runId": "pilot-feedback-01",
+  "caseId": "budget-reservations",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": false,
+  "completed": false,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 341986,
+  "totalMeasuredElapsedMs": 341989,
+  "setupElapsedMs": 1551,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.08822128,
+    "tokens": {
+      "input": 49080,
+      "cache": 617600,
+      "output": 43924,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.08822128,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "budget.extra.test.mjs": "8be3bdbbfe47e62e2dbc025b35a41987c2a3c0a8088019b5e8a0540fefa3d326",
+    "budget.mjs": "f67a185b65ba1667ddff0219fa8ce651b546405e13c6a055dc2948a5aabbf3c7",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "visible.test.mjs": "72ce0c42b28e19476695807d6cdceb25ec9ad588895b6c1143d8209498b51c05"
+  },
+  "acceptanceSha256": "757ae93af7c3631169d43a280c27cd1060e45e55697e8f98b81815765e80c4f1",
+  "promptSha256": "f0a51e8c362a36c3c264836c7c632e51937dd484634ff87327ada58a71da4224",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "seq": 16737,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 1,
+  "firstAcceptancePassed": false,
+  "acceptanceHistory": [
+    {
+      "status": "failed",
+      "exitCode": 1,
+      "stdout": "✔ unknown outcome remains reserved after restart (0.6384ms)\n✔ overshoot is recorded, other holds still apply (0.8906ms)\n✖ terminal idempotency and no resurrection (0.4557ms)\n✔ reject numeric hazards atomically (0.2246ms)\n✔ safe integer spending and available zero (0.1267ms)\n✖ special ids and immutable snapshot (0.0845ms)\nℹ tests 6\nℹ suites 0\nℹ pass 4\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 56.8774\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.4557ms)\n  AssertionError [ERR_ASSERTION]: Missing expected exception.\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:327)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: undefined,\n    operator: 'throws',\n    diff: 'simple'\n  }\n\ntest at ..\\..\\acceptance.mjs:7:1\n✖ special ids and immutable snapshot (0.0845ms)\n  Error: settle amount differs from already-settled id\n      at settle (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:122:11)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:7:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+      "stderr": ""
+    },
+    {
+      "status": "failed",
+      "exitCode": 1,
+      "stdout": "✔ unknown outcome remains reserved after restart (0.6512ms)\n✔ overshoot is recorded, other holds still apply (0.9083ms)\n✖ terminal idempotency and no resurrection (0.2062ms)\n✔ reject numeric hazards atomically (0.2227ms)\n✔ safe integer spending and available zero (0.1178ms)\n✔ special ids and immutable snapshot (0.1142ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 57.9877\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.2062ms)\n  Error: reservation id already settled or released; cannot reserve again\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:96:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+      "stderr": ""
+    }
+  ],
+  "descendants": 0,
+  "acceptance": {
+    "status": "failed",
+    "exitCode": 1,
+    "timedOut": false,
+    "cleanupVerified": true,
+    "stdout": "✔ unknown outcome remains reserved after restart (0.6512ms)\n✔ overshoot is recorded, other holds still apply (0.9083ms)\n✖ terminal idempotency and no resurrection (0.2062ms)\n✔ reject numeric hazards atomically (0.2227ms)\n✔ safe integer spending and available zero (0.1178ms)\n✔ special ids and immutable snapshot (0.1142ms)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 57.9877\n\n✖ failing tests:\n\ntest at ..\\..\\acceptance.mjs:4:1\n✖ terminal idempotency and no resurrection (0.2062ms)\n  Error: reservation id already settled or released; cannot reserve again\n      at reserve (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/dsh-advisor/work/budget.mjs:96:13)\n      at TestContext.<anonymous> (file:///<repo>/.local-runs/dsh-led/pilot-feedback-01/budget-reservations/acceptance.mjs:4:130)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

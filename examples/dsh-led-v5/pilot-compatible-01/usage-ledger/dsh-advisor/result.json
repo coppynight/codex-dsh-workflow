@@ -1,0 +1,63 @@
+{
+  "id": "pilot-compatible-01/usage-ledger/dsh-advisor",
+  "runId": "pilot-compatible-01",
+  "caseId": "usage-ledger",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": true,
+  "completed": false,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": false,
+  "executionElapsedMs": 161042,
+  "totalMeasuredElapsedMs": 161148,
+  "setupElapsedMs": 1551,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.037574592000000004,
+    "tokens": {
+      "input": 11252,
+      "cache": 233728,
+      "output": 22236,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.037574592000000004,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": "Missing final JSON decision",
+  "sourceHashes": {
+    "extra.test.mjs": "c383ef5d07facd8867b09939cd5a617c3f0b457f6a375e6df4dce1a04504118c",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "usage-ledger.mjs": "a3c63786c2a495adef7cc32734fc9572487980efbbc60f089586a97afdd1c256",
+    "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+  },
+  "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+  "promptSha256": "df8688a6127bfca4a1590900ef211b9a9ded179b61168b8bb9e77bafede74266",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ cumulative replay and restart (1.0243ms)\n✔ rejection never modifies state (0.8239ms)\n✔ streams aggregate without mixing modes (0.1361ms)\n✔ missing rates remain unknown (0.1069ms)\n✔ invalid numbers and overflow rollback (0.3468ms)\n✔ empty and hostile identifier keys (0.1629ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 55.6399\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}

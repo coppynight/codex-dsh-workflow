@@ -1,13 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseDecision, controllerPrompt } from './protocol.mjs';
-import { costOf } from './usage.mjs';
+import { costOf, codexCost } from './usage.mjs';
 test('bounded protocol distinguishes advice requests from completion', () => {
   assert.equal(parseDecision('```json\n{"action":"consult","question":"which invariant?","context":"observed trace"}\n```').action,'consult');
   assert.throws(()=>parseDecision('{"action":"consult","question":"","context":"x"}'));
   assert.throws(()=>parseDecision('{"action":"consult","question":"q","context":"'+ 'x'.repeat(12001)+'"}'));
   assert.throws(()=>parseDecision('successful, trust me'));
   assert.equal(parseDecision('{"action":"complete","summary":"tests run"}').summary,'tests run');
+});
+
+test('normal native exit after transport errors does not erase unknown retry cost',()=>{
+  const record={requestedModel:'gpt-6-astra',exitCode:0,cleanupVerified:true,usageEvents:[{usage:{input_tokens:100,cached_input_tokens:80,output_tokens:10,cache_write_input_tokens:0}}],failures:[{type:'error',message:'Reconnecting after a timed out request'}]};
+  const result=codexCost(record);
+  assert.equal(result.complete,false);assert.equal(result.usd,null);assert.ok(result.knownPartialUsd>0);
 });
 test('native tool prompt does not claim an unavailable relay or old architect',()=>{
   const prompt=controllerPrompt('fix a bug',true,true);

@@ -1,0 +1,1 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {createBudget,reserve,settle,snapshot} from './budget.mjs';test('hold and settle',()=>{const s=createBudget(100);reserve(s,'one',30);assert.equal(snapshot(s).available,70);settle(s,'one',20);assert.deepEqual(snapshot(s),{limit:100,spent:20,reserved:0,available:80,overdrawn:false});});

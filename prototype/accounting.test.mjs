@@ -48,6 +48,8 @@ test('unexpected model, unowned auxiliary usage and incomplete child never inher
   const record={accounting,usageEvents:[{usage:usage(1000)}]};
   assert.equal(dshCost(record).complete,true);
   assert.equal(dshCost({...record,accounting:{...accounting,routes:[{provider:'deepseek-official',model:'deepseek-v4-pro'}]}}).complete,false);
+  const pro=dshCost({...record,requestedModel:{model:'deepseek-v4-pro'},accounting:{...accounting,routes:[{provider:'deepseek-official',model:'deepseek-v4-pro'}]}});
+  assert.equal(pro.complete,true);assert.ok(pro.usd>dshCost(record).usd);
   assert.equal(dshCost({...record,descendants:[{accounting:{coverageComplete:false}}]}).complete,false);
   assert.equal(dshCost({...record,accounting:{...accounting,auxiliaryEvents:[{}]}}).complete,false);
   assert.equal(codexCost({usageEvents:[],phase:'started'}).complete,false);

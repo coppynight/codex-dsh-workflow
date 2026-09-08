@@ -1,0 +1,6 @@
+{
+  "at": "2026-09-08T16:45:03.362Z",
+  "beforeAnyArm": true,
+  "old": "Later new reservations cannot spend overdrawn budgets.",
+  "replacement": "When overdrawn, reject every new reservation, including a zero-value reservation."
+}

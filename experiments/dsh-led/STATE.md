@@ -175,3 +175,33 @@ clock time. Authoritative run times are the ISO timestamps in freeze/record JSON
 - Next phase now starts: one new durable-job/concurrency task, three arms, same independent acceptance and one repair opportunity each. Pre-submission clarification resolves contention/timeout semantics; original freeze and amendment retained. Read/write sampling is not a proof of every race or power-loss safety.
 - Final independent code review found one junction-path claim-release issue; fixed to release record.cwd (canonical path). Twelve offline tests passed in review.
 - New public page authored; deployment waits for final results, evidence replay, tests and sanitization. No model source fixes by root.
+
+### Checkpoint 2026-09-08T18:17:41Z
+
+- STOP ALL PAID EXPANSION. Fourth Astra task exited normally after multiple reconnect
+  timeout errors. Complete retry cost is unknown. Guard stopped the native repair
+  and whole batch. Do not clear this by deleting errors, inventing zero usage or
+  rerunning. Two fourth-task DSH arms and prepared Pro/high were NOT submitted.
+- Read-only settlement retained original record and ran independent acceptance:
+  7/8, failed bounded reader sampling. Separate diagnostic observed worker EPERM;
+  no model artifact or original acceptance was changed.
+- Study: 22 submitted task attempts, 4 unique tasks, only 3 fully matched tasks.
+  Observed API-equivalent total $2.813362992, DeepSeek peak $0.771622992. Includes
+  $0.624950 observed from the unknown-cost fourth native attempt; not a complete
+  final bill. Research/development root remains unallocated.
+- Exported sources, prompts, freezes, corrections, results, consultations=0 and
+  two capability probes under examples/dsh-led-v5. Strict offline replay matched
+  all 22 recorded outcomes locally, including exact failed test names. It checks
+  acceptance/source hashes and rejects incomplete runners instead of counting
+  arbitrary errors as reproduced failures.
+- Prototype/core and updated public landing page authored. New task.mjs run
+  composition has not received a paid end-to-end run; paid guard remains binding.
+- Remaining authorized work: final offline checks/sanitization, publish repository
+  and GitHub Pages, verify deployment, clean ONLY known idle owned experimental
+  Hosts, pause the overnight heartbeat, then deliver final findings.
+- Final local checks: 114 regression passed + 2 live skipped; 8 prototype passed;
+  5 accounting passed; 22 replay outcomes matched; public content scan found no
+  credential patterns or private machine paths after prompt sanitization.
+- All 18 idle owned experimental Host trees were verified against live native
+  session/control state and PID overlay identity, then stopped. Original Host
+  remains reachable. No fourth-task DSH/Pro Host was ever started.

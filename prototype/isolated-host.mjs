@@ -8,6 +8,8 @@ const [specFile] = process.argv.slice(2);
 const spec = JSON.parse(await readFile(specFile, 'utf8'));
 const setupStarted = Date.now();
 const reasoningEffort = spec.reasoningEffort || 'high';
+const model=spec.model??'deepseek-v4-flash';
+if(!['deepseek-v4-flash','deepseek-v4-pro'].includes(model))throw Error('Unsupported priced DeepSeek model');
 if (!['off','low','high','max'].includes(reasoningEffort)) throw Error('Unsupported reasoning effort');
 const original = loadConfig();
 const localRequire = createRequire(join(original.dsh.installDir, 'package.json'));
@@ -50,7 +52,7 @@ const overlay = [
   { id: 'session-title-llm', disabled: true },
   { id: 'settings', config: { path: join(home, 'settings.yaml'), watch: false } },
   { id: 'credentials', config: { path: join(home, '.credentials.yaml'), watch: false } },
-  { id: 'agent-default-model', config: { provider: 'deepseek-official', model: 'deepseek-v4-flash' } },
+  { id: 'agent-default-model', config: { provider: 'deepseek-official', model } },
   { id: 'llm-deepseek', config: { apiKeyEnv: ref, ...(adapter.baseURL ? { baseURL: adapter.baseURL } : {}), reasoningEffort } },
   { id: 'agent-presets', config: { default: 'dsh-led', roots: [{ path: presetRoot, trust: 'user' }], includeShippedRoot: true, includeUserRoot: false } },
 ];
@@ -73,7 +75,7 @@ for (let i = 0; i < 60; i++) {
 }
 if (!origin) throw Error(`Experimental Host did not become ready; inspect private logs at ${privateRoot}`);
 const configuration = { version: 1, dsh: { ...original.dsh, homeDir: home, origin, logPath: join(privateRoot, 'host.stdout.log'), stateDir: join(privateRoot, 'bridge-state'), workspaceRoots: [spec.cwd], autoStart: false } };
-configuration.dsh.model = { provider: 'deepseek-official', model: 'deepseek-v4-flash', reasoningEffort };
+configuration.dsh.model = { provider: 'deepseek-official', model, reasoningEffort };
 delete configuration.dsh.port; delete configuration.dsh.hostAddr;
 const workflowConfig = join(privateRoot, 'workflow-config.json'); await writeFile(workflowConfig, JSON.stringify(configuration, null, 2));
 const newSpec = { ...spec, agentPreset: 'dsh-led', nativeMcp: Boolean(spec.advisor), advisorLedgerDir: ledgerDir, workflowConfig, privateRoot, hostPid: child.pid, workspaceRegistry: original.dsh.stateDir, setupElapsedMs: Date.now()-setupStarted };

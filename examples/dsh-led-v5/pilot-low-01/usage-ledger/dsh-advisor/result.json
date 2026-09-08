@@ -1,0 +1,63 @@
+{
+  "id": "pilot-low-01/usage-ledger/dsh-advisor",
+  "runId": "pilot-low-01",
+  "caseId": "usage-ledger",
+  "arm": "dsh-advisor",
+  "effort": "low",
+  "passed": true,
+  "completed": true,
+  "idleVerified": true,
+  "visibleTestsUnchanged": true,
+  "packageUnchanged": true,
+  "protocolValid": true,
+  "autonomousSuccess": true,
+  "executionElapsedMs": 140857,
+  "totalMeasuredElapsedMs": 140963,
+  "setupElapsedMs": 1557,
+  "executorCost": {
+    "complete": true,
+    "usd": 0.033683568,
+    "tokens": {
+      "input": 12143,
+      "cache": 224512,
+      "output": 19089,
+      "write": 0
+    },
+    "basis": "API-equivalent; peak DeepSeek, standard Astra; no subscription claim"
+  },
+  "totalApiEquivalentUsd": 0.033683568,
+  "consultations": [],
+  "approvalOrQuestionStop": false,
+  "error": null,
+  "sourceHashes": {
+    "extra.test.mjs": "6850dee93029abe42b91a51e57702f740457f64474ee84f4f4e804a50ba8b473",
+    "package.json": "d218e29ec01186542b0d85bdc6691d12514e4cdd0ba3b9cd81f253250c8d1e34",
+    "usage-ledger.mjs": "03688503a0d05918f0f313da504738db16ea2b960dc4baee1d5eda6983ce85fb",
+    "visible.test.mjs": "968e9076e737b9cb834193ee3c96f8c901c0ac78da518f419f7564e4c0413d14"
+  },
+  "acceptanceSha256": "f61146ccf3a57f18b4e65268a9edde6e5bdbdc6af9d19c6e8fac59eefe4c570c",
+  "promptSha256": "9157d432212e67f92881c85facc91d66721fda8c6602084d28a08eb740546b0c",
+  "requestedModel": {
+    "provider": "deepseek-official",
+    "model": "deepseek-v4-flash",
+    "reasoningEffort": "low"
+  },
+  "modelEvidence": [
+    {
+      "seq": 11,
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "accountingCoverage": true,
+  "repairs": 0,
+  "firstAcceptancePassed": true,
+  "acceptanceHistory": [],
+  "descendants": 0,
+  "acceptance": {
+    "exitCode": 0,
+    "stdout": "✔ cumulative replay and restart (1.0388ms)\n✔ rejection never modifies state (0.7634ms)\n✔ streams aggregate without mixing modes (0.1617ms)\n✔ missing rates remain unknown (0.1512ms)\n✔ invalid numbers and overflow rollback (0.3368ms)\n✔ empty and hostile identifier keys (0.1636ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 58.385\n",
+    "stderr": ""
+  },
+  "harnessProvenance": "Engineering harness evolved during exploration; see git history and STATE.md. Model tasks, source snapshots and corrections retained. Per-attempt runtime file hash was not captured for these early pilots."
+}
