@@ -42,7 +42,7 @@ const ledgerDir = join(privateRoot, 'advisor-ledger');
 await writeFile(advisorConfig, JSON.stringify({ cwd: spec.cwd, task: spec.task, ledgerDir, maxConsults: 2 }));
 if (spec.advisor) rows.push({ id: 'astra-consult-mcp', name: '@deepseek-ai/dsh-mcp-client', config: {
   transport: 'stdio', serverName: 'astra_consult', command: process.execPath,
-  args: [resolve('prototype/consult-mcp.mjs'), advisorConfig], cwd: spec.cwd, env: {},
+  args: [resolve('prototype/consult-mcp.mjs'), advisorConfig], cwd: spec.cwd, env: { [ref]: '' },
   toolCallTimeoutMs: 180000, failOnStartupError: true, reconnect: { enabled: false },
 } });
 await writeFile(join(preset, 'agent.cordis.yml'), presetText + '\n' + (rows.length ? yaml.dump(rows) : ''));

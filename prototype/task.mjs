@@ -6,7 +6,6 @@ import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { stopOwnedHost } from './owned-host.mjs';
 import {verifyCommand} from './verify.mjs';
-import {releaseWorkspaceClaim} from './workspace.mjs';
 const root=dirname(dirname(fileURLToPath(import.meta.url)));
 const [command,inputFile]=process.argv.slice(2);
 const print=value=>console.log(JSON.stringify(value,null,2));
@@ -44,12 +43,13 @@ if(command==='inspect' && inputFile) {
   try {
     await childRun([join(root,'prototype/isolated-host.mjs'),specFile]);
     setup=JSON.parse(await readFile(specFile,'utf8'));process.env.WORKFLOW_CONFIG=setup.workflowConfig;
+    const {releaseWorkspaceClaim}=await import('./workspace.mjs');
     const {runDsh}=await import('./runner.mjs');
     record=await runDsh({...setup,retainWorkspaceClaim:true,maxRepairs:input.verify?1:0,verify:input.verify?()=>verifyCommand(input.verify,cwd):undefined,onProgress:value=>console.log(JSON.stringify(value))});
     const verification=record.verifications.at(-1)??{status:input.verify?'not-run':'not-configured'};
     if(verification.cleanupVerified===false)record.idleVerified=false;
     if(record.idleVerified && record.workspaceClaim==='held'){
-      await releaseWorkspaceClaim({stateDir:setup.workspaceRegistry,cwd,taskId:`dsh-led-${record.sessionId}`,sessionId:record.sessionId});
+      await releaseWorkspaceClaim({stateDir:setup.workspaceRegistry,cwd:record.cwd,taskId:`dsh-led-${record.sessionId}`,sessionId:record.sessionId});
       record.workspaceClaim='released';
     }
     await writeFile(join(setup.outputDir,'record.json'),JSON.stringify(record,null,2));

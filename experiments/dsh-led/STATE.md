@@ -168,3 +168,10 @@ clock time. Authoritative run times are the ISO timestamps in freeze/record JSON
   generalization. Original Astra baselines already passed this acceptance.
 - Starting feedback phase after commit. Budget remains $15 equivalent / $2 DSH;
   total so far approximately $1.98 equivalent / $0.56 DeepSeek, all covered.
+
+### Checkpoint 2026-09-08T17:50:33.070Z
+
+- Feedback phase complete: observation passed initially; ledger failed then passed after one cheap high-effort repair; budget still failed after one repair (a terminal-idempotency regression). No expert consultations. Preserve both failed acceptance reports.
+- Next phase now starts: one new durable-job/concurrency task, three arms, same independent acceptance and one repair opportunity each. Pre-submission clarification resolves contention/timeout semantics; original freeze and amendment retained. Read/write sampling is not a proof of every race or power-loss safety.
+- Final independent code review found one junction-path claim-release issue; fixed to release record.cwd (canonical path). Twelve offline tests passed in review.
+- New public page authored; deployment waits for final results, evidence replay, tests and sanitization. No model source fixes by root.

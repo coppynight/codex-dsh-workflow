@@ -104,6 +104,7 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
         record.phase='verifying';await save(recordFile,record);
         const verification=await verify();record.verifications.push(verification);await save(recordFile,record);
         if(verification.cleanupVerified!==true){record.externalCleanupUnknown=true;throw Error('Verification process exit is unknown');}
+        if(verification.error||verification.timedOut||verification.exitCode===null)throw Error('Verification is unavailable; no automatic model repair');
         if(verification.status!=='passed'){
           if(record.repairs>=maxRepairs){record.phase='verification-failed';record.completed=false;break;}
           if(record.sessionTree.length!==1)throw Error('Automatic repair requires finalized descendant accounting first');

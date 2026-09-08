@@ -8,7 +8,7 @@ export async function verifyCommand(command,cwd,timeoutMs=30000,extraEnv={}){
   const finished=new Promise(done=>{settle=done;child.once('error',e=>done({code:null,error:e.code}));child.once('close',code=>done({code}));});
   const timer=setTimeout(()=>{
     timedOut=true;cleanupVerified=false;
-    if(child.exitCode!==null||child.signalCode!==null){settle({code:null});return;}
+    if(child.exitCode!==null||child.signalCode!==null){child.stdout.destroy();child.stderr.destroy();child.unref();settle({code:null});return;}
     if(process.platform==='win32'&&child.pid){
       killing=new Promise(done=>{const killer=spawn('taskkill.exe',['/PID',String(child.pid),'/T','/F'],{windowsHide:true,stdio:'ignore'});killer.once('error',()=>done(false));killer.once('close',code=>done(code===0));});
     } else {try{process.kill(-child.pid,'SIGTERM');}catch{/* keep unknown */}}
