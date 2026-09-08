@@ -1,0 +1,208 @@
+{
+  "date": "2026-09-08",
+  "kind": "exploratory ablation, one task per variant",
+  "historicalControls": {
+    "astra": {
+      "artifactAccepted": true,
+      "processContractCompliant": true,
+      "acceptance": {
+        "passed": 17,
+        "total": 17,
+        "failed": []
+      },
+      "astraUSD": 0.59838,
+      "dshUSD": 0,
+      "totalUSD": 0.59838,
+      "codexCreditEquivalent": 14.9595,
+      "elapsedMs": 128874,
+      "humanRequests": 0,
+      "humanActions": 0,
+      "humanMinutes": null,
+      "stages": [
+        {
+          "stage": "shared-plan",
+          "model": "gpt-6-astra",
+          "elapsedMs": 42061,
+          "usd": 0.18467,
+          "credits": 4.61675
+        },
+        {
+          "stage": "implement",
+          "model": "gpt-6-astra",
+          "elapsedMs": 66525,
+          "usd": 0.24265,
+          "credits": 6.06625
+        },
+        {
+          "stage": "review",
+          "model": "gpt-6-astra",
+          "elapsedMs": 20288,
+          "usd": 0.17106,
+          "credits": 4.2765
+        }
+      ]
+    },
+    "originalHigh": {
+      "artifactAccepted": true,
+      "processContractCompliant": false,
+      "acceptance": {
+        "passed": 17,
+        "total": 17,
+        "failed": []
+      },
+      "astraUSD": 0.37276,
+      "dshUSD": 0.113859184,
+      "totalUSD": 0.486619184,
+      "codexCreditEquivalent": 9.318999999999999,
+      "elapsedMs": 579295,
+      "humanRequests": 0,
+      "humanActions": 0,
+      "humanMinutes": null,
+      "stages": [
+        {
+          "stage": "shared-plan",
+          "model": "gpt-6-astra",
+          "elapsedMs": 42061,
+          "usd": 0.18467,
+          "credits": 4.61675
+        },
+        {
+          "stage": "implement+self-test",
+          "model": "deepseek-v4-flash",
+          "usd": 0.113859184,
+          "elapsedMs": 514876
+        },
+        {
+          "stage": "review",
+          "model": "gpt-6-astra",
+          "elapsedMs": 22358,
+          "usd": 0.18809,
+          "credits": 4.70225
+        }
+      ]
+    }
+  },
+  "variants": [
+    {
+      "id": "original-low",
+      "selectedModel": [
+        {
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash",
+          "reasoningEffort": "low"
+        }
+      ],
+      "state": "completed",
+      "deadlineCancelled": false,
+      "executionMs": 161573,
+      "executionUSD": 0.040086096,
+      "astraPlanAndReviewUSD": 0.36494000000000004,
+      "measuredStageTotalUSD": 0.40502609600000006,
+      "measuredStageElapsedMs": 221450,
+      "toolCalls": 15,
+      "visibleUnchanged": true,
+      "frozenAcceptance": {
+        "passed": 17,
+        "total": 17,
+        "failed": []
+      },
+      "initialAstraVerdict": "repair",
+      "reviewFindings": [
+        "parse.mjs: ID_PATTERN uses $, which permits a match before a final line terminator. An id such as \"abc\\n\" is accepted, violating the requirement that ids contain only 1–32 ASCII letters, digits, underscores, or hyphens. Require the match to consume the entire id."
+      ],
+      "postHocAdjudication": {
+        "disprovedRegexFinding": true,
+        "confirmedDefects": 0,
+        "eligibleForFurtherDeliveryReview": true,
+        "notes": "Root independently ran post-hoc diagnostics. No code repair. Initial review verdict preserved; adjudication model overhead unmeasured."
+      },
+      "recordedHumanRequests": 0,
+      "processDeviation": "Executor reports extra temporary test artifacts outside explicitly listed source paths."
+    },
+    {
+      "id": "bounded-high",
+      "selectedModel": [
+        {
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash",
+          "reasoningEffort": "high"
+        }
+      ],
+      "state": "completed",
+      "deadlineCancelled": false,
+      "executionMs": 111217,
+      "executionUSD": 0.026086344,
+      "astraPlanAndReviewUSD": 0.36397,
+      "measuredStageTotalUSD": 0.390056344,
+      "measuredStageElapsedMs": 171537,
+      "toolCalls": 7,
+      "visibleUnchanged": true,
+      "frozenAcceptance": {
+        "passed": 17,
+        "total": 17,
+        "failed": []
+      },
+      "initialAstraVerdict": "repair",
+      "reviewFindings": [
+        "parse.mjs: ID_RE uses $, which permits a match before a final line terminator. IDs such as \"abc\\n\" or \"abc\\r\" are therefore accepted, violating the requirement that every ID character be an ASCII letter, digit, underscore, or hyphen. These records must produce SCHEMA errors."
+      ],
+      "postHocAdjudication": {
+        "disprovedRegexFinding": true,
+        "confirmedDefects": 0,
+        "eligibleForFurtherDeliveryReview": true,
+        "notes": "Root independently ran post-hoc diagnostics. No code repair. Initial review verdict preserved; adjudication model overhead unmeasured."
+      },
+      "recordedHumanRequests": 0,
+      "processDeviation": null
+    },
+    {
+      "id": "bounded-low",
+      "selectedModel": [
+        {
+          "provider": "deepseek-official",
+          "model": "deepseek-v4-flash",
+          "reasoningEffort": "low"
+        }
+      ],
+      "state": "completed",
+      "deadlineCancelled": false,
+      "executionMs": 42060,
+      "executionUSD": 0.014399239999999999,
+      "astraPlanAndReviewUSD": 0.36632,
+      "measuredStageTotalUSD": 0.38071923999999996,
+      "measuredStageElapsedMs": 108073,
+      "toolCalls": 10,
+      "visibleUnchanged": true,
+      "frozenAcceptance": {
+        "passed": 17,
+        "total": 17,
+        "failed": []
+      },
+      "initialAstraVerdict": "repair",
+      "reviewFindings": [
+        "parse.mjs: ID_RE uses $, which can match before a final newline. An id such as \"a\\n\" passes validation, violating the ASCII letters/digits/_/- only requirement.",
+        "cli.mjs: tempPath is assigned before exclusive open succeeds. If open fails because that path already exists, cleanup unlinks the unowned file, violating temporary-file ownership and unrelated-file preservation requirements.",
+        "cli.mjs: short(err) prints truncated raw exception messages, which can include user-supplied paths containing credentials or sensitive input. Use sanitized failure messages to satisfy the stderr privacy requirement."
+      ],
+      "postHocAdjudication": {
+        "disprovedRegexFinding": true,
+        "confirmedDefects": 2,
+        "eligibleForFurtherDeliveryReview": false,
+        "notes": "Root independently ran post-hoc diagnostics. No code repair. Initial review verdict preserved; adjudication model overhead unmeasured."
+      },
+      "recordedHumanRequests": 0,
+      "processDeviation": null
+    }
+  ],
+  "scope": "DSH variants ran concurrently on same service; historical controls are not concurrent repeats. Shared measured Astra plan reused. Native tool-free Astra baseline remains limited. All parent coordination/adjudication/setup costs excluded; no complete throughput or intervention reduction claim.",
+  "keyFinding": "Bounding execution and verification scope matters; fastest low-effort variant has two confirmed defects, while all three model reviews repeat a disproved JavaScript regex finding.",
+  "recordedNewExperimentAPIEquivalentUSD": 0.62179168,
+  "recommendedDirection": "Budgeted, evidence-backed background delivery of task families; candidate direction, not implemented batch product.",
+  "notMeasured": [
+    "Native low-price executor baseline",
+    "Real backlog batch throughput",
+    "End-to-end parent quota/cost",
+    "User active minutes saved",
+    "Repeated-run quality and latency"
+  ]
+}

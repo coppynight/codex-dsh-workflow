@@ -1,0 +1,52 @@
+You implement in this isolated non-git fixture. Write only parse.mjs, aggregate.mjs and cli.mjs. All product requirements below remain mandatory. The environment owner performs independent integration verification after your return. Your self-test scope is exactly node visible-test.mjs, once; fix a reported product defect and rerun once only if it fails. Do not create extra tests or temp files, do not spawn child-process capture experiments, do not probe shell workarounds, do not change services. If that command is blocked, immediately report it and return existing source for owner verification. Do not read outside cwd, use network/packages, delegate or create background jobs. Return changed paths, actual visible-test result and unresolved product defects.
+
+REQUIREMENTS
+Build a dependency-free Node.js 24 offline job-report tool in exactly three source files: parse.mjs, aggregate.mjs, cli.mjs. No network, packages, delegation, background jobs or changes to visible-test.mjs.
+
+parse.mjs exports parseJobs(text). Reject non-string with TypeError. Parse newline-delimited JSON, allowing CRLF and a leading BOM; ignore blank lines but errors use physical 1-based line numbers. Each valid non-null non-array object has id (1-32 ASCII letters/digits/_/- ONLY), durationMs (finite nonnegative integer number), status (succeeded|failed|skipped). Omit extra fields. Return {jobs,errors}. Malformed JSON produces {line,code:INVALID_JSON}, invalid schema {line,code:SCHEMA}, later duplicate VALID id {line,code:DUPLICATE_ID}; code values are strings. Keep first valid record for each id in input order. Invalid records do not reserve ids. Error objects must not include raw input. Empty input returns empty arrays.
+
+aggregate.mjs exports summarizeJobs(jobs), taking the normalized valid parser output. Return {total,succeeded,failed,skipped,durationMs,medianSuccessMs,slowest}. Count every job; sum duration only for succeeded/failed. Median uses only succeeded durations, arithmetic mean for even count, 0 if none. slowest is the top three non-skipped jobs sorted duration descending, ties by ASCII id ascending; normalized full job objects. Do not mutate the array or its objects. Empty input yields zero counters, zero median and empty slowest.
+
+cli.mjs runs as node cli.mjs INPUT OUTPUT with exactly two arguments. Read INPUT UTF-8, then atomically write OUTPUT as JSON.stringify({summary:summarizeJobs(jobs),errors},null,2) plus a newline. Recursively create output parent. Use an exclusive uniquely named sibling temporary file and rename, clean owned temporary files on failure, never destroy an existing output before successful rename. Reject when resolve(INPUT)===resolve(OUTPUT) before changing either file. On valid lines only (including empty file), exit 0. If any parser errors, still publish the valid-record report, then exit 2. On argument/read/write failure exit 1 with a concise stderr message; do not print raw input or credentials. Do not print report data to stdout. Preserve existing output on input-read failure. Leave unrelated files untouched. No services or persistent processes.
+
+Run node visible-test.mjs using available permissions and report the actual result. If your environment cannot execute, report that and let the external harness execute the same test. Do not weaken requirements or tests.
+
+SHARED ASTRA PLAN
+Implementation contract
+
+Files and boundaries
+- Exactly three source files: parse.mjs, aggregate.mjs, cli.mjs. Use Node.js 24 built-ins only; no network, packages, services, background jobs, or changes to visible-test.mjs.
+- parse.mjs exports pure parseJobs(text). Reject non-string input with TypeError. Remove a leading BOM, handle LF/CRLF, ignore blank lines, and retain physical 1-based line numbers. Return {jobs,errors}.
+- Validate each parsed value as a non-null, non-array object: id contains 1–32 ASCII letters/digits/_/- only; durationMs is a finite nonnegative integer number; status is succeeded, failed, or skipped. Emit fresh objects containing only these fields.
+- Classify errors in order: malformed JSON → INVALID_JSON; invalid schema → SCHEMA; otherwise previously accepted id → DUPLICATE_ID. Errors contain only {line,code}, with string codes. Invalid records never reserve ids. Preserve first valid records and error order. Empty input produces empty arrays.
+- aggregate.mjs exports pure summarizeJobs(jobs), consuming normalized parser records. Return {total,succeeded,failed,skipped,durationMs,medianSuccessMs,slowest}. Count all jobs; sum only succeeded/failed durations. Compute the success-only median, averaging the middle pair for even counts, or 0 for none. Return up to three non-skipped full normalized records ordered by descending duration, then ASCII id ascending. Never mutate inputs; sort copies. Empty input returns zero numeric fields and empty slowest.
+- cli.mjs composes parsing and aggregation. Require exactly two arguments; reject equal resolved input/output paths before filesystem changes. Read input completely as UTF-8 before creating output directories or temporary files. Serialize {summary,errors} with JSON.stringify(value,null,2) and a trailing newline.
+
+Publication and failures
+- Recursively create the output parent. Exclusively create a uniquely named sibling temporary file, write the complete report, close it, then rename it onto OUTPUT. Never pre-delete or truncate existing OUTPUT. If replacement fails, preserve OUTPUT and exit 1.
+- Track ownership only after exclusive creation succeeds. On failure, close handles and remove only owned temporary files; leave unrelated files untouched. Name collisions must never cause deletion of another file.
+- Successful publication exits 0 for no parser errors, including empty input, or 2 when parser errors exist. Argument, read, or write failures take precedence and exit 1 with concise sanitized stderr. Never print report data to stdout or expose raw input, credentials, or unsanitized exception text. Input-read failure preserves existing output.
+
+Tricky cases
+- Blank lines still advance error line numbers; BOM removal applies only at the start. Schema validation precedes duplicate detection, including malformed later records sharing an accepted id.
+- Reject Unicode ids, invalid lengths, arrays, null, numeric strings, fractional/negative durations, and non-finite parsed numbers. Extra fields are discarded.
+- Skipped durations affect neither summed duration, success median, nor slowest. Include zero durations and deterministic ASCII tie ordering. Compute even medians without overflowing the intermediate addition of two finite durations; do not introduce an unstated safe-integer restriction.
+
+Acceptance priorities
+1. Exact parser validation, normalization, duplicate precedence, and physical line reporting.
+2. Correct aggregation, median and tie handling, and input immutability.
+3. CLI publication integrity, existing-output preservation, temporary-file ownership/cleanup, exit codes, and output privacy.
+4. Exactly three source files and all offline/dependency constraints; leave tests unchanged.
+
+Validation status: No tools or commands were called, and no tests were executed, as instructed. The external harness must run node visible-test.mjs and report its actual result, then check the parser edge cases and CLI failure/publication requirements above.
+
+VISIBLE TEST
+import assert from 'node:assert/strict';
+import {parseJobs} from './parse.mjs';
+import {summarizeJobs} from './aggregate.mjs';
+const input=[{id:'a',durationMs:4,status:'succeeded'},{id:'b',durationMs:8,status:'failed'},{id:'c',durationMs:99,status:'skipped'}].map(x=>JSON.stringify(x)).join('\n');
+const {jobs,errors}=parseJobs(input);
+assert.deepEqual(errors,[]);
+assert.equal(summarizeJobs(jobs).durationMs,12);
+assert.equal(summarizeJobs(jobs).medianSuccessMs,4);
+console.log('3 visible assertions passed');

@@ -1,0 +1,20 @@
+{
+  "command": "node acceptance.mjs",
+  "exitCode": 0,
+  "stdout": "{\n  \"passed\": 17,\n  \"total\": 17,\n  \"failed\": []\n}\n",
+  "stderr": "",
+  "files": [
+    {
+      "file": "parse.mjs",
+      "sha256": "b04b211c034e5ffb34c3e46c6cd0dea88ec90ab50c98fc56489ad3bcf977d730"
+    },
+    {
+      "file": "aggregate.mjs",
+      "sha256": "a619f7090340b1e055051c4280f4f7f7af96fb2c65c4cd3206581796263d27e3"
+    },
+    {
+      "file": "cli.mjs",
+      "sha256": "810c0ab1120981919676d4f04ae45f22c84536b2a4cff22a236f913142ae2ae9"
+    }
+  ]
+}

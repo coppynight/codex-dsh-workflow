@@ -1,0 +1,36 @@
+{
+  "kind": "Post-hoc diagnostic; not preregistered acceptance",
+  "invalidIdResults": [
+    {
+      "id": "a\n",
+      "rejected": true
+    },
+    {
+      "id": "a\r",
+      "rejected": true
+    },
+    {
+      "id": "a ",
+      "rejected": true
+    },
+    {
+      "id": "a ",
+      "rejected": true
+    }
+  ],
+  "reviewRegexFindingConfirmed": false,
+  "privacyProbe": {
+    "exitCode": 1,
+    "timedOut": false,
+    "launchError": null
+  },
+  "errorMessageLeaksPathMarker": false,
+  "collision": {
+    "exitCode": 0,
+    "timedOut": false,
+    "injectedCollisions": 1,
+    "unrelatedFilePreserved": true,
+    "deletedUnownedTemp": false
+  },
+  "notes": "One EEXIST is injected at the actual exclusive-open path in an isolated fixture; named imports are synchronized before source loading. Original sources unchanged; no filename-shape assumptions."
+}

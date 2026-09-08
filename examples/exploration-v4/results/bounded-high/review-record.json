@@ -1,0 +1,30 @@
+{
+  "stage": "review",
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "startedAt": "2026-09-08T07:26:52.908Z",
+  "elapsedMs": 18259,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "2b6ba79b9376ee98d8356ef0a97c2d5593312bd1638b1a6a38d86e117b97faf8",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17120,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 162,
+        "reasoning_output_tokens": 41
+      }
+    }
+  ],
+  "toolItems": [],
+  "answer": {
+    "verdict": "repair",
+    "findings": [
+      "parse.mjs: ID_RE uses $, which permits a match before a final line terminator. IDs such as \"abc\\n\" or \"abc\\r\" are therefore accepted, violating the requirement that every ID character be an ASCII letter, digit, underscore, or hyphen. These records must produce SCHEMA errors."
+    ],
+    "notes": "The external harness reports exit code 0 and 3 visible assertions passed. Source review identified the validation defect above; I did not run tools or tests."
+  }
+}

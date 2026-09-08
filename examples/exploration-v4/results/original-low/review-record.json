@@ -1,0 +1,30 @@
+{
+  "stage": "review",
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "startedAt": "2026-09-08T07:27:52.280Z",
+  "elapsedMs": 17816,
+  "exitCode": 0,
+  "timedOut": false,
+  "promptSha256": "7e8c477fd8115d1c8b463f3ec3337de0d23e2073fe41c86eeb6ee78954246610",
+  "usageEvents": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17197,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 166,
+        "reasoning_output_tokens": 46
+      }
+    }
+  ],
+  "toolItems": [],
+  "answer": {
+    "verdict": "repair",
+    "findings": [
+      "parse.mjs: ID_PATTERN uses $, which permits a match before a final line terminator. An id such as \"abc\\n\" is accepted, violating the requirement that ids contain only 1–32 ASCII letters, digits, underscores, or hyphens. Require the match to consume the entire id."
+    ],
+    "notes": "The external harness reported exit code 0 and 3 visible assertions passed. The blocking defect was identified by source review; I did not run tools or tests."
+  }
+}

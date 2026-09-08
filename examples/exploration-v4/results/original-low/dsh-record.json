@@ -1,0 +1,293 @@
+{
+  "id": "original-low",
+  "taskId": "explore-v4-original-low-20260908",
+  "sessionId": "8c5dba49-ae51-4272-ab58-501222d7d187",
+  "requestId": "d3b65541-554c-464a-9709-b3cac4e7e3e3",
+  "state": "completed",
+  "deadlineCancelled": false,
+  "selectedModel": [
+    {
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash",
+      "reasoningEffort": "low"
+    }
+  ],
+  "turnEvents": [
+    {
+      "seq": 5,
+      "time": 1788852263912,
+      "type": "turn/start",
+      "data": {
+        "turn": 1
+      }
+    },
+    {
+      "seq": 21779,
+      "time": 1788852425485,
+      "type": "turn/end",
+      "data": {
+        "turn": 1,
+        "reason": {
+          "kind": "completed"
+        }
+      }
+    }
+  ],
+  "usageEvents": [
+    {
+      "seq": 152,
+      "time": 1788852265955,
+      "usage": {
+        "inputTokens": 10058,
+        "outputTokens": 175,
+        "totalTokens": 10233,
+        "cacheReadTokens": 0,
+        "reasoningTokens": 87
+      }
+    },
+    {
+      "seq": 218,
+      "time": 1788852267590,
+      "usage": {
+        "inputTokens": 157,
+        "outputTokens": 97,
+        "totalTokens": 10366,
+        "cacheReadTokens": 10112,
+        "reasoningTokens": 9
+      }
+    },
+    {
+      "seq": 7091,
+      "time": 1788852316848,
+      "usage": {
+        "inputTokens": 186,
+        "outputTokens": 6901,
+        "totalTokens": 17327,
+        "cacheReadTokens": 10240,
+        "reasoningTokens": 6818
+      }
+    },
+    {
+      "seq": 11845,
+      "time": 1788852351607,
+      "usage": {
+        "inputTokens": 67,
+        "outputTokens": 4781,
+        "totalTokens": 22128,
+        "cacheReadTokens": 17280,
+        "reasoningTokens": 4034
+      }
+    },
+    {
+      "seq": 12544,
+      "time": 1788852355759,
+      "usage": {
+        "inputTokens": 169,
+        "outputTokens": 729,
+        "totalTokens": 22914,
+        "cacheReadTokens": 22016,
+        "reasoningTokens": 103
+      }
+    },
+    {
+      "seq": 13884,
+      "time": 1788852364527,
+      "usage": {
+        "inputTokens": 60,
+        "outputTokens": 1370,
+        "totalTokens": 24342,
+        "cacheReadTokens": 22912,
+        "reasoningTokens": 594
+      }
+    },
+    {
+      "seq": 14030,
+      "time": 1788852366171,
+      "usage": {
+        "inputTokens": 79,
+        "outputTokens": 174,
+        "totalTokens": 24573,
+        "cacheReadTokens": 24320,
+        "reasoningTokens": 103
+      }
+    },
+    {
+      "seq": 15184,
+      "time": 1788852374998,
+      "usage": {
+        "inputTokens": 142,
+        "outputTokens": 1182,
+        "totalTokens": 25772,
+        "cacheReadTokens": 24448,
+        "reasoningTokens": 376
+      }
+    },
+    {
+      "seq": 16263,
+      "time": 1788852381975,
+      "usage": {
+        "inputTokens": 311,
+        "outputTokens": 1107,
+        "totalTokens": 27146,
+        "cacheReadTokens": 25728,
+        "reasoningTokens": 289
+      }
+    },
+    {
+      "seq": 17512,
+      "time": 1788852391051,
+      "usage": {
+        "inputTokens": 24,
+        "outputTokens": 1277,
+        "totalTokens": 28437,
+        "cacheReadTokens": 27136,
+        "reasoningTokens": 488
+      }
+    },
+    {
+      "seq": 18361,
+      "time": 1788852397256,
+      "usage": {
+        "inputTokens": 101,
+        "outputTokens": 877,
+        "totalTokens": 29394,
+        "cacheReadTokens": 28416,
+        "reasoningTokens": 581
+      }
+    },
+    {
+      "seq": 19858,
+      "time": 1788852407493,
+      "usage": {
+        "inputTokens": 211,
+        "outputTokens": 1525,
+        "totalTokens": 31048,
+        "cacheReadTokens": 29312,
+        "reasoningTokens": 567
+      }
+    },
+    {
+      "seq": 20460,
+      "time": 1788852412478,
+      "usage": {
+        "inputTokens": 579,
+        "outputTokens": 630,
+        "totalTokens": 32185,
+        "cacheReadTokens": 30976,
+        "reasoningTokens": 83
+      }
+    },
+    {
+      "seq": 20987,
+      "time": 1788852416942,
+      "usage": {
+        "inputTokens": 204,
+        "outputTokens": 555,
+        "totalTokens": 32887,
+        "cacheReadTokens": 32128,
+        "reasoningTokens": 175
+      }
+    },
+    {
+      "seq": 21143,
+      "time": 1788852419598,
+      "usage": {
+        "inputTokens": 217,
+        "outputTokens": 184,
+        "totalTokens": 33169,
+        "cacheReadTokens": 32768,
+        "reasoningTokens": 68
+      }
+    },
+    {
+      "seq": 21777,
+      "time": 1788852425484,
+      "usage": {
+        "inputTokens": 167,
+        "outputTokens": 626,
+        "totalTokens": 33945,
+        "cacheReadTokens": 33152,
+        "reasoningTokens": 0
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "seq": 153,
+      "time": 1788852265955,
+      "name": "pwsh"
+    },
+    {
+      "seq": 219,
+      "time": 1788852267590,
+      "name": "pwsh"
+    },
+    {
+      "seq": 7092,
+      "time": 1788852316850,
+      "name": "pwsh"
+    },
+    {
+      "seq": 11846,
+      "time": 1788852351609,
+      "name": "write"
+    },
+    {
+      "seq": 12545,
+      "time": 1788852355759,
+      "name": "write"
+    },
+    {
+      "seq": 13885,
+      "time": 1788852364527,
+      "name": "write"
+    },
+    {
+      "seq": 14031,
+      "time": 1788852366171,
+      "name": "pwsh"
+    },
+    {
+      "seq": 15185,
+      "time": 1788852374999,
+      "name": "pwsh"
+    },
+    {
+      "seq": 16264,
+      "time": 1788852381976,
+      "name": "pwsh"
+    },
+    {
+      "seq": 17513,
+      "time": 1788852391051,
+      "name": "pwsh"
+    },
+    {
+      "seq": 18362,
+      "time": 1788852397257,
+      "name": "pwsh"
+    },
+    {
+      "seq": 19859,
+      "time": 1788852407493,
+      "name": "pwsh"
+    },
+    {
+      "seq": 20461,
+      "time": 1788852412479,
+      "name": "pwsh"
+    },
+    {
+      "seq": 20988,
+      "time": 1788852416942,
+      "name": "pwsh"
+    },
+    {
+      "seq": 21144,
+      "time": 1788852419599,
+      "name": "pwsh"
+    }
+  ],
+  "approvalRequests": [],
+  "questionRequests": []
+}

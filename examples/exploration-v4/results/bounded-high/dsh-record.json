@@ -1,0 +1,165 @@
+{
+  "id": "bounded-high",
+  "taskId": "explore-v4-bounded-high-20260908",
+  "sessionId": "15bef89f-9619-48c1-b6d5-b13ae6bc11dd",
+  "requestId": "499340c6-8d28-4afa-9788-00d866ac7ccd",
+  "state": "completed",
+  "deadlineCancelled": false,
+  "selectedModel": [
+    {
+      "provider": "deepseek-official",
+      "model": "deepseek-v4-flash",
+      "reasoningEffort": "high"
+    }
+  ],
+  "turnEvents": [
+    {
+      "seq": 5,
+      "time": 1788852264797,
+      "type": "turn/start",
+      "data": {
+        "turn": 1
+      }
+    },
+    {
+      "seq": 14473,
+      "time": 1788852376014,
+      "type": "turn/end",
+      "data": {
+        "turn": 1,
+        "reason": {
+          "kind": "completed"
+        }
+      }
+    }
+  ],
+  "usageEvents": [
+    {
+      "seq": 190,
+      "time": 1788852266521,
+      "usage": {
+        "inputTokens": 9815,
+        "outputTokens": 213,
+        "totalTokens": 10412,
+        "cacheReadTokens": 384,
+        "reasoningTokens": 125
+      }
+    },
+    {
+      "seq": 272,
+      "time": 1788852268079,
+      "usage": {
+        "inputTokens": 89,
+        "outputTokens": 104,
+        "totalTokens": 10561,
+        "cacheReadTokens": 10368,
+        "reasoningTokens": 34
+      }
+    },
+    {
+      "seq": 12348,
+      "time": 1788852359750,
+      "usage": {
+        "inputTokens": 298,
+        "outputTokens": 12103,
+        "totalTokens": 22897,
+        "cacheReadTokens": 10496,
+        "reasoningTokens": 11430
+      }
+    },
+    {
+      "seq": 12913,
+      "time": 1788852362690,
+      "usage": {
+        "inputTokens": 171,
+        "outputTokens": 597,
+        "totalTokens": 23552,
+        "cacheReadTokens": 22784,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "seq": 13630,
+      "time": 1788852366789,
+      "usage": {
+        "inputTokens": 59,
+        "outputTokens": 749,
+        "totalTokens": 24360,
+        "cacheReadTokens": 23552,
+        "reasoningTokens": 0
+      }
+    },
+    {
+      "seq": 13735,
+      "time": 1788852368325,
+      "usage": {
+        "inputTokens": 98,
+        "outputTokens": 141,
+        "totalTokens": 24559,
+        "cacheReadTokens": 24320,
+        "reasoningTokens": 11
+      }
+    },
+    {
+      "seq": 13874,
+      "time": 1788852370712,
+      "usage": {
+        "inputTokens": 133,
+        "outputTokens": 178,
+        "totalTokens": 24759,
+        "cacheReadTokens": 24448,
+        "reasoningTokens": 62
+      }
+    },
+    {
+      "seq": 14471,
+      "time": 1788852376014,
+      "usage": {
+        "inputTokens": 114,
+        "outputTokens": 589,
+        "totalTokens": 25407,
+        "cacheReadTokens": 24704,
+        "reasoningTokens": 0
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "seq": 191,
+      "time": 1788852266522,
+      "name": "pwsh"
+    },
+    {
+      "seq": 273,
+      "time": 1788852268079,
+      "name": "read"
+    },
+    {
+      "seq": 12349,
+      "time": 1788852359754,
+      "name": "write"
+    },
+    {
+      "seq": 12914,
+      "time": 1788852362691,
+      "name": "write"
+    },
+    {
+      "seq": 13631,
+      "time": 1788852366789,
+      "name": "write"
+    },
+    {
+      "seq": 13736,
+      "time": 1788852368326,
+      "name": "pwsh"
+    },
+    {
+      "seq": 13875,
+      "time": 1788852370712,
+      "name": "pwsh"
+    }
+  ],
+  "approvalRequests": [],
+  "questionRequests": []
+}
