@@ -1,0 +1,16 @@
+node_modules/
+.env
+.env.*
+!*.example
+config.json
+workflow.local.json
+*.log
+*.tmp
+__pycache__/
+.venv/
+coverage/
+dist/
+.workflow/
+backups/
+review-results/
+.test-fixtures/
