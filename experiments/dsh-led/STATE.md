@@ -147,3 +147,24 @@ These are hypotheses, not measured claims. Product need not be a skill.
 - Candidate form is a thin DSH preset + native MCP expert tool + one-command runner.
   Avoid a new agent platform until cheap-first quality and expert added value hold
   on a larger, independently held-out real repository suite.
+
+### Verified clock checkpoint: 2026-09-09 01:33 Asia/Shanghai
+
+Earlier approximate clock labels were manually estimated and may be ahead of real
+clock time. Authoritative run times are the ISO timestamps in freeze/record JSON.
+
+- Compatible phase finished: observation passes autonomously; ledger artifact
+  passes but final JSON parsing failed; budget artifact fails two checks. Zero
+  expert consultations. Simple tool availability has not shown expert added value.
+- Export prepared: 18 attempts across 3 unique tasks; source, hashes, prompts,
+  acceptance failures and strict autonomous outcomes. Initial native records predate
+  cleanupVerified instrumentation but do record normal native process completion;
+  disclose that provenance rather than mark their successful runs as new failures.
+- New feedback-assisted phase preregistered: 3 fresh known-task runs, compatible
+  self-test invocation, native completion + independent acceptance, maximum one
+  high-effort Flash repair with returned acceptance failure output. No model edits
+  by root; same session preserves state/cache. All repair cost included. This is
+  a new feedback-assisted strategy, not a causal test of advisor value or held-out
+  generalization. Original Astra baselines already passed this acceptance.
+- Starting feedback phase after commit. Budget remains $15 equivalent / $2 DSH;
+  total so far approximately $1.98 equivalent / $0.56 DeepSeek, all covered.

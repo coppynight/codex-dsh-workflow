@@ -45,9 +45,8 @@ if(command==='inspect' && inputFile) {
     await childRun([join(root,'prototype/isolated-host.mjs'),specFile]);
     setup=JSON.parse(await readFile(specFile,'utf8'));process.env.WORKFLOW_CONFIG=setup.workflowConfig;
     const {runDsh}=await import('./runner.mjs');
-    record=await runDsh({...setup,retainWorkspaceClaim:true,onProgress:value=>console.log(JSON.stringify(value))});
-    let verification={status:'not-configured'};
-    if(input.verify && record.idleVerified) verification=await verifyCommand(input.verify,cwd);
+    record=await runDsh({...setup,retainWorkspaceClaim:true,maxRepairs:input.verify?1:0,verify:input.verify?()=>verifyCommand(input.verify,cwd):undefined,onProgress:value=>console.log(JSON.stringify(value))});
+    const verification=record.verifications.at(-1)??{status:input.verify?'not-run':'not-configured'};
     if(verification.cleanupVerified===false)record.idleVerified=false;
     if(record.idleVerified && record.workspaceClaim==='held'){
       await releaseWorkspaceClaim({stateDir:setup.workspaceRegistry,cwd,taskId:`dsh-led-${record.sessionId}`,sessionId:record.sessionId});
@@ -58,7 +57,7 @@ if(command==='inspect' && inputFile) {
     const parts=[record.cost,...consultations.map(c=>c.cost)];
     const completeCost=parts.every(c=>c?.complete);
     const summary={run:id,specFile,status:record.completed&&record.idleVerified?(verification.status==='passed'?'verified':verification.status==='not-configured'?'model-completed-unverified':'verification-failed'):'stopped',
-      verification,elapsedMs:Date.now()-started,modelCompleted:record.completed,idleVerified:record.idleVerified,
+      verification,repairs:record.repairs,elapsedMs:Date.now()-started,modelCompleted:record.completed,idleVerified:record.idleVerified,
       executorCost:record.cost,consultations,totalApiEquivalentUsd:completeCost?parts.reduce((n,c)=>n+c.usd,0):null,error:record.error??null};
     if(record.idleVerified)summary.hostCleanup=await stopOwnedHost(setup);
     await writeFile(join(base,'summary.json'),JSON.stringify(summary,null,2));print(summary);

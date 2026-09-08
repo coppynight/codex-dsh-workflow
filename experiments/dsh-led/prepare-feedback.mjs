@@ -1,0 +1,11 @@
+import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {createHash} from 'node:crypto';import {cases} from './cases.mjs';
+const root=resolve('.local-runs/dsh-led/pilot-feedback-01');await mkdir(root,{recursive:true});
+const freeze={at:new Date().toISOString(),hypothesis:'Use native turn completion + independent acceptance, with at most one high-effort DeepSeek repair when acceptance fails. Optional Astra stays available, never mandatory.',selection:'Same three known tasks, fresh initial files. Explicit exploratory feedback-assisted configuration, not independent held-out confirmation.',changes:['Compatible in-process self-test command from phase 3','No final JSON formatting requirement','Frozen acceptance output returned on first failure; source stays outside workspace','At most one high-effort DeepSeek repair in the same session; all first-attempt and repair cost included'],baseline:'Original Astra baseline reused; all three already pass this acceptance without repair. Original cheap-only arms did not receive hidden acceptance feedback.',attempts:3,overallStopBeforeNextCallUsd:15,deepseekStopBeforeNextCallUsd:2,cases:[]};
+for(const [id,data]of Object.entries(cases)){
+ const original=resolve('.local-runs/dsh-led/pilot-compatible-01',id),base=join(root,id),arm=join(base,'dsh-advisor'),cwd=join(arm,'work');await mkdir(cwd,{recursive:true});
+ const task=JSON.parse(await readFile(join(original,'dsh-advisor/spec.json'),'utf8')).task;
+ await copyFile(join(original,'acceptance.mjs'),join(base,'acceptance.mjs'));freeze.cases.push({id,task,taskSha256:createHash('sha256').update(task).digest('hex'),acceptanceSha256:createHash('sha256').update(await readFile(join(base,'acceptance.mjs'))).digest('hex')});
+ for(const [name,contents]of Object.entries({...data.files,'visible.test.mjs':data.visible,'package.json':'{"type":"module","private":true}'}))await writeFile(join(cwd,name),contents,{flag:'wx'});
+ await writeFile(join(arm,'spec.json'),JSON.stringify({cwd,task,outputDir:join(arm,'capture'),advisor:true,reasoningEffort:'low',automaticRepair:true,privateId:'feedback01-'+id},null,2),{flag:'wx'});
+}
+await writeFile(join(root,'freeze.json'),JSON.stringify(freeze,null,2),{flag:'wx'});console.log(JSON.stringify({root,attempts:3}));
