@@ -1,0 +1,17 @@
+import { readFile, writeFile, copyFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { cases } from './cases.mjs';
+const root = resolve('.local-runs/dsh-led/pilot-01'), id = 'incremental-observation', base = join(root,id);
+const before = await readFile(join(base,'acceptance.mjs'),'utf8');
+await writeFile(join(base,'acceptance-before-erratum.mjs'),before,{flag:'wx'});
+await copyFile(join(base,'astra/result.json'),join(base,'astra/result-before-erratum.json'));
+await writeFile(join(base,'acceptance.mjs'),cases[id].acceptance);
+const erratum = { at:new Date().toISOString(), reason:'Original requirement only mandates failureSeen=true when a supplied failure exists. It did not require explicit false when no failures are supplied. The initial hidden assertion was stricter than the task. Accept false or omitted; no model rerun or source change. Applies to all arms before either DSH run.', oldHash:createHash('sha256').update(before).digest('hex'), newHash:createHash('sha256').update(cases[id].acceptance).digest('hex') };
+await writeFile(join(root,'erratum.json'),JSON.stringify(erratum,null,2));
+const result = JSON.parse(await readFile(join(base,'astra/result.json'),'utf8'));
+const stdout = execFileSync(process.execPath,['--test',join(base,'acceptance.mjs')],{cwd:join(base,'astra/work'),env:{...process.env,TARGET_CWD:join(base,'astra/work')},encoding:'utf8'});
+result.acceptance={exitCode:0,stdout,stderr:''};result.passed=true;result.acceptanceErratum=erratum;
+await writeFile(join(base,'astra/result.json'),JSON.stringify(result,null,2));
+console.log(JSON.stringify({caseId:id,passed:true,modelRerun:false,erratum}));
