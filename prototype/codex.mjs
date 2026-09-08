@@ -5,8 +5,10 @@ import { join, resolve } from 'node:path';
 // Uses the official installed client and its own authentication. No key handling.
 // Raw JSONL can contain reasoning: callers must keep outputDir private.
 export async function runCodex({ cwd, prompt, outputDir, role = 'executor', timeoutMs = 180000, model = 'gpt-6-astra', abortSignal }) {
+  if (abortSignal?.aborted) throw Error('Cancelled before model submission');
   await mkdir(outputDir, { recursive: true });
   await writeFile(join(outputDir, 'prompt.txt'), prompt, { flag: 'wx' });
+  await writeFile(join(outputDir, 'record.json'), JSON.stringify({ role, requestedModel: model, phase: 'started', usageEvents: [], cleanupVerified: false }), { flag: 'wx' });
   const args = ['exec', '--json', '--ephemeral', '--skip-git-repo-check', '-m', model,
     '-c', 'model_reasoning_effort="medium"', '-C', resolve(cwd)];
   if (role === 'advisor') args.push('-s', 'read-only');
@@ -14,7 +16,7 @@ export async function runCodex({ cwd, prompt, outputDir, role = 'executor', time
   args.push('-');
   const started = Date.now();
   const child = spawn(process.env.CODEX_EXECUTABLE || (process.platform === 'win32' ? 'codex.exe' : 'codex'), args,
-    { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] });
+    { windowsHide: true, detached: process.platform !== 'win32', stdio: ['pipe', 'pipe', 'pipe'] });
   let stdout = '', stderr = '', timedOut = false, launchError = null, cleanupVerified = true, cancelled = false, settle;
   child.stdout.setEncoding('utf8'); child.stderr.setEncoding('utf8');
   child.stdout.on('data', data => { stdout += data; });
@@ -38,12 +40,16 @@ export async function runCodex({ cwd, prompt, outputDir, role = 'executor', time
       const killer = spawn('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });
       killer.on('error', () => {});
       killer.once('close', code => { if (code === 0) cleanupVerified = true; });
-    } else child.kill('SIGTERM');
+    } else {
+      // A dedicated POSIX process group contains tools launched by this client.
+      try { process.kill(-child.pid, 'SIGTERM'); } catch { /* Unknown until proven absent. */ }
+    }
     grace = setTimeout(() => { child.stdout.destroy(); child.stderr.destroy(); child.stdin.destroy(); child.unref(); settle(null); }, 10000);
   };
   const abort = () => { cancelled = true; stop(); };
   const timer = setTimeout(() => { timedOut = true; stop(); }, timeoutMs);
   abortSignal?.addEventListener('abort', abort, { once: true });
+  if (abortSignal?.aborted) abort();
   child.stdin.end(prompt);
   const exitCode = await completion;
   clearTimeout(timer); clearTimeout(grace); abortSignal?.removeEventListener('abort', abort);

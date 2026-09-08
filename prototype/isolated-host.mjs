@@ -22,12 +22,14 @@ const home = join(privateRoot, 'home'); await mkdir(home, { recursive: true, mod
 // Read only the documented native store. Copy no file and print no credential.
 let settings;
 try { settings = yaml.load(await readFile(join(original.dsh.homeDir, 'settings.yaml'), 'utf8')) || {}; }
-catch { throw Error('Native DSH settings are unreadable; contents withheld'); }
+catch (error) { if (error.code === 'ENOENT') settings = {}; else throw Error('Native DSH settings are unreadable; contents withheld'); }
 const adapter = settings['llm-deepseek'] || {};
 const ref = adapter.apiKeyEnv || 'DEEPSEEK_API_KEY';
-let credentials;
-try { credentials = yaml.load(await readFile(join(original.dsh.homeDir, '.credentials.yaml'), 'utf8')) || {}; }
-catch { throw Error('Native DSH credential store is unreadable; contents withheld'); }
+let credentials = {};
+if (!process.env[ref]) {
+  try { credentials = yaml.load(await readFile(join(original.dsh.homeDir, '.credentials.yaml'), 'utf8')) || {}; }
+  catch (error) { if (error.code !== 'ENOENT') throw Error('Native DSH credential store is unreadable; contents withheld'); }
+}
 const key = process.env[ref] || credentials.refs?.[ref] || (credentials.version === undefined ? credentials[ref] : null);
 if (typeof key !== 'string' || !key) throw Error('Configured DeepSeek credential unavailable. Configure the native DSH provider first.');
 const presetRoot = join(privateRoot, 'presets'), preset = join(presetRoot, 'dsh-led');
@@ -71,7 +73,7 @@ for (let i = 0; i < 60; i++) {
 }
 if (!origin) throw Error(`Experimental Host did not become ready; inspect private logs at ${privateRoot}`);
 const configuration = { version: 1, dsh: { ...original.dsh, homeDir: home, origin, logPath: join(privateRoot, 'host.stdout.log'), stateDir: join(privateRoot, 'bridge-state'), workspaceRoots: [spec.cwd], autoStart: false } };
-configuration.dsh.model = { ...original.dsh.model, reasoningEffort };
+configuration.dsh.model = { provider: 'deepseek-official', model: 'deepseek-v4-flash', reasoningEffort };
 delete configuration.dsh.port; delete configuration.dsh.hostAddr;
 const workflowConfig = join(privateRoot, 'workflow-config.json'); await writeFile(workflowConfig, JSON.stringify(configuration, null, 2));
 const newSpec = { ...spec, agentPreset: 'dsh-led', nativeMcp: Boolean(spec.advisor), advisorLedgerDir: ledgerDir, workflowConfig, privateRoot, hostPid: child.pid, workspaceRegistry: original.dsh.stateDir, setupElapsedMs: Date.now()-setupStarted };

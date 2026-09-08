@@ -27,3 +27,25 @@ export function costOf(usageEvents, provider) {
   }
   return { complete: true, usd, tokens: totals, basis: 'API-equivalent; peak DeepSeek, standard Astra; no subscription claim' };
 }
+
+export function incompleteCost(cost, reason) {
+  return { ...cost, complete: false, knownPartialUsd: cost?.usd ?? cost?.knownPartialUsd ?? null, usd: null, reason };
+}
+
+// Numbers alone cannot establish that all charged attempts have been observed.
+export function dshCost(record) {
+  const cost = costOf(record.usageEvents, 'deepseek');
+  const accounts = [record.accounting, ...(record.descendants ?? []).map(c => c.accounting)];
+  if (accounts.some(a => !a?.coverageComplete)) return incompleteCost(cost, 'incomplete parent or descendant attempt coverage');
+  if (accounts.some(a => a.auxiliaryEvents?.length)) return incompleteCost(cost, 'auxiliary model usage has not been attributed');
+  const routes = accounts.flatMap(a => a.routes ?? []);
+  if (!routes.length || routes.some(r => r.provider !== 'deepseek-official' || r.model !== 'deepseek-v4-flash')) return incompleteCost(cost, 'actual model route does not match frozen Flash pricing');
+  return cost;
+}
+
+export function codexCost(record) {
+  const cost = costOf(record.usageEvents, 'astra');
+  if (record.parseErrors || record.timedOut || record.cancelled || record.launchError || record.exitCode !== 0 || record.failures?.length || record.cleanupVerified === false) return incompleteCost(cost, 'Codex attempt or event stream incomplete');
+  if (record.requestedModel !== 'gpt-6-astra') return incompleteCost(cost, 'requested model does not match frozen Astra pricing');
+  return cost;
+}

@@ -8,7 +8,7 @@ import { allowedCwd, hostStatus } from '../bridge/service.mjs';
 import { timeZone } from '../bridge/runtime.mjs';
 import { parseDecision, controllerPrompt, advisorPrompt } from './protocol.mjs';
 import { runCodex } from './codex.mjs';
-import { costOf } from './usage.mjs';
+import { costOf, dshCost, codexCost } from './usage.mjs';
 import { accountEvents } from './dsh-accounting.mjs';
 import { claimWorkspace } from './workspace.mjs';
 import { loadConfig } from '../scripts/config.mjs';
@@ -107,8 +107,8 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
       // Deterministic relay: no parent model selects the question or adds evidence.
       const expert = await runCodex({ cwd, outputDir: join(outputDir, `expert-${index}`), role: 'advisor',
         prompt: advisorPrompt(task, decision), timeoutMs: Math.min(180000, deadlineMs - (Date.now() - started)) });
-      consultation.expert = expert; consultation.cost = costOf(expert.usageEvents, 'astra');
-      consultation.status = expert.exitCode === 0 && !expert.timedOut && !expert.failures.length && !expert.toolResults.length ? 'completed' : 'failed';
+      consultation.expert = expert; consultation.cost = codexCost(expert);
+      consultation.status = consultation.cost.complete && expert.cleanupVerified && !expert.toolResults.length ? 'completed' : 'failed';
       await save(recordFile, record);
       if (consultation.status !== 'completed' || !consultation.cost.complete) throw Error('Expert failed or usage is unknown; no automatic retry');
       const knownCost = record.cost.usd + record.consultations.reduce((n, c) => n + (c.cost?.usd ?? 0), 0);
@@ -123,7 +123,9 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
         record.cancel = { status: 'submitting', requestId: record.requestId }; await save(recordFile, record);
         await call('cancel', { sessionId: record.sessionId }); record.cancel.status = 'submitted';
       }
-      await idle(record.sessionId); record.idleVerified = true;
+      record.sessionTree = await idle(record.sessionId); record.idleVerified = true;
+      // Cancellation adds durable end/usage events; account the post-cancel state.
+      lastData = await readEvents(record.sessionId);
     } catch { record.idleVerified = false; }
   } finally {
     if (lastData) {
@@ -135,7 +137,7 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
         record.descendants.push({ sessionId: childId, accounting }); record.usageEvents.push(...accounting.usageEvents);
         await writeFile(join(outputDir, `private-child-${childId}.json`), JSON.stringify(childData));
       }
-      record.cost = costOf(record.usageEvents, 'deepseek');
+      record.cost = dshCost(record);
       record.toolNames = [...new Set(lastData.events.filter(e => ['tool/call', 'tool/code-dispatch-start'].includes(e.type)).map(e => e.data?.name).filter(Boolean))];
     }
     if (nativeMcp && advisorLedgerDir) {
@@ -143,8 +145,12 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
       record.consultations = [];
       for (const file of names.filter(name => name.endsWith('.json'))) record.consultations.push(JSON.parse(await readFile(join(advisorLedgerDir, file), 'utf8')));
       if (names.includes('active.lock')) { record.idleVerified = false; record.error = 'Advisor operation is still active or unknown'; }
+      if (record.consultations.some(c => c.status === 'started' || c.status === 'unknown' || c.expert?.cleanupVerified !== true)) {
+        record.idleVerified = false; record.error = 'Advisor exit is not verified; inspect the saved operation before reusing the workspace';
+      }
       record.advisorLedgerDir = advisorLedgerDir;
     }
+    if (!record.idleVerified) record.completed = false;
     if (releaseClaim && record.idleVerified) { await releaseClaim(); record.workspaceClaim = 'released'; }
     record.elapsedMs = Date.now() - started; await save(recordFile, record);
   }

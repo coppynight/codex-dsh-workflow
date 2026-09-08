@@ -111,3 +111,19 @@ These are hypotheses, not measured claims. Product need not be a skill.
 3. Freeze tasks and acceptance before running the three arms. Preserve all failures.
 4. Produce runnable artifact, replayable evidence, measured conclusion and product
    recommendation. Keep previous experiments intact.
+
+### Checkpoint approximately 01:22
+
+- High pilot is finished: all nine artifacts pass 6/6 task-specific hidden tests.
+  DSH-alone budget-reservations nevertheless requested sandbox escalation to run
+  node --test and was stopped: autonomous completion = false. No approval bypass.
+- Reconciled all six DSH accounts by read-only final event reads; original records
+  retained. Budget arm's pre-cancel snapshot lacked turn/end; post-cancel durable
+  events prove full usage. All six now have actual Flash route and full coverage.
+- Aggregate pilot + two probes: $1.753831664 API equivalent, $0.337041664 DeepSeek
+  peak equivalent. Research/development root excluded. No unknown cost remains.
+- Fixed review P1s: strict coverage/route pricing; unknown expert exit retains lock
+  and workspace claim; paid-attempt start records; unified study guard; environment
+  credential-only installations; isolated model pinned to priced Flash.
+- Starting the six preregistered low-effort cheap trials now, sequentially, without
+  additional Astra baselines. Their optional expert choice remains model-owned.

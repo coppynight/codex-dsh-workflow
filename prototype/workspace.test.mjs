@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 import { claimWorkspace } from './workspace.mjs';
 test('overlapping writers are refused and released ownership can be reused',async()=>{
   const stateDir=await mkdtemp(join(tmpdir(),'dsh-led-claim-'));
@@ -13,5 +13,9 @@ test('overlapping writers are refused and released ownership can be reused',asyn
     const sibling=await claimWorkspace({stateDir,cwd:join(stateDir,'other'),taskId:'other',sessionId:'s3'});
     await sibling(); await release();
     const again=await claimWorkspace({stateDir,cwd,taskId:'next',sessionId:'s4'});await again();
-  } finally { await rm(stateDir,{recursive:true}); }
+  } finally {
+    const target=resolve(stateDir), parent=resolve(tmpdir());
+    if (!target.startsWith(parent+sep) || !target.slice(parent.length+1).startsWith('dsh-led-claim-')) throw Error('Unexpected temporary cleanup target');
+    await rm(target,{recursive:true});
+  }
 });

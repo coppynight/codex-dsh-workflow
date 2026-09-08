@@ -22,7 +22,7 @@ export function accountEvents(rawEvents) {
     method: 'installed DSH tokenUsage v2 fold + deriveTurnTokenUsage; streaming samples replace final samples; retries counted',
     usageEvents: sampleCount ? [{ usage: { inputTokens: t.uncachedInputTokens, cacheReadTokens: t.cacheReadTokens, cacheWriteTokens: t.cacheWriteTokens, outputTokens: t.outputTokens, totalTokens: Object.values(t).reduce((a,b)=>a+b,0) } }] : [],
     coverageComplete: !own && completedTurns.length > 0 && completedTurns.every(t => t.usage !== null), completedTurns,
-    routes: events.filter(e=>e.type==='request/header').map(e=>({seq:e.seq,provider:e.data?.provider,model:e.data?.model})),
+    routes: events.filter(e=>e.type==='request/header').map(e=>({seq:e.seq,provider:e.data?.header?.config?.provider,model:e.data?.header?.config?.model})),
     auxiliaryEvents: events.filter(e=>/compact|summari/.test(e.type)).map(e=>({seq:e.seq,type:e.type})),
   };
 }

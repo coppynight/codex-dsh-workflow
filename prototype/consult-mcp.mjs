@@ -1,12 +1,12 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { readFile, writeFile, mkdir, open, unlink, readdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, open, unlink, readdir, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { runCodex } from './codex.mjs';
 import { advisorPrompt } from './protocol.mjs';
-import { costOf } from './usage.mjs';
+import { codexCost } from './usage.mjs';
 const [configFile] = process.argv.slice(2);
 const config = JSON.parse(await readFile(configFile, 'utf8'));
 await mkdir(config.ledgerDir, { recursive: true });
@@ -18,7 +18,7 @@ server.registerTool('consult_astra', {
 }, async (request, extra) => {
   const hash = createHash('sha256').update(JSON.stringify({ question: request.question, context: request.context })).digest('hex');
   const file = join(config.ledgerDir, `${request.consultationId}.json`);
-  let lock;
+  let lock, releaseLock = true;
   try { lock = await open(join(config.ledgerDir, 'active.lock'), 'wx'); }
   catch { return reply({ status: 'busy-or-unknown', message: 'A consultation may still be active. Do not create a replacement ID; inspect the existing operation.' }, true); }
   try {
@@ -39,15 +39,17 @@ server.registerTool('consult_astra', {
     if (recordedCost >= 1) return reply({status:'budget-stop',message:'Expert stop-before-next-call threshold reached.'},true);
     const entry = { consultationId: request.consultationId, hash, decision: request, status: 'started', startedAt: new Date().toISOString() };
     await writeFile(file, JSON.stringify(entry, null, 2), { flag: 'wx' });
+    releaseLock = false;
     entry.expert = await runCodex({ cwd: config.cwd, outputDir: join(config.ledgerDir, request.consultationId), role: 'advisor',
       prompt: advisorPrompt(config.task, request), timeoutMs: 150000, abortSignal: extra.signal });
-    entry.cost = costOf(entry.expert.usageEvents, 'astra');
-    entry.status = entry.expert.exitCode === 0 && !entry.expert.timedOut && !entry.expert.cancelled && !entry.expert.parseErrors && !entry.expert.failures.length && !entry.expert.toolResults.length ? 'completed' : 'failed';
+    entry.cost = codexCost(entry.expert);
+    releaseLock = entry.expert.cleanupVerified === true;
+    entry.status = !releaseLock ? 'unknown' : entry.cost.complete && !entry.expert.toolResults.length ? 'completed' : 'failed';
     if (entry.expert.toolResults.length) entry.protocolViolation = 'Advisor used tools despite the text-only consultation contract';
-    await writeFile(file, JSON.stringify(entry, null, 2));
+    await writeFile(file + '.tmp', JSON.stringify(entry, null, 2)); await rename(file + '.tmp', file);
     return reply({ status: entry.status, advice: entry.expert.answer, cost: entry.cost }, entry.status !== 'completed');
   } catch (error) {
     return reply({ status: 'failed', message: error.message }, true);
-  } finally { await lock.close(); await unlink(join(config.ledgerDir, 'active.lock')); }
+  } finally { await lock.close(); if (releaseLock) await unlink(join(config.ledgerDir, 'active.lock')); }
 });
 await server.connect(new StdioServerTransport());
