@@ -1,0 +1,17 @@
+{
+  "asOf": "2026-09-08",
+  "currency": "USD",
+  "unit": "per 1000000 tokens",
+  "astraStandard": {"uncachedInput":10,"cacheRead":1,"cacheWrite":12.5,"output":50},
+  "astraCodexCredits": {"uncachedInput":250,"cacheRead":25,"output":1250},
+  "deepseekV4FlashOffPeak": {"uncachedInput":0.22,"cacheRead":0.007,"output":0.66},
+  "deepseekV4FlashPeak": {"uncachedInput":0.44,"cacheRead":0.014,"output":1.32},
+  "peak": "Weekdays UTC 01:00–04:00 and 06:00–10:00. All v3 DSH implementation events occurred within the latter peak window; v2 case turns were off-peak.",
+  "plans": {"plusMonthlyUSD":20,"pro5xMonthlyUSD":100,"pro20xMonthlyUSD":200},
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "https://learn.chatgpt.com/docs/pricing",
+    "https://api-docs.deepseek.com/quick_start/pricing/"
+  ],
+  "limits": "Standard short-context API-equivalent pricing only, no Fast/Batch/Flex. No observed subscription debit, tax, FX or actual invoice. Astra cache-write accounting is unverified when nonzero: calculator rejects those records. DSH auxiliary title-generation usage is unavailable and excluded. Prices may change."
+}

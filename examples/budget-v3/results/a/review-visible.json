@@ -1,0 +1,6 @@
+{
+  "command": "node visible-test.mjs",
+  "exitCode": 0,
+  "stdout": "3 visible assertions passed\n",
+  "stderr": ""
+}

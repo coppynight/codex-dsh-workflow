@@ -976,6 +976,16 @@ code {
 }
 
 /* ---------- 打印（轻量，可选） ---------- */
+.cost-table {width:100%;border-collapse:collapse;margin:24px 0;font-variant-numeric:tabular-nums;}
+.cost-table caption {text-align:left;font-weight:700;margin-bottom:14px;}
+.cost-table th,.cost-table td {text-align:left;padding:14px 10px;border-bottom:1px solid var(--line-strong);}
+.cost-verdict {font-size:1.25rem;font-weight:700;color:var(--teal);}
+.notice-navy a {color:#d2ed81;text-decoration:underline;}
+.budget-scenario {margin-top:40px;padding:24px;border:1px solid var(--line-strong);border-radius:16px;}
+.budget-scenario label {display:block;margin-top:18px;font-weight:600;}
+.budget-scenario input[type=range] {display:block;width:100%;accent-color:var(--teal);margin:12px 0 24px;}
+.scenario-result {font-size:1.2rem;font-weight:700;}
+@media(max-width:560px){.cost-table{font-size:13px;}.cost-table th,.cost-table td{padding:10px 5px;}.budget-scenario{padding:16px;}}
 @media print {
   .site-header { position: static; }
   .copy-btn, .hero-cta .btn { display: none; }

@@ -1,0 +1,23 @@
+Do not call tools, execute commands, read files, load skills or delegate. A deterministic external harness applies sources and runs tests. Do not claim you executed tests. Return only the requested JSON.
+Design a concise implementation contract for these requirements: module boundaries, tricky cases, acceptance priorities. Do not produce implementation code.
+
+Build a dependency-free Node.js 24 offline job-report tool in exactly three source files: parse.mjs, aggregate.mjs, cli.mjs. No network, packages, delegation, background jobs or changes to visible-test.mjs.
+
+parse.mjs exports parseJobs(text). Reject non-string with TypeError. Parse newline-delimited JSON, allowing CRLF and a leading BOM; ignore blank lines but errors use physical 1-based line numbers. Each valid non-null non-array object has id (1-32 ASCII letters/digits/_/- ONLY), durationMs (finite nonnegative integer number), status (succeeded|failed|skipped). Omit extra fields. Return {jobs,errors}. Malformed JSON produces {line,code:INVALID_JSON}, invalid schema {line,code:SCHEMA}, later duplicate VALID id {line,code:DUPLICATE_ID}; code values are strings. Keep first valid record for each id in input order. Invalid records do not reserve ids. Error objects must not include raw input. Empty input returns empty arrays.
+
+aggregate.mjs exports summarizeJobs(jobs), taking the normalized valid parser output. Return {total,succeeded,failed,skipped,durationMs,medianSuccessMs,slowest}. Count every job; sum duration only for succeeded/failed. Median uses only succeeded durations, arithmetic mean for even count, 0 if none. slowest is the top three non-skipped jobs sorted duration descending, ties by ASCII id ascending; normalized full job objects. Do not mutate the array or its objects. Empty input yields zero counters, zero median and empty slowest.
+
+cli.mjs runs as node cli.mjs INPUT OUTPUT with exactly two arguments. Read INPUT UTF-8, then atomically write OUTPUT as JSON.stringify({summary:summarizeJobs(jobs),errors},null,2) plus a newline. Recursively create output parent. Use an exclusive uniquely named sibling temporary file and rename, clean owned temporary files on failure, never destroy an existing output before successful rename. Reject when resolve(INPUT)===resolve(OUTPUT) before changing either file. On valid lines only (including empty file), exit 0. If any parser errors, still publish the valid-record report, then exit 2. On argument/read/write failure exit 1 with a concise stderr message; do not print raw input or credentials. Do not print report data to stdout. Preserve existing output on input-read failure. Leave unrelated files untouched. No services or persistent processes.
+
+Run node visible-test.mjs using available permissions and report the actual result. If your environment cannot execute, report that and let the external harness execute the same test. Do not weaken requirements or tests.
+
+VISIBLE TEST
+import assert from 'node:assert/strict';
+import {parseJobs} from './parse.mjs';
+import {summarizeJobs} from './aggregate.mjs';
+const input=[{id:'a',durationMs:4,status:'succeeded'},{id:'b',durationMs:8,status:'failed'},{id:'c',durationMs:99,status:'skipped'}].map(x=>JSON.stringify(x)).join('\n');
+const {jobs,errors}=parseJobs(input);
+assert.deepEqual(errors,[]);
+assert.equal(summarizeJobs(jobs).durationMs,12);
+assert.equal(summarizeJobs(jobs).medianSuccessMs,4);
+console.log('3 visible assertions passed');

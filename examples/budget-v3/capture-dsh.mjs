@@ -1,0 +1,18 @@
+import {readEvents} from '../../bridge/client.mjs';
+import {status,release} from '../../bridge/service.mjs';
+import {writeFile,mkdir} from 'node:fs/promises';
+import {join,isAbsolute} from 'node:path';
+const [root,taskId]=process.argv.slice(2);if(!isAbsolute(root||'')||!taskId)throw Error('Absolute output and task ID required');
+const state=await status(taskId,0,undefined,{detail:'full'});
+if(state.state!=='completed')throw Error('Task not completed: '+state.state);
+const data=await readEvents(state.sessionId);
+const usageEvents=data.events.filter(e=>e.type==='assistant/message'&&e.data?.usage).map(e=>({seq:e.seq,time:e.time,usage:e.data.usage}));
+const turnEvents=data.events.filter(e=>['turn/start','turn/end'].includes(e.type)).map(e=>({seq:e.seq,time:e.time,type:e.type,data:e.type==='turn/end'?{turn:e.data?.turn,reason:e.data?.reason}:{turn:e.data?.turn}}));
+const eventTypes=Object.fromEntries([...new Set(data.events.map(e=>e.type))].map(type=>[type,data.events.filter(e=>e.type===type).length]));
+const messages=state.messages??[];
+const record={taskId,sessionId:state.sessionId,requestId:state.requestId,state:state.state,turnEnd:state.turnEnd,usageSource:'assistant/message.data.usage only; excludes duplicate assistant/chunk and unavailable auxiliary title generation',usageEvents,turnEvents,eventTypes,pendingApprovalCount:state.pendingApprovals?.length??0,pendingQuestionCount:state.pendingQuestions?.length??0};
+await mkdir(join(root,'b'),{recursive:true});await writeFile(join(root,'b','dsh-record.json'),JSON.stringify(record,null,2)+'\n');
+await writeFile(join(root,'b','private-final-state.json'),JSON.stringify(state,null,2)+'\n');
+await writeFile(join(root,'b','private-events.json'),JSON.stringify(data,null,2)+'\n');
+const released=await release(taskId);await writeFile(join(root,'b','release.json'),JSON.stringify(released,null,2)+'\n');
+console.log(JSON.stringify({usageEventCount:usageEvents.length,turnEvents,eventTypes,released}));

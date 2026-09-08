@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-08",
+  "case": "job-report-cli",
+  "samplePairs": 1,
+  "scope": "Measured model planning/implementation/acceptance only. Astra tool-free; DSH normal tools. Parent orchestration/setup/publication and DSH auxiliary title generation excluded.",
+  "a": {
+    "artifactAccepted": true,
+    "processContractCompliant": true,
+    "acceptance": {
+      "passed": 17,
+      "total": 17,
+      "failed": []
+    },
+    "astraUSD": 0.59838,
+    "dshUSD": 0,
+    "totalUSD": 0.59838,
+    "codexCreditEquivalent": 14.9595,
+    "elapsedMs": 128874,
+    "humanRequests": 0,
+    "humanActions": 0,
+    "humanMinutes": null,
+    "stages": [
+      {
+        "stage": "shared-plan",
+        "model": "gpt-6-astra",
+        "elapsedMs": 42061,
+        "usd": 0.18467,
+        "credits": 4.61675
+      },
+      {
+        "stage": "implement",
+        "model": "gpt-6-astra",
+        "elapsedMs": 66525,
+        "usd": 0.24265,
+        "credits": 6.06625
+      },
+      {
+        "stage": "review",
+        "model": "gpt-6-astra",
+        "elapsedMs": 20288,
+        "usd": 0.17106,
+        "credits": 4.2765
+      }
+    ]
+  },
+  "b": {
+    "artifactAccepted": true,
+    "processContractCompliant": false,
+    "acceptance": {
+      "passed": 17,
+      "total": 17,
+      "failed": []
+    },
+    "astraUSD": 0.37276,
+    "dshUSD": 0.113859184,
+    "totalUSD": 0.486619184,
+    "codexCreditEquivalent": 9.318999999999999,
+    "elapsedMs": 579295,
+    "humanRequests": 0,
+    "humanActions": 0,
+    "humanMinutes": null,
+    "stages": [
+      {
+        "stage": "shared-plan",
+        "model": "gpt-6-astra",
+        "elapsedMs": 42061,
+        "usd": 0.18467,
+        "credits": 4.61675
+      },
+      {
+        "stage": "implement+self-test",
+        "model": "deepseek-v4-flash",
+        "usd": 0.113859184,
+        "elapsedMs": 514876
+      },
+      {
+        "stage": "review",
+        "model": "gpt-6-astra",
+        "elapsedMs": 22358,
+        "usd": 0.18809,
+        "credits": 4.70225
+      }
+    ]
+  },
+  "astraReductionPct": 37.70513720378356,
+  "totalReductionPct": 18.677231190882047,
+  "weightedAstraCapacityRatio": 1.6052688056658442,
+  "observedSubscriptionCapacityRatio": null,
+  "humanReductionPct": null,
+  "recordedExperimentModelAPIEquivalentUSD": 0.900329184,
+  "sharedPlanNote": "Charged to both counterfactual arms, only once in actual experiment spend.",
+  "oldV2Repriced": {
+    "astraUSD": 0.41386999999999996,
+    "workflowAstraUSD": 0.48314,
+    "workflowDSHOffPeakUSD": 0.05205872,
+    "workflowTotalUSD": 0.53519872,
+    "totalIncreasePct": 29.31565950660837
+  }
+}

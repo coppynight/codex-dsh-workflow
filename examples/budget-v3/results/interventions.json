@@ -1,0 +1,31 @@
+{
+  "scope": "Fresh task after credentials/runtime had already been configured. Experiment design and publication conversations excluded.",
+  "a": {
+    "requiredHumanRequests": 0,
+    "actualHumanActions": 0,
+    "humanMinutes": null,
+    "evidence": "All Astra stages returned structured plan/code/acceptance; no tool items and no user action requested. Parent applied returned source and ran frozen tests."
+  },
+  "b": {
+    "requiredHumanRequests": 0,
+    "actualHumanActions": 0,
+    "humanMinutes": null,
+    "evidence": "Complete DSH event history has no approval/asked or ask_user_question events. The two user/message records are the original task and plugin sandbox context. Astra acceptance has no tool items or user requests. Parent requested no extra input."
+  },
+  "events": [],
+  "automaticWork": [
+    "One shared Astra plan; parent constructs and sends task contracts",
+    "Parent applies Astra code; DSH writes its own code and self-tests",
+    "Parent observes original DSH task, verifies terminal/idle state and releases workspace claim",
+    "Parent reruns identical visible tests and sends both snapshots to blind Astra review",
+    "Parent runs the withheld 17-check acceptance suite for both arms"
+  ],
+  "dshSelfTestNotes": "DSH corrected two self-authored expectation errors and repeatedly diagnosed PowerShell native output capture. No human was asked. Parent did not intervene in those iterations; their entire cost and time are retained.",
+  "deviations": [
+    "DSH reports creating and cleaning scratch test artifacts in platform temporary directories, although its task contract listed only three allowed source paths. Final workspace contains only the three sources and unchanged visible test before external scoring. This is a process-boundary deviation, not strict contract compliance.",
+    "The cost ledger excludes parent model coordination and DSH auxiliary title generation; no complete end-to-end cost or subscription debit was observed."
+  ],
+  "humanReductionPct": null,
+  "setupHumanMinutes": null,
+  "conclusion": "Both arms had zero new human requests in this one configured run. No reduction percentage or human-time saving can be inferred."
+}

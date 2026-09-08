@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-08T06:18:01.984Z",
+  "files": [
+    {
+      "path": "case.mjs",
+      "sha256": "208712f77a8c8845733cf6972fb2bfc4b098452469f44894a4a309a0af797575"
+    },
+    {
+      "path": "fixture/visible-test.mjs",
+      "sha256": "b6139a74d840f4b1635bf13a11206a588a76ecb612d5d8f9bf780a46da782a95"
+    },
+    {
+      "path": "fixture/acceptance.mjs",
+      "sha256": "ff3e21c0998b3305eaca5125515143fa73bfac02cc7bc8905659c5dfca358ab5"
+    },
+    {
+      "path": "PROTOCOL.md",
+      "sha256": "1a94016a087571898bb1463ef28be284634383cad13ff17f39a383045a83c042"
+    }
+  ]
+}

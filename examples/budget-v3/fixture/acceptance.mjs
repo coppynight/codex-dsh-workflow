@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import {mkdtempSync,writeFileSync,readFileSync,mkdirSync,readdirSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
+import {parseJobs} from './parse.mjs';
+import {summarizeJobs} from './aggregate.mjs';
+const failed=[];let total=0;
+const check=(name,fn)=>{total++;try{fn();}catch(e){failed.push({name,message:e.message});}};
+const job=(id,durationMs=1,status='succeeded')=>({id,durationMs,status});
+const lines=xs=>xs.map(x=>JSON.stringify(x)).join('\n');
+check('empty and type',()=>{assert.deepEqual(parseJobs(''),{jobs:[],errors:[]});assert.throws(()=>parseJobs(null),TypeError);});
+check('BOM CRLF physical lines',()=>{const r=parseJobs('\uFEFF'+JSON.stringify(job('a'))+'\r\n \r\n{bad\r\n');assert.deepEqual(r,{jobs:[job('a')],errors:[{line:3,code:'INVALID_JSON'}]});});
+check('schema rejection',()=>{const invalid=[null,[],job('x\n'),job('x'.repeat(33)),job('a','1'),job('a',-1),job('a',1.5),job('a',1,'pending')];assert.deepEqual(parseJobs(lines(invalid)).errors,invalid.map((_,i)=>({line:i+1,code:'SCHEMA'})));});
+check('duplicate and normalization',()=>{assert.deepEqual(parseJobs(lines([job('x',-1),{...job('x'),extra:'secret'},job('x',9)])),{jobs:[job('x')],errors:[{line:1,code:'SCHEMA'},{line:3,code:'DUPLICATE_ID'}]});});
+check('boundary valid ids and zero',()=>{assert.deepEqual(parseJobs(lines([job('A_9-',0),job('x'.repeat(32))])).jobs,[job('A_9-',0),job('x'.repeat(32))]);});
+check('empty summary',()=>{assert.deepEqual(summarizeJobs([]),{total:0,succeeded:0,failed:0,skipped:0,durationMs:0,medianSuccessMs:0,slowest:[]});});
+check('counts and excluded skipped time',()=>{const r=summarizeJobs([job('a',2),job('b',3,'failed'),job('c',99,'skipped')]);assert.deepEqual([r.total,r.succeeded,r.failed,r.skipped,r.durationMs],[3,1,1,1,5]);});
+check('all median branches',()=>{assert.equal(summarizeJobs([job('a',9),job('b',1),job('c',3)]).medianSuccessMs,3);assert.equal(summarizeJobs([job('a',9),job('b',2)]).medianSuccessMs,5.5);assert.equal(summarizeJobs([job('a',9,'failed')]).medianSuccessMs,0);});
+check('top three ASCII ties and no mutation',()=>{const js=[job('z',4),job('a',4),job('A',4),job('b',9),job('skip',99,'skipped')];const before=structuredClone(js);js.forEach(Object.freeze);Object.freeze(js);assert.deepEqual(summarizeJobs(js).slowest,[job('b',9),job('A',4),job('a',4)]);assert.deepEqual(js,before);});
+const root=mkdtempSync(join(tmpdir(),'workflow-budget-'));const cli=fileURLToPath(new URL('./cli.mjs',import.meta.url));
+const run=(...args)=>spawnSync(process.execPath,[cli,...args],{encoding:'utf8',timeout:5000,windowsHide:true});
+try{
+ const input=join(root,'input.ndjson'),output=join(root,'nested','report.json');writeFileSync(input,lines([job('a',2)]));
+ check('CLI exact report and recursive parent',()=>{const r=run(input,output);assert.equal(r.status,0,r.stderr);assert.equal(r.stdout,'');assert.equal(readFileSync(output,'utf8'),JSON.stringify({summary:summarizeJobs([job('a',2)]),errors:[]},null,2)+'\n');});
+ check('CLI malformed data still publishes',()=>{writeFileSync(input,lines([job('a',2)])+'\n{secret');const r=run(input,output);assert.equal(r.status,2);assert.deepEqual(JSON.parse(readFileSync(output)).errors,[{line:2,code:'INVALID_JSON'}]);assert.ok(!r.stderr.includes('secret'));});
+ check('read failure preserves previous output',()=>{writeFileSync(output,'previous');assert.equal(run(join(root,'missing'),output).status,1);assert.equal(readFileSync(output,'utf8'),'previous');});
+ check('same resolved path leaves input',()=>{writeFileSync(input,'original');assert.equal(run(input,join(root,'.','input.ndjson')).status,1);assert.equal(readFileSync(input,'utf8'),'original');});
+ check('exact argument count',()=>{for(const args of [[],[input],[input,output,'extra']])assert.equal(run(...args).status,1);});
+ check('empty input success',()=>{writeFileSync(input,'');assert.equal(run(input,output).status,0);assert.equal(JSON.parse(readFileSync(output)).summary.total,0);});
+ check('unrelated files and no leftover temp',()=>{writeFileSync(join(root,'nested','keep'),'keep');assert.equal(run(input,output).status,0);assert.deepEqual(readdirSync(join(root,'nested')).sort(),['keep','report.json']);assert.equal(readFileSync(join(root,'nested','keep'),'utf8'),'keep');});
+ check('rename failure cleans only owned temp',()=>{const target=join(root,'existing-directory');mkdirSync(target);writeFileSync(join(target,'keep'),'safe');const before=readdirSync(root).sort();assert.equal(run(input,target).status,1);assert.deepEqual(readdirSync(root).sort(),before);assert.equal(readFileSync(join(target,'keep'),'utf8'),'safe');});
+}finally{rmSync(root,{recursive:true,force:true});}
+console.log(JSON.stringify({passed:total-failed.length,total,failed},null,2));process.exitCode=failed.length?1:0;

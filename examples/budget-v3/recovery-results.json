@@ -1,0 +1,69 @@
+{
+  "kind": "offline fault fixtures, not human trial",
+  "at": "2026-09-08T06:23:07.818Z",
+  "cases": [
+    {
+      "id": "stopped-host",
+      "file": "tests/dsh-recover.test.mjs",
+      "pattern": "stopped host: exactly one guarded start",
+      "behavior": "恢复已配置 Host：一次有界启动后健康",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    },
+    {
+      "id": "stale-auth",
+      "file": "tests/auth-refresh.test.mjs",
+      "pattern": "follow: stale handshake",
+      "behavior": "过期本地认证：刷新一次并完成",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    },
+    {
+      "id": "foreign-port",
+      "file": "tests/dsh-recover.test.mjs",
+      "pattern": "foreign 3080 listener",
+      "behavior": "未知端口占用：停止恢复，不替换外部进程",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    },
+    {
+      "id": "live-not-ready",
+      "file": "tests/dsh-recover.test.mjs",
+      "pattern": "matching process alive but not ready",
+      "behavior": "进程未就绪：有限等待，不重复启动",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    },
+    {
+      "id": "missing-key",
+      "file": "bridge/client.test.mjs",
+      "pattern": "missing credentials surface",
+      "behavior": "缺凭据：提供配置引导，不泄漏原始错误",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    },
+    {
+      "id": "checkpoint",
+      "file": "tests/dsh-recover.test.mjs",
+      "pattern": "task checkpoint persisted on success",
+      "behavior": "故障后保留原任务 checkpoint",
+      "exitCode": 0,
+      "matchedPass": 1,
+      "matchedFail": 0,
+      "verified": true
+    }
+  ],
+  "observedHumanMinutes": null,
+  "humanReductionPct": null,
+  "limitations": "Mocks exercise concrete recovery branches; blocked cases are correct containment, not recovered deliveries. No native Codex or raw-DSH human baseline was measured."
+}

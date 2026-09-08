@@ -1,0 +1,19 @@
+{
+  "exitCode": 0,
+  "stdout": "{\n  \"passed\": 17,\n  \"total\": 17,\n  \"failed\": []\n}\n",
+  "stderr": "",
+  "files": [
+    {
+      "file": "parse.mjs",
+      "sha256": "0f111a681e8656a1a17e2d63d3611cb69f48b630051a8ae5cdfb98deea25ba6d"
+    },
+    {
+      "file": "aggregate.mjs",
+      "sha256": "25a09e5e628f675f35c59210b3cf84b28e6ddbecd665089eb94ebb24bf166a7d"
+    },
+    {
+      "file": "cli.mjs",
+      "sha256": "2e42bd02b9b6a002b2fd11af99be963c4e1d3427a4edc5a5b6ae98f7880d121e"
+    }
+  ]
+}

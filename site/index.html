@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>放开用 Astra —— codex-dsh-workflow</title>
-  <meta name="description" content="把难点推理与验收留在 Astra、把边界清晰的实现委托给 DSH 的工作流。公开配对案例、真实用量和恢复回归证据；把实验结果用于优化任务路由。">
+  <meta name="description" content="以更低成本拥抱 Astra 主导的交付。规划、思考与验收留在 Astra，实现与自测交给 DeepSeek；公开成本实验和人工干预记录。">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css?v=2">
   <script src="app.js?v=2" defer></script>
+  <script src="economics.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -21,7 +22,7 @@
           <li><a href="#principle">原理</a></li>
           <li><a href="#roles">分工</a></li>
           <li><a href="#guardrails">护栏</a></li>
-          <li><a href="#evidence">实测</a></li>
+          <li><a href="#economics">实测</a></li>
           <li><a href="#install">安装</a></li>
           <li><a href="#faq">问答</a></li>
           <li><a href="#repo-footer">仓库</a></li>
@@ -35,11 +36,11 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-copy">
         <p class="hero-eyebrow">Astra × DSH · 委托实现工作流</p>
-        <h1 id="hero-title" class="hero-title">放开用 Astra。<br>让每一份 token，都靠近交付。</h1>
-        <p class="hero-qualifier">探索让 Astra 承担更多完整任务。工具怎么配，以交付、人工介入和实际成本来检验。</p>
+        <h1 id="hero-title" class="hero-title">放开用 Astra。<br>更低成本，更少亲自救场。</h1>
+        <p class="hero-qualifier">让 Astra 负责规划、思考与验收，让 DeepSeek 承担实现、自测与修复。目标是以低廉成本拥抱 AGI；每次交付的成本和人工介入，都用证据说话。</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#install">安装工作流</a>
-          <a class="btn btn-ghost" href="#evidence">看实测口径</a>
+          <a class="btn btn-ghost" href="#economics">看成本与干预实测</a>
         </div>
       </div>
 
@@ -120,7 +121,7 @@
         <aside class="notice notice-navy" aria-labelledby="assumption-title">
           <h3 id="assumption-title" class="notice-title"><span aria-hidden="true">⚖</span> 把收益做成可验证的工程目标</h3>
           <ul class="notice-list">
-            <li><strong>不预设哪种分工更好。</strong>保留原生工具的正常能力；分别观察交付、人工介入、耗时与成本，再判断是否值得委派。</li>
+            <li><strong>把昂贵的判断，用在值得的地方。</strong>规划与验收留在 Astra，可执行的工作交给更低价的模型。总 token 可以更多，关键是同质量交付的成本更低、用户更少介入。</li>
             <li><strong>数据公开，负结果也保留。</strong>下面展示局部配对用量、验收结果与故障重建；整体端到端节省和交付率仍需更多真实项目验证。</li>
             <li>可复现、可核对：样本、方法与原始用量摘录都保存在公开仓库。</li>
           </ul>
@@ -222,11 +223,38 @@
       </div>
     </section>
 
-    <!-- ============ 04 EVIDENCE ============ -->
+    <section class="sec sec-tint" id="economics" aria-labelledby="economics-title">
+      <div class="wrap">
+        <p class="sec-no">04 · 成本与人工介入</p>
+        <h2 id="economics-title" class="sec-title">Astra 掌舵，便宜模型把活干完。</h2>
+        <p class="sec-intro">新案例把规划、实现与验收分开记账。相同规格的三文件报表工具，Astra 和 DeepSeek 分别实现，再由不知道执行者身份的 Astra 验收。两边使用相同的 17 项最终检查。</p>
+        <div id="economics-result" aria-live="polite"><p>正在载入成本实测；<a href="https://github.com/coppynight/codex-dsh-workflow/tree/main/examples/budget-v3">可直接查看全部记录</a>。</p></div>
+        <p class="note-block">这是一次受控任务分工实验。Astra 以无工具 JSON 返回代码，外部脚本写文件和跑测试；DSH 正常使用工具。主会话协调、安装维护及 DSH 辅助标题生成未计价。表中美元是按官方 API 价格折算的等价值，<strong>不是订阅实际扣费或套餐倍率证明</strong>。</p>
+        <p class="note-block">产物双方通过验收，但 DSH 自测使用了任务包未明确允许的系统临时目录（事后清理）。这是保留的过程偏差；已在任务模板中补充临时目录边界，不把本例标成严格全过程合规。</p>
+        <div class="notice notice-navy">
+          <h3 class="notice-title">人工介入：把能处理的问题留给工作流</h3>
+          <p>正常任务的新增人工请求按实际记录计数。另有六项离线故障夹具验证自动恢复或安全停止：后台未启动、认证过期、未知端口占用、进程未就绪、缺 key 和 checkpoint 保留。六项通过不等于六次免人工，也不代表人工减少率。</p>
+          <p>已有授权内，Codex 负责调度、查原任务、复验、修复与降级；用户负责不可代替的需求判断、凭据和真实权限审批。<a href="https://github.com/coppynight/codex-dsh-workflow/blob/main/references/economics.md">查看执行规则</a>。</p>
+        </div>
+        <div class="budget-scenario">
+          <h3>怎样才可能达到 5 倍、10 倍容量？</h3>
+          <p>下面是<strong>条件推演，不是实测</strong>。假设质量相同，把某一比例的 Astra 工作完全交给便宜模型，同时加入协调与返工开销。计算的是 Astra 资源容量，不含 DSH 费用、限速和时间瓶颈。</p>
+          <label for="offload">转出的原 Astra 工作：<output id="offload-value">75%</output></label>
+          <input id="offload" type="range" min="0" max="95" step="1" value="75">
+          <label for="overhead">新增协调与返工（占原成本）：<output id="overhead-value">5%</output></label>
+          <input id="overhead" type="range" min="0" max="40" step="1" value="5">
+          <p id="scenario-result" class="scenario-result" aria-live="polite"></p>
+          <p>5× / 10× / 20×，分别要求每次合格交付的 Astra 净消耗下降 80% / 90% / 95%。规划与验收不能被省略；它们构成容量上限。</p>
+          <p>截至 2026-09-08，<a href="https://learn.chatgpt.com/docs/pricing">官方套餐</a>为 Plus $20、Pro $100（5 倍用量）和 $200（20 倍用量）。本项目尚未证明“$20 媲美 $100/$200”或“一个账号顶十个账号”；月支出还应加上 DeepSeek。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HISTORICAL EVIDENCE ============ -->
     <section class="sec sec-tint" id="evidence" aria-labelledby="evidence-title">
       <div class="wrap">
-        <p class="sec-no">04 · 实测</p>
-        <h2 id="evidence-title" class="sec-title">先看口径，再看数字。</h2>
+        <p class="sec-no">历史数据 · 保留负结果</p>
+        <h2 id="evidence-title" class="sec-title">为什么我们改了任务分工。</h2>
         <p class="sec-intro">以下是早期受控子会话实验，完整原生工具的端到端对照尚未完成。模型用量、验收与故障回放分开列出；先阅读 <a href="https://github.com/coppynight/codex-dsh-workflow/blob/main/examples/native-baseline-audit.md">原生能力与工作流差异核查</a>，再判断数字能说明什么。</p>
 
         <p class="sr-only" id="ev-live" role="status" aria-live="polite"></p>
@@ -283,8 +311,8 @@ node scripts/install.mjs</pre>
 
         <div class="faq-list">
           <details class="faq" name="faq">
-            <summary><h3 class="faq-q">Astra 的参与真的变少了吗？</h3></summary>
-            <p class="faq-a">见上方实测：只统计固定需求后的 Astra 代码生成或审查子会话。结果不包含主会话协调和 DSH 消耗；小任务可能因审查需要读入整份源码而增加 Astra 用量，所以默认直接完成小任务。</p>
+            <summary><h3 class="faq-q">价值是省 token 吗？</h3></summary>
+            <p class="faq-a">价值目标是降低同质量交付的成本、减少用户调度与救场。不同模型价格不同，总 token 增多也可能更便宜。Astra 继续负责规划与验收；实现、自测和定向修复交给低价模型。旧实验让 Astra 审查时重新输出完整代码，成本更高，因此新流程已调整这一分工。</p>
           </details>
           <details class="faq" name="faq">
             <summary><h3 class="faq-q">什么算「完成」？谁来判定？</h3></summary>
