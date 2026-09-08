@@ -127,3 +127,23 @@ These are hypotheses, not measured claims. Product need not be a skill.
   credential-only installations; isolated model pinned to priced Flash.
 - Starting the six preregistered low-effort cheap trials now, sequentially, without
   additional Astra baselines. Their optional expert choice remains model-owned.
+
+### Checkpoint approximately 01:42
+
+- Low batch resumed as exec 98127 after accounting guard correctly stopped before
+  the last two runs: older loaded runtimes lacked the new accountingFinalized flag.
+  Read-only final reconciliation restored complete evidence; no model run repeated.
+- Low ledger-alone has a real semantic failure for stream ID constructor (5/6).
+  Low observation arms both produced passing artifacts but stopped for sandbox
+  escalation. Low ledger-advisor passed autonomously and used ZERO consultations.
+- Prepared NEW phase pilot-compatible-01: three low+optional-advisor runs with only
+  required test command changed to Node --test-isolation=none. The outer DSH sandbox
+  and approval policy remain unchanged. This is a feasible in-sandbox execution
+  path, not an escalation or approval bypass. Original default-isolation acceptance
+  still runs independently. Official Node docs and local offline invocation checked.
+- No compatible phase submitted yet; run only after exec 98127 finishes and budget
+  is fully reconciled. Three exploratory repetitions, same known cases/baselines;
+  do not count them as independent held-out tasks or native Astra repetitions.
+- Candidate form is a thin DSH preset + native MCP expert tool + one-command runner.
+  Avoid a new agent platform until cheap-first quality and expert added value hold
+  on a larger, independently held-out real repository suite.

@@ -8,7 +8,8 @@ import { allowedCwd, hostStatus } from '../bridge/service.mjs';
 import { timeZone } from '../bridge/runtime.mjs';
 import { parseDecision, controllerPrompt, advisorPrompt } from './protocol.mjs';
 import { runCodex } from './codex.mjs';
-import { costOf, dshCost, codexCost } from './usage.mjs';
+import { costOf, dshCost, codexCost, incompleteCost } from './usage.mjs';
+import { sessionAddress } from './session-address.mjs';
 import { accountEvents } from './dsh-accounting.mjs';
 import { claimWorkspace } from './workspace.mjs';
 import { loadConfig } from '../scripts/config.mjs';
@@ -35,7 +36,7 @@ async function idle(sessionId) {
   return [...ids];
 }
 
-export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp = false, agentPreset = 'standard', advisorLedgerDir, workspaceRegistry, deadlineMs = 600000, maxConsults = 2, onProgress = () => {} }) {
+export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp = false, agentPreset = 'standard', advisorLedgerDir, workspaceRegistry, retainWorkspaceClaim = false, deadlineMs = 600000, maxConsults = 2, onProgress = () => {} }) {
   cwd = await allowedCwd(resolve(cwd)); outputDir = resolve(outputDir);
   await mkdir(outputDir, { recursive: true });
   const recordFile = join(outputDir, 'record.json');
@@ -48,6 +49,7 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
     promptSha256: createHash('sha256').update(task).digest('hex'), completed: false, idleVerified: false,
     budget: { deadlineMs, maxConsults, stopBeforeNextCallUsd: 2, hardBillingCap: false },
     excludedUsage: ['experiment development and root research session'], nativeMcp, agentPreset,
+    advisorLedgerDir: nativeMcp ? advisorLedgerDir : undefined, accountingFinalized: false,
   };
   await writeFile(join(outputDir, 'task.txt'), task);
   await save(recordFile, record);
@@ -128,12 +130,15 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
       lastData = await readEvents(record.sessionId);
     } catch { record.idleVerified = false; }
   } finally {
+    try {
     if (lastData) {
       await writeFile(join(outputDir, 'private-events.json'), JSON.stringify(lastData));
       record.accounting = accountEvents(lastData.events); record.usageEvents = [...record.accounting.usageEvents];
       record.descendants = [];
+      const rows = (await call('list',{})).items;
       for (const childId of (record.sessionTree ?? []).filter(id => id !== record.sessionId)) {
-        const childData = await readEvents(childId); const accounting = accountEvents(childData.events);
+        const childData = await readEvents(sessionAddress(rows.find(row=>row.sessionId===childId)));
+        const accounting = accountEvents(childData.events, childData.header?.seedLength ?? 0);
         record.descendants.push({ sessionId: childId, accounting }); record.usageEvents.push(...accounting.usageEvents);
         await writeFile(join(outputDir, `private-child-${childId}.json`), JSON.stringify(childData));
       }
@@ -141,7 +146,7 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
       record.toolNames = [...new Set(lastData.events.filter(e => ['tool/call', 'tool/code-dispatch-start'].includes(e.type)).map(e => e.data?.name).filter(Boolean))];
     }
     if (nativeMcp && advisorLedgerDir) {
-      const names = await readdir(advisorLedgerDir).catch(() => []);
+      const names = await readdir(advisorLedgerDir);
       record.consultations = [];
       for (const file of names.filter(name => name.endsWith('.json'))) record.consultations.push(JSON.parse(await readFile(join(advisorLedgerDir, file), 'utf8')));
       if (names.includes('active.lock')) { record.idleVerified = false; record.error = 'Advisor operation is still active or unknown'; }
@@ -150,8 +155,16 @@ export async function runDsh({ cwd, task, outputDir, advisor = false, nativeMcp 
       }
       record.advisorLedgerDir = advisorLedgerDir;
     }
+    record.accountingFinalized = Boolean(record.accounting && record.cost?.complete && record.consultations.every(c=>c.cost?.complete && c.expert?.cleanupVerified));
+    } catch(error) {
+      record.completed = false; record.phase = 'finalization-failed';
+      record.error = 'Final accounting or operation state is unavailable: '+error.message;
+      record.cost = incompleteCost(record.cost,record.error);
+      // In particular, an unreadable advisor ledger cannot prove writers idle.
+      record.idleVerified = false;
+    }
     if (!record.idleVerified) record.completed = false;
-    if (releaseClaim && record.idleVerified) { await releaseClaim(); record.workspaceClaim = 'released'; }
+    if (releaseClaim && record.idleVerified && !retainWorkspaceClaim) { await releaseClaim(); record.workspaceClaim = 'released'; }
     record.elapsedMs = Date.now() - started; await save(recordFile, record);
   }
   return record;

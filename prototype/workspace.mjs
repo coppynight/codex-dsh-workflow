@@ -16,12 +16,16 @@ export async function claimWorkspace({ stateDir, cwd, taskId, sessionId }) {
     }
     await writeFile(target, JSON.stringify({ taskId, sessionId, cwd, kind: 'dsh-led-prototype' }), { flag: 'wx' });
   } finally { await lock.close(); await unlink(mutex); }
-  return async () => {
+  return () => releaseWorkspaceClaim({stateDir,cwd,taskId,sessionId});
+}
+
+export async function releaseWorkspaceClaim({stateDir,cwd,taskId,sessionId}) {
+    const mutex=join(stateDir,'locks','workspace-registry.lock');
+    const target=join(stateDir,'claims',claimFileName(cwd));
     const cleanupLock = await open(mutex, 'wx');
     try {
       const owner = JSON.parse(await readFile(target, 'utf8'));
       if (owner.taskId !== taskId || owner.sessionId !== sessionId) throw Error('Workspace owner changed; do not release');
       await unlink(target);
     } finally { await cleanupLock.close(); await unlink(mutex); }
-  };
 }

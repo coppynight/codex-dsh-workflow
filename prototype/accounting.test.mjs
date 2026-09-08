@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { accountEvents } from './dsh-accounting.mjs';
 import { dshCost, codexCost } from './usage.mjs';
+import { sessionAddress } from './session-address.mjs';
 const usage=n=>({inputTokens:n,outputTokens:n/10,cacheReadTokens:0,cacheWriteTokens:0,totalTokens:n*1.1});
 test('failed streaming attempt is counted once and retry adds spend',()=>{
   const raw=[
@@ -19,6 +20,17 @@ test('failed streaming attempt is counted once and retry adds spend',()=>{
 });
 test('missing end cannot masquerade as complete accounting',()=>{
   assert.equal(accountEvents([{type:'turn/start',seq:0,data:{turn:1}}]).coverageComplete,false);
+});
+
+test('fork history is excluded and children require the durable parent address',()=>{
+  const turn=(n,start)=>[['turn/start',{turn:n}],['step/start',{turn:n,step:1}],
+    ['assistant/message',{turn:n,step:1,usage:usage(1000),message:{source:{provider:'deepseek-official',model:'deepseek-v4-flash'}}}],
+    ['step/end',{turn:n,step:1}],['turn/end',{turn:n}]].map(([type,data],i)=>({type,data,seq:start+i}));
+  const accounting=accountEvents([...turn(1,0),...turn(2,5)],5);
+  assert.equal(accounting.usageEvents[0].usage.inputTokens,1000);
+  assert.equal(accounting.coverageComplete,true);
+  assert.deepEqual(sessionAddress({origin:'subagent',sessionId:'c',parentSessionId:'p',projections:{values:{subagent:{mode:'one-shot'}}}}),{kind:'subagent',parentSessionId:'p',childSessionId:'c',mode:'one-shot'});
+  assert.throws(()=>sessionAddress({origin:'subagent',sessionId:'c'}),/cannot be proven/);
 });
 
 test('a retry with missing billed usage stops expansion even when later numbers exist',()=>{

@@ -108,7 +108,8 @@ export async function call(method, ...values) {
 }
 
 export async function observe(sessionId, seconds = 0) {
-  const { d, args, endpoint } = await contract('follow', [{ address: { kind: 'session', sessionId }, maxMessages: 100 }]);
+  const address = typeof sessionId === 'string' ? { kind: 'session', sessionId } : sessionId;
+  const { d, args, endpoint } = await contract('follow', [{ address, maxMessages: 100 }]);
   const run = async (retried) => {
     const headers = await authHeaders();
     return new Promise((resolve, reject) => {
@@ -159,17 +160,18 @@ export async function observe(sessionId, seconds = 0) {
 }
 
 export async function readEvents(sessionId, seconds = 0) {
+  const address = typeof sessionId === 'string' ? { kind: 'session', sessionId } : sessionId;
   const { snapshot, events } = await observe(sessionId, seconds);
   let records = [...snapshot.records], more = snapshot.hasMore;
   for (let i = 0; more && i < 20; i++) {
     const first = records[0]?.event?.seq;
     if (!Number.isInteger(first)) throw new Error('Cannot safely page DSH history.');
-    const page = await call('page', { address: { kind: 'session', sessionId }, throughSeq: snapshot.cursor, beforeSeq: first, maxMessages: 100 });
+    const page = await call('page', { address, throughSeq: snapshot.cursor, beforeSeq: first, maxMessages: 100 });
     records = [...page.records, ...records]; more = page.hasMore;
   }
   if (more) throw new Error('DSH history exceeds bounded reader; inspect the session in DSH Web.');
   const all = [...records.filter((r) => r.type === 'event').map((r) => r.event), ...events];
-  return { cursor: Math.max(snapshot.cursor, ...events.map((e) => e.seq)), events: all, projections: snapshot.projections };
+  return { cursor: Math.max(snapshot.cursor, ...events.map((e) => e.seq)), events: all, projections: snapshot.projections, header: snapshot.header };
 }
 
 const textBlocks = (content) => (Array.isArray(content) ? content : [])

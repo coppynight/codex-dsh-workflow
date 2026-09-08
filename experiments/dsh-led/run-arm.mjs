@@ -33,6 +33,7 @@ const summary = { caseId, arm, elapsedMs: Date.now() - started, executionElapsed
   error: record.error ?? null,
 };
 summary.visibleTestsUnchanged = visibleHash === createHash('sha256').update(await readFile(join(spec.cwd,'visible.test.mjs'))).digest('hex');
-summary.autonomousSuccess = summary.passed && summary.completed && safeToEvaluate && summary.visibleTestsUnchanged && !record.parseErrors && !record.failures?.length;
+summary.protocolValid = (record.consultations??[]).every(c=>c.status==='completed'&&!c.protocolViolation);
+summary.autonomousSuccess = summary.passed && summary.completed && safeToEvaluate && summary.visibleTestsUnchanged && summary.protocolValid && !record.parseErrors && !record.failures?.length;
 await writeFile(join(directory, 'result.json'), JSON.stringify(summary, null, 2));
 console.log(JSON.stringify(summary));

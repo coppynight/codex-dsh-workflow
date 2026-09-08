@@ -47,7 +47,7 @@ server.registerTool('consult_astra', {
     entry.status = !releaseLock ? 'unknown' : entry.cost.complete && !entry.expert.toolResults.length ? 'completed' : 'failed';
     if (entry.expert.toolResults.length) entry.protocolViolation = 'Advisor used tools despite the text-only consultation contract';
     await writeFile(file + '.tmp', JSON.stringify(entry, null, 2)); await rename(file + '.tmp', file);
-    return reply({ status: entry.status, advice: entry.expert.answer, cost: entry.cost }, entry.status !== 'completed');
+    return reply({ status: entry.status, ...(entry.status === 'completed' ? {advice:entry.expert.answer} : {message:'Consultation failed its contract; no advice released. Continue independently or report blocked.'}), cost: entry.cost }, entry.status !== 'completed');
   } catch (error) {
     return reply({ status: 'failed', message: error.message }, true);
   } finally { await lock.close(); if (releaseLock) await unlink(join(config.ledgerDir, 'active.lock')); }

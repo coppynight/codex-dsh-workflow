@@ -7,8 +7,9 @@ const packageRoot = dirname(requireDsh.resolve('@deepseek-ai/dsh-token-meter/pac
 const { tokenUsageProjectionDefinition: fold } = await import(pathToFileURL(join(packageRoot, 'lib/types/usage-projection.js')));
 const { deriveTurnTokenUsage } = await import(pathToFileURL(join(packageRoot, 'lib/types/turn-usage.js')));
 
-export function accountEvents(rawEvents) {
-  const events = [...new Map(rawEvents.map(e => [e.seq, e])).values()].sort((a,b) => a.seq-b.seq);
+export function accountEvents(rawEvents, seedLength = 0) {
+  if(!Number.isSafeInteger(seedLength)||seedLength<0)throw Error('Invalid inherited event boundary');
+  const events = [...new Map(rawEvents.filter(e=>e.seq>=seedLength).map(e => [e.seq, e])).values()].sort((a,b) => a.seq-b.seq);
   const state = events.reduce((s,e) => fold.apply(s,e), fold.init());
   const t = state.totals;
   const completedTurns = []; let own = null;
